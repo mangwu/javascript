@@ -6,9 +6,13 @@
  * @copyright © 2021 wangzhihao, All rights reserved.
  */
 
+
 const html = "<html><head><title></title></head><body></body></html>";
 
+// 前面一个尽量匹配多的
 const reg = /(<.*>)(<.*>)/;
 
 const a = html.match(reg);
 console.log(a);
+
+

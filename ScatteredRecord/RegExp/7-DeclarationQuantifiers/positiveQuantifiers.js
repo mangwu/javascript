@@ -14,7 +14,7 @@ console.log(a);
 
 // 返回最后一个指定字符索引
 function lastCharIndex(str, c) {
-  const reg = new RegExp(`${c}(?=[^${c}]*$)`);
+  const reg = new RegExp(`${c}(?=[^${c}]*)$`);
   return str.match(reg).index;
 }
 var str = "JavaScript is a great language";

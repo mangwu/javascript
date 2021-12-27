@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- 动态加载时的预加载头部显式声明 -->
+	<link rel="preload" href="dynamicScript.js">
+	<title>
+		动态加载脚本文件
+	</title>
+</head>
+<body>
+	<h2>
+		<a href="https://www.notion.so/mangwu/script-8482acc6dba14ca7948572a51bf60583#4b0b6acabb904a71990121393cb14733">动态加载属性</a>
+	</h2>
+	<script type="text/javascript">
+		// 创建script元素
+		const script = document.createElement("script");
+		// 设置script元素属性
+		script.src="dynamicScript.js";
+		script.async = false;
+		// 添加到head中
+		document.head.append(script);
+		console.log("行内脚本"); // 先执行
+	</script>
+</body>
+</html>

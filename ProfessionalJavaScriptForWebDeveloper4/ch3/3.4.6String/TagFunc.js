@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: TagFunc.js                                                           *
  * @Date: 2022-02-16 23:48:45                                                  *
- * @LastModifiedDate: 2022-02-16 23:55:38                                      *
+ * @LastModifiedDate: 2022-02-17 00:13:07                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022                                                          *
@@ -17,7 +17,7 @@
 function tagFunc(strings, ...expressions) {
   console.log(strings);
   for (const expression of expressions) {
-    console.log(expression);
+    console.log(expression,typeof expression);
   }
   return "处理后的模板字面量";
 }

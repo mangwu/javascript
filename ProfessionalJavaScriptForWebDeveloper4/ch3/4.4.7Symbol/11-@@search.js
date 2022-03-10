@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 11-@@search.js                                                       *
  * @Date: 2022-03-09 18:44:46                                                  *
- * @LastModifiedDate: 2022-03-09 19:41:43                                      *
+ * @LastModifiedDate: 2022-03-10 23:45:12                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -32,3 +32,4 @@ class BarSearcher {
 const foosearch = new BarSearcher("foo");
 console.log("afoobar".search(BarSearcher));
 console.log("afoobar".search(foosearch));
+

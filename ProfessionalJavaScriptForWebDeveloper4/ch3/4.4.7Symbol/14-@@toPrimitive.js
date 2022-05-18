@@ -20,3 +20,6 @@ const bar3 = new Bar("3");
 console.log(bar1 + bar2);
 console.log(bar1 + bar3);
 
+// valueOf
+const object = { a: 1, b: 2 };
+console.log(object);

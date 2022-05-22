@@ -74,3 +74,23 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// toPrimitive
+class Foo {
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+      case "number":
+        return 3;
+      case "string":
+        return "string";
+      case "default":
+        return "default";
+    }
+  }
+}
+const foo = new Foo();
+console.log("3" + foo);
+console.log(3 - foo);
+console.log(3 + foo);
+console.log(String(foo));
+console.log(foo.toString());

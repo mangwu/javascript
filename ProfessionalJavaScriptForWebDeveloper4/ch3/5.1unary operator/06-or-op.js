@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 04-not-op.js                                                         *
- * @Date: 2022-05-24 22:29:57                                                  *
- * @LastModifiedDate: 2022-05-25 20:15:15                                      *
+ * @File: 06-or-op.js                                                          *
+ * @Date: 2022-05-25 20:54:56                                                  *
+ * @LastModifiedDate: 2022-05-25 20:56:32                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,14 +12,9 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 按位非
-let num = 123;
-console.log(~num);
+// - 结论，**任何数**和**其按位非的数**进行**按位或**操作都会得到-1
+// - 进一步，任何数和其取负减1后的数进行按位或操作都会得到-1
+// 因为32位都是取反后的结果，都是0-1或1-0对，按位或得到0xffffffff
+const num = Math.floor(Math.random() * Math.pow(2, 31));
 
-// 相当于取负数然后减去1
-let num2 = 123;
-console.log(-num2 - 1);
-
-let num3 = Math.floor(Math.random() * Math.pow(2, 31));
-console.log(num3);
-console.log(~num3 == -num3 - 1);
+console.log(num, (num | (-num - 1)) == -1);

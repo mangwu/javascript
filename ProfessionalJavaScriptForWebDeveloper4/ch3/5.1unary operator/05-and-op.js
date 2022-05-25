@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 04-not-op.js                                                         *
- * @Date: 2022-05-24 22:29:57                                                  *
- * @LastModifiedDate: 2022-05-25 20:15:15                                      *
+ * @File: 05-and-op.js                                                         *
+ * @Date: 2022-05-25 20:33:08                                                  *
+ * @LastModifiedDate: 2022-05-25 20:45:15                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,14 +12,9 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 按位非
-let num = 123;
-console.log(~num);
-
-// 相当于取负数然后减去1
-let num2 = 123;
-console.log(-num2 - 1);
-
-let num3 = Math.floor(Math.random() * Math.pow(2, 31));
-console.log(num3);
-console.log(~num3 == -num3 - 1);
+// 按位与 &
+// 任何数与其取负减1后的数相与都是0
+// 因为取负减1的数就是按位非后的数
+let num = Math.floor(Math.random() * Math.pow(2, 31));
+console.log(num);
+console.log((num & (-num - 1)) == 0);

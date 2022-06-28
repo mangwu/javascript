@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.1.1.2 function.js                                                  *
  * @Date: 2022-06-27 23:02:26                                                  *
- * @LastModifiedDate: 2022-06-27 23:24:44                                      *
+ * @LastModifiedDate: 2022-06-28 14:24:19                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -25,3 +25,6 @@ console.log(date.toString());
 const date2 = new Date("2012-2-19 14:42:52.111 GMT+0500");
 console.log(date2.valueOf());
 console.log(date2 > date);
+
+// 打印date，直接使用iso标准的日期字符串
+console.log(date);

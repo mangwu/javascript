@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.1.4 date-function.js                                               *
  * @Date: 2022-06-29 00:40:08                                                  *
- * @LastModifiedDate: 2022-06-29 10:58:54                                      *
+ * @LastModifiedDate: 2022-06-29 22:18:31                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -53,3 +53,8 @@ console.log(date4.toString());
 console.log(date4.getUTCDate(), "utc");
 date4.setUTCDate(0);
 console.log(date4.toString(), date4);
+
+// 获取周几
+console.log(date4.getDay())
+console.log(date4.getUTCDay())
+

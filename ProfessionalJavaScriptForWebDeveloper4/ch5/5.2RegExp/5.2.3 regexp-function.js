@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.2.3 regexp-function.js                                             *
  * @Date: 2022-07-01 10:17:08                                                  *
- * @LastModifiedDate: 2022-07-01 17:11:20                                      *
+ * @LastModifiedDate: 2022-07-03 23:46:17                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -30,3 +30,18 @@ console.log(pattern3.exec("2022-07-01"));
 
 const pattern4 = /(\d{4})-(?<date>(\d{2})-(?<day>\d\d))/;
 console.log(pattern4.exec("2022-07-01"), pattern4.exec("2022-07-01")[3]);
+
+// 反向引用
+const pattern5 = /(\d{4})-((\d{2})-\3)/;
+console.log(pattern5.exec("2022-07-07"));
+
+const pattern6 = /(\d{4})-((?<month>\d{2})-\k<month>)/;
+console.log(pattern6.exec("2022-07-07"));
+
+const pattern7 = /<(?<tag>[a-z]+)[^>]*>/gi;
+console.log(
+  "<table id='test'><tr class='tr-row'><td id='td-cell'>test</td></tr>".replace(
+    pattern7,
+    "<$<tag>>"
+  )
+);

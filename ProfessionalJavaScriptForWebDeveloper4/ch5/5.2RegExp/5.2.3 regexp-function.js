@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.2.3 regexp-function.js                                             *
  * @Date: 2022-07-01 10:17:08                                                  *
- * @LastModifiedDate: 2022-07-04 11:30:07                                      *
+ * @LastModifiedDate: 2022-07-04 13:47:00                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -77,8 +77,8 @@ console.log(
   pattern10.lastIndex,
   pattern10.exec("2012-02-05, 2054-01-02"),
   pattern10.lastIndex,
-  pattern10.exec("2012-02-05"),
-  pattern10.lastIndex,
-  pattern10.exec("2012-02-05"),
+  (pattern10.lastIndex = 12),
+  pattern10.exec("2012-02-05, 2054-01-02"),
   pattern10.lastIndex
 );
+

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.2.3 regexp-function.js                                             *
  * @Date: 2022-07-01 10:17:08                                                  *
- * @LastModifiedDate: 2022-07-04 13:47:00                                      *
+ * @LastModifiedDate: 2022-07-04 19:49:13                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -82,3 +82,6 @@ console.log(
   pattern10.lastIndex
 );
 
+// 继承的方法
+console.log(pattern2.toString(), pattern10.toLocaleString());
+console.log(pattern10.valueOf());

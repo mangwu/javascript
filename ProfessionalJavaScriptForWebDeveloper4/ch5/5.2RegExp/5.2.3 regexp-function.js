@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.2.3 regexp-function.js                                             *
  * @Date: 2022-07-01 10:17:08                                                  *
- * @LastModifiedDate: 2022-07-03 23:46:17                                      *
+ * @LastModifiedDate: 2022-07-04 11:30:07                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -44,4 +44,41 @@ console.log(
     pattern7,
     "<$<tag>>"
   )
+);
+// RegExp.$number 方式引用
+const pattern8 = /(\d{4})-((?<month>\d{2})-(?<day>\d{2}))/;
+console.log(
+  pattern8.test("2012-07-04"),
+  RegExp.$1,
+  RegExp.$2,
+  RegExp.$3,
+  RegExp.$4
+);
+
+// exec方法的状态
+
+const pattern9 = /(\d{4})-((?<month>\d{2})-(?<day>\d{2}))/g;
+console.log(
+  pattern9.lastIndex,
+  pattern9.exec("2012-02-05, 2054-01-02"),
+  pattern9.lastIndex,
+  pattern9.exec("2012-02-05, 2054-01-02"),
+  pattern9.lastIndex,
+  pattern9.exec("2012-02-05"),
+  pattern9.lastIndex,
+  pattern9.exec("2012-02-05"),
+  pattern9.lastIndex
+);
+console.log("----------");
+const pattern10 = /(\d{4})-((?<month>\d{2})-(?<day>\d{2}))/y;
+console.log(
+  pattern10.lastIndex,
+  pattern10.exec("2012-02-05, 2054-01-02"),
+  pattern10.lastIndex,
+  pattern10.exec("2012-02-05, 2054-01-02"),
+  pattern10.lastIndex,
+  pattern10.exec("2012-02-05"),
+  pattern10.lastIndex,
+  pattern10.exec("2012-02-05"),
+  pattern10.lastIndex
 );

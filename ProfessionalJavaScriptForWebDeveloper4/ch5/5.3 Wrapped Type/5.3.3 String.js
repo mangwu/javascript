@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.3 String.js                                                      *
  * @Date: 2022-07-05 11:21:31                                                  *
- * @LastModifiedDate: 2022-07-05 17:01:05                                      *
+ * @LastModifiedDate: 2022-07-05 23:01:37                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -44,3 +44,34 @@ console.log(
 // String.fromCharCode()
 
 console.log(String.fromCharCode(67, 85, 0x61, 0x65, 12582, 0xd834, 0xdf06));
+
+// String.codePointAt();
+
+message = "a😊b";
+console.log(
+  message,
+  message.codePointAt(),
+  message.codePointAt(0),
+  message.codePointAt(1),
+  message.codePointAt(2),
+  message.codePointAt(3)
+);
+
+for (const ch of message) {
+  console.log(ch);
+}
+console.log(...message);
+
+// fromCodePoint()
+console.log(String.fromCodePoint(97, 128522, 98));
+
+// normalize()
+
+console.log(String.fromCharCode(0x00c5));
+console.log(String.fromCharCode(0x212b));
+console.log(String.fromCharCode(0x0041, 0x030a));
+
+let a = "Å";
+let b = "Å";
+let c = "Å";
+console.log(a.charCodeAt(), b.charCodeAt(), c.codePointAt());

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.3 String.js                                                      *
  * @Date: 2022-07-05 11:21:31                                                  *
- * @LastModifiedDate: 2022-07-06 17:32:43                                      *
+ * @LastModifiedDate: 2022-07-07 00:09:11                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -151,3 +151,15 @@ console.log(str3.endsWith("baz", 6), str3.endsWith("bar", 6));
 let str4 = " \r\n\tabcde  f\r\n\tg hijklmn  \r\n\t";
 console.log(str4, str4.length);
 console.log(str4.trim());
+
+// repeat()
+let str5 = "cn ";
+console.log(str5.repeat());
+console.log(str5.repeat(0));
+console.log(str5.repeat(1));
+console.log(str5.repeat(2));
+
+// padStart() padEnd()
+
+let str6 = "bar";
+console.log(str6.padStart(10, "."), str6.padEnd(8, "foo"), str6.padStart(2));

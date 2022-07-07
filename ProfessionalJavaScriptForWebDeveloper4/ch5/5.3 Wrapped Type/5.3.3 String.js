@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.3 String.js                                                      *
  * @Date: 2022-07-05 11:21:31                                                  *
- * @LastModifiedDate: 2022-07-07 00:09:11                                      *
+ * @LastModifiedDate: 2022-07-07 16:50:13                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -163,3 +163,70 @@ console.log(str5.repeat(2));
 
 let str6 = "bar";
 console.log(str6.padStart(10, "."), str6.padEnd(8, "foo"), str6.padStart(2));
+
+// @@iterator
+let str7 = "abc";
+const iterator = str7[Symbol["iterator"]]();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+
+for (const ch of str7) {
+  console.log(ch);
+}
+console.log([...str7]);
+
+// to(Locale)LowerCase to(Locale)UpperCase
+let tl = "Türk dili";
+console.log(
+  tl.toLocaleLowerCase(["tr", "TR", "tr-TR", "tr-u-co-search", "tr-x-turkish"])
+);
+console.log(tl.toLowerCase());
+console.log(
+  tl.toLocaleUpperCase(["tr", "TR", "tr-TR", "tr-u-co-search", "tr-x-turkish"])
+);
+console.log(tl.toUpperCase());
+let hello = "Hello, World";
+console.log(hello.toLowerCase(), hello.toUpperCase());
+
+// match
+
+let text = "cat, bat, sat, lat";
+let reg1 = /.a(t)/;
+let reg2 = /.a(t)/g;
+
+console.log(text.match(reg1), reg1.lastIndex);
+console.log(text.match(reg2));
+console.log(text.match(""));
+// search
+
+console.log(
+  text.search("bat"),
+  text.search(""),
+  text.search(".at"), // 字符串会转换成正则
+  text.search(reg1),
+  text.search(reg2)
+);
+
+// replace
+console.log(text.replace("at", "onc"));
+console.log(text.replace(/at/g, "onc"));
+console.log(
+  text.replace(/(.)(a)(t)/g, (_match, $1, $2, $3) => {
+    return $3 + $2 + $1;
+  })
+);
+
+console.log(text.replace(/(.)(a)(t)/g, "$3$2$1"));
+console.log(text.replace(/\b/g, "o"));
+
+// split
+console.log("blue, wihte, red".split(""));
+console.log("blue, wihte, red".split(", "));
+console.log("blue, wihte, red".split(", ", 2));
+console.log("blue, wihte, red".split(", ", 4));
+console.log("blue, wihte, red".split(", ", -1));
+
+// replaceAll
+console.log(text.replaceAll("at", "onc"));

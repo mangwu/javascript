@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.4. Global.js                                                     *
  * @Date: 2022-07-07 23:00:24                                                  *
- * @LastModifiedDate: 2022-07-08 17:27:06                                      *
+ * @LastModifiedDate: 2022-07-11 23:53:56                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -43,7 +43,11 @@ console.log(
 function fixedEncodeURI(str) {
   return encodeURI(str).replace(/%5B/gi, "[").replace(/%5D/gi, "]");
 }
-console.log(fixedEncodeURI("https://[3ffe:3201:1401:1:280:c8ff:fe4d:db39]:8080/index.html"));
+console.log(
+  fixedEncodeURI(
+    "https://[3ffe:3201:1401:1:280:c8ff:fe4d:db39]:8080/index.html"
+  )
+);
 // 非完整高低代理对
 console.log(encodeURI("\ud83d\ude00"));
 console.log(encodeURI("\ud800\udfff"));
@@ -74,3 +78,16 @@ console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24
 console.log(encodeURIComponent(set2)); // -_.!~*'()
 console.log(encodeURIComponent(set3)); // %23
 console.log(encodeURIComponent(set4)); // ABC%20abc%20123
+
+// decodeURI()
+let encodeUrl = encodeURI(
+  "http://example.com/path/to/illegal value.js?s='非法query'#非法锚点"
+);
+let encodeUrlCpn = encodeURIComponent(
+  "http://example.com/path/to/illegal value.js?s='非法query'#非法锚点"
+);
+console.log(decodeURI(encodeUrl));
+console.log(decodeURI(encodeUrlCpn));
+
+console.log(decodeURIComponent(encodeUrl));
+console.log(decodeURIComponent(encodeUrlCpn));

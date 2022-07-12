@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.4. Global.js                                                     *
  * @Date: 2022-07-07 23:00:24                                                  *
- * @LastModifiedDate: 2022-07-12 23:56:01                                      *
+ * @LastModifiedDate: 2022-07-13 00:00:41                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -105,9 +105,13 @@ try {
 }
 
 function f(x) {
-  eval("var y=x");
-
+  eval("var y=x;const y2 = x;const bar = () => {console.log(y2)};bar()");
   console.log("y:", y);
+  try {
+    bar();
+  } catch (error) {
+    console.log("bar未定义");
+  }
 }
 
 f("hello"); //y:hello

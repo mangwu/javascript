@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.4. Global.js                                                     *
  * @Date: 2022-07-07 23:00:24                                                  *
- * @LastModifiedDate: 2022-07-11 23:53:56                                      *
+ * @LastModifiedDate: 2022-07-12 23:56:01                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -91,3 +91,23 @@ console.log(decodeURI(encodeUrlCpn));
 
 console.log(decodeURIComponent(encodeUrl));
 console.log(decodeURIComponent(encodeUrlCpn));
+
+// eval()
+
+let msg = "i will used in eval function";
+eval("console.log('eval:'+msg);function sayHi(msg){console.log(msg)}");
+sayHi("THIS IS SAYHI, DECLARE IN EVAL FUNCTION");
+try {
+  eval("let evalVar = 'hello';");
+  console.log(evalVar);
+} catch (error) {
+  console.log("evalVar未定义");
+}
+
+function f(x) {
+  eval("var y=x");
+
+  console.log("y:", y);
+}
+
+f("hello"); //y:hello

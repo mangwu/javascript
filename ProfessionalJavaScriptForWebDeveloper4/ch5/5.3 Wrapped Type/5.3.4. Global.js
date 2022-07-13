@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.4. Global.js                                                     *
  * @Date: 2022-07-07 23:00:24                                                  *
- * @LastModifiedDate: 2022-07-13 00:00:41                                      *
+ * @LastModifiedDate: 2022-07-13 15:23:57                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -103,7 +103,11 @@ try {
 } catch (error) {
   console.log("evalVar未定义");
 }
-
+/**
+ * @description 使用eval的方法
+ * @param {*} x
+ * @returns
+ */
 function f(x) {
   eval("var y=x;const y2 = x;const bar = () => {console.log(y2)};bar()");
   console.log("y:", y);
@@ -112,6 +116,14 @@ function f(x) {
   } catch (error) {
     console.log("bar未定义");
   }
+  return 0;
 }
 
 f("hello"); //y:hello
+// 在eval中定义的var变量不会被提升
+console.log(k);
+{
+  var k = 0;
+}
+console.log(m); // 报错，没有状态提升
+eval("var m = 0");

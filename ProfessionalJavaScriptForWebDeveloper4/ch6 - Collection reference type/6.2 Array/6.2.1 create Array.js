@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.2.1 create Array.js                                                *
  * @Date: 2022-07-14 22:53:22                                                  *
- * @LastModifiedDate: 2022-07-15 00:03:21                                      *
+ * @LastModifiedDate: 2022-07-15 16:04:27                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -59,10 +59,29 @@ console.log(copy);
 
 // argments
 function getArgsArray() {
-  for(const item of arguments) {
+  for (const item of arguments) {
     console.log(item);
   }
   return Array.from(arguments);
 }
 
 getArgsArray(1, 2, 3, 4);
+
+// 可选参数
+const arr2 = ["abc", "d", "e", "f", "z"];
+let obj = { exponent: 2 };
+console.log(Array.from(arr2, (x) => x.charCodeAt() ** obj.exponent));
+console.log(Array.from(arr2).map((v) => v.charCodeAt() ** obj.exponent));
+console.log(
+  Array.from(
+    arr2,
+    function (x) {
+      return x.charCodeAt() ** this.exponent;
+    },
+    obj
+  )
+);
+// Array.of()
+console.log(Array.of(1, 2, 3));
+console.log(Array.of());
+console.log(Array.of(undefined, null));

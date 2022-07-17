@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 6.2.2 array hole.js                                                  *
- * @Date: 2022-07-15 17:30:18                                                  *
- * @LastModifiedDate: 2022-07-17 20:09:07                                      *
+ * @File: 6.2.3 array index.js                                                 *
+ * @Date: 2022-07-17 20:25:41                                                  *
+ * @LastModifiedDate: 2022-07-17 21:09:46                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,11 +12,26 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 数组空位
-console.log([1, , , , 5]);
-let arr = [];
-arr[5] = 0;
-arr[2] = undefined;
+// 数组索引
+// 访问和设置元素值
+const arr = ["blue", "red", "black"];
+console.log(arr[2]);
+arr[5] = "orange";
+console.log(arr[-1]);
+arr[-2] = "orange2";
 console.log(arr);
-console.log(arr.map((v) => 6));
-console.log(arr.join("-"));
+for (const item of arr) {
+  console.log(item);
+}
+
+// 数组长度
+const arr2 = [5, 6, , , 3, 1];
+console.log(arr2.length);
+arr2.length = 2;
+console.log(arr2);
+arr2.length = 4;
+console.log(arr2);
+arr2[arr2.length] = 7;
+arr2[arr2.length] = 8;
+console.log(arr2);
+

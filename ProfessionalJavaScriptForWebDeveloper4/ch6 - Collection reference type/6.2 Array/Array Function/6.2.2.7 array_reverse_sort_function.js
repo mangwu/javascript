@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.2.2.7 array_reverse_sort_function.js                               *
  * @Date: 2022-07-20 23:41:18                                                  *
- * @LastModifiedDate: 2022-07-20 23:56:36                                      *
+ * @LastModifiedDate: 2022-07-21 16:05:44                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -21,3 +21,4 @@ console.log(arr.sort());
 
 const arr2 = [-8, 2, 5, 8, 9, 12, 2, -12, 6, 5, 61, 25, 36, 14, 25];
 console.log(arr2.sort((a, b) => a - b));
+

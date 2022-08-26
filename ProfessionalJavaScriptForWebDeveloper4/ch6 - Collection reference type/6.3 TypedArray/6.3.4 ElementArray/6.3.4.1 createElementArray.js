@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.3.4.1 createElementArray.js                                        *
  * @Date: 2022-08-25 11:17:30                                                  *
- * @LastModifiedDate: 2022-08-25 11:30:25                                      *
+ * @LastModifiedDate: 2022-08-26 09:52:19                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -32,4 +32,8 @@ console.log(int8Arr); // 对应的每个值都会被转换成新格式， 128 ->
 
 // 5. 使用ElementType.from() 从一个类数组结构中构造定型数组
 const uint8arr = Uint8Array.from({ 0: 1, 2: 3, 3: 5, length: 3 }, (v) => v - 2);
-console.log(uint8arr); // 类数组元素中没有索引1的元素，所以
+console.log(uint8arr); // 类数组元素中没有索引1的元素，所以但是长度为3，所以默认为0
+
+// 6. 使用ElementType.of()
+const int32Arr2 = Int32Array.of(null, "a", "1", undefined, uint8arr);
+console.log(int32Arr2); // 不能转换为数字的默认为0，能转换为数字或就是数字的将数组用32位保存

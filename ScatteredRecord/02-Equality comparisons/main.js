@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: main.js                                                              *
  * @Date: 2022-08-26 16:58:13                                                  *
- * @LastModifiedDate: 2022-08-29 17:27:51                                      *
+ * @LastModifiedDate: 2022-08-29 21:22:46                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -58,3 +58,14 @@ console.log(
 console.log("123.4" == 123.4); // 字符串与数字
 console.log("123.4" == 123n); // 字符串与BigInt
 console.log(0n == -0); // 数字与BigInt
+
+// 3. 同值比较，和===类似，只是将-0 +0 区分，NaN可以等于其本身
+console.log("同值比较");
+console.log(Object.is(new Int32Array([1])[0], new Uint8Array([1])[0]));
+console.log(Object.is(+0, -0));
+console.log(Object.is(NaN, NaN));
+
+// 4. 同值零比较 和同值比较类似，-0 +0未区分，但是NaN等于其本身
+console.log([NaN].includes(NaN));
+const set = new Set([NaN, -0]);
+console.log(set.has(NaN), set.has(+0));

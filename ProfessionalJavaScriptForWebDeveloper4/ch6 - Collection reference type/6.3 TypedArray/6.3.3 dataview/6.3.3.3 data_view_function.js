@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.3.3.3 data_view_function.js                                        *
  * @Date: 2022-08-17 16:29:28                                                  *
- * @LastModifiedDate: 2022-08-17 17:02:41                                      *
+ * @LastModifiedDate: 2022-08-18 20:01:44                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *

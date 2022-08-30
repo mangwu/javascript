@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.3.4.3 ElementTypeArrayMethod.js                                    *
  * @Date: 2022-08-26 10:38:20                                                  *
- * @LastModifiedDate: 2022-08-29 22:35:04                                      *
+ * @LastModifiedDate: 2022-08-30 11:29:17                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -77,3 +77,55 @@ console.log([1, , 2, 3, ,].map((v) => 2));
 console.log(new Int32Array(5).map((_v) => 5));
 
 // 16 reduce / reduceRight
+console.log(int32Arr.reduce((pre, cur) => pre + cur));
+console.log(int32Arr.reduceRight((pre, cur) => pre + cur));
+
+// 17 reverce()
+const int16Arr = new Int16Array([1, 2, 3, 4]);
+console.log(int16Arr.reverse());
+
+// 18 set
+console.log(int32Arr);
+int32Arr.set([5, 4], 1);
+console.log(int32Arr);
+int32Arr.set(int16Arr);
+console.log(int32Arr);
+
+// 19 slice
+let copy = int32Arr.slice();
+console.log(copy);
+console.log(int32Arr.buffer === copy.buffer);
+
+// 20 some
+console.log(int32Arr.some((v, i) => v + i === 5));
+
+// 21 sort
+console.log(new Int16Array([12, 85, 61, 2, 5, 6, 8]).sort());
+
+// 22 subArray
+const subArr = int32Arr.subarray(1);
+console.log(int32Arr);
+console.log(subArr);
+console.log(int32Arr.buffer);
+console.log(subArr.buffer);
+console.log(int32Arr.buffer === subArr.buffer);
+console.log(int32Arr === subArr);
+
+// 23 values
+for (const val of int32Arr.values()) {
+  console.log(val);
+}
+
+// 24 toLocaleString
+console.log(new Int16Array([1234, 5678, 124]).toString());
+console.log(new Int16Array([1234, 5678, 124]).toLocaleString());
+console.log(new Float32Array([1234, 5678.24578, 124.1]).toString());
+console.log(new Float32Array([1234, 5678.24578, 124.1]).toLocaleString());
+
+// 25 @@iterator
+const arrIterator = int32Arr[Symbol.iterator]();
+const arrIterator2 = int32Arr.values();
+console.log(arrIterator === arrIterator2);
+for (const val of arrIterator) {
+  console.log(val);
+}

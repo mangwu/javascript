@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.5.5.1 private var.js                                               *
  * @Date: 2022-08-31 15:44:49                                                  *
- * @LastModifiedDate: 2022-08-31 17:49:51                                      *
+ * @LastModifiedDate: 2022-09-01 11:00:24                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -67,3 +67,29 @@ console.log(person);
 person.name = "wumang";
 person.setIDNum("421023yyyymmdd4567");
 console.log(person.getIDNum());
+
+class Others {
+  #idnum;
+  constructor(p, id) {
+    this.publicProperty = p || "public";
+    this.setIDNum(id);
+  }
+  getProperty() {
+    return this.publicProperty;
+  }
+  setProperty(val) {
+    this.publicProperty = val;
+  }
+  getIDNum() {
+    return this.#idnum;
+  }
+  setIDNum(val) {
+    this.#idnum = val;
+  }
+}
+const o = new Others("p", "421544555");
+console.log(o);
+console.log(o.publicProperty);
+console.log(o.getIDNum());
+o.setIDNum("8741");
+console.log(o.getIDNum());

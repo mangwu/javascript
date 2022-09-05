@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 7.2.2.2.1 .js                                                        *
  * @Date: 2022-09-03 17:58:16                                                  *
- * @LastModifiedDate: 2022-09-04 21:17:45                                      *
+ * @LastModifiedDate: 2022-09-05 10:44:46                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -82,21 +82,31 @@ const obj2 = {
     return {
       next() {
         i++;
-        if (i > end) return { done: true, value: undefined };
-        return [];
+        if (i < end) return { done: false, value: i };
+        return 1;
       },
       return(value) {
         console.log("Closing");
         return { done: true, value };
       },
-      throw(error) {
-        throw error;
+      throw(error = "结果不是对象") {
+        throw new TypeError(error);
       },
     };
   },
 };
 
+try {
+  for (const item of obj2) {
+    console.log(item);
+  }
+} catch (error) {
+  console.log(error.message);
+}
 const iterator4 = obj2[Symbol.iterator]();
-for (const item of obj2) {
-  console.log(item);
+console.log(iterator4.next());
+console.log(iterator4.next());
+const next = iterator4.next();
+if (next.done == undefined) {
+  iterator4.throw();
 }

@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 7.3.2.3 as iterable obj.js                                           *
- * @Date: 2022-09-06 11:18:55                                                  *
- * @LastModifiedDate: 2022-09-06 13:40:20                                      *
+ * @File: 7.3.2.5 more scene.js                                                *
+ * @Date: 2022-09-06 14:36:36                                                  *
+ * @LastModifiedDate: 2022-09-06 14:49:08                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,25 +12,38 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 生成器作为可迭代对象
+// 1. 无穷计数
 function* generatorFn() {
-  yield 1;
-  yield 2;
-  yield 4;
-  yield 3;
-  return 5;
+  for (let i = 0; ; i++) {
+    yield i;
+  }
 }
 for (const item of generatorFn()) {
   console.log(item);
-}
-
-// 指定循环次数的生成器函数
-function* nGeneratorFn(n) {
-  // 循环n次
-  while (n--) {
-    yield;
+  if (item == 100) {
+    break;
   }
 }
-for (const _ of nGeneratorFn(3)) {
-  console.log("foo");
+// 2. range
+function* range(start = 0, end = 0, step = 1) {
+  while (start < end) {
+    yield start;
+    start += step;
+  }
 }
+
+for (const item of range(5, 9)) {
+  console.log(item);
+}
+for (const item of range(7, 17, 3)) {
+  console.log(item);
+}
+
+// 3. zeros
+
+function* zeros(n = 0) {
+  while (n--) {
+    yield 0;
+  }
+}
+console.log(Array.from(zeros(5)));

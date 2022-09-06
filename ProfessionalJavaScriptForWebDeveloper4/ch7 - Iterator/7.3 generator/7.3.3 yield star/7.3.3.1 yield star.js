@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 7.3.2.3 as iterable obj.js                                           *
- * @Date: 2022-09-06 11:18:55                                                  *
- * @LastModifiedDate: 2022-09-06 13:40:20                                      *
+ * @File: 7.3.3.1 yield star.js                                                *
+ * @Date: 2022-09-06 15:09:00                                                  *
+ * @LastModifiedDate: 2022-09-06 15:24:58                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,25 +12,18 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 生成器作为可迭代对象
+// yield *
 function* generatorFn() {
-  yield 1;
-  yield 2;
-  yield 4;
-  yield 3;
-  return 5;
+  yield* [1, 2, 3];
 }
-for (const item of generatorFn()) {
-  console.log(item);
-}
-
-// 指定循环次数的生成器函数
-function* nGeneratorFn(n) {
-  // 循环n次
-  while (n--) {
-    yield;
+function* generatorFn2() {
+  for (const item of [1, 2, 3]) {
+    yield item;
   }
 }
-for (const _ of nGeneratorFn(3)) {
-  console.log("foo");
+for(const item of generatorFn()) {
+  console.log(item);
+}
+for(const item of generatorFn2()) {
+  console.log(item);
 }

@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 7.3.2.3 as iterable obj.js                                           *
- * @Date: 2022-09-06 11:18:55                                                  *
- * @LastModifiedDate: 2022-09-06 13:40:20                                      *
+ * @File: 7.3.3.4 .js                                                          *
+ * @Date: 2022-09-06 17:16:34                                                  *
+ * @LastModifiedDate: 2022-09-06 17:28:29                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,25 +12,19 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 生成器作为可迭代对象
-function* generatorFn() {
-  yield 1;
-  yield 2;
-  yield 4;
-  yield 3;
-  return 5;
-}
-for (const item of generatorFn()) {
-  console.log(item);
-}
-
-// 指定循环次数的生成器函数
-function* nGeneratorFn(n) {
-  // 循环n次
-  while (n--) {
-    yield;
+class Foo {
+  constructor(values) {
+    this.values = new Set(values);
+  }
+  add(val) {
+    this.values.add(val);
+    return this;
+  }
+  *[Symbol.iterator]() {
+    yield* this.values;
   }
 }
-for (const _ of nGeneratorFn(3)) {
-  console.log("foo");
+const foo = new Foo([1, 2, 3]).add(4).add(8);
+for (const item of foo) {
+  console.log(item);
 }

@@ -14,8 +14,6 @@ function* range(start, end) {
   }
 }
 const gt = range(1, 8);
-gt.return = function (value) {
-  console.log("close");
-  return gt.return(value);
-};
+// const returnFun = gt.return;
+// gt.return = () => returnFun()
 const [a, b, c] = gt;

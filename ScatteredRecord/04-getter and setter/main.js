@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: main.js                                                              *
  * @Date: 2022-09-08 11:09:43                                                  *
- * @LastModifiedDate: 2022-09-08 16:59:54                                      *
+ * @LastModifiedDate: 2022-09-09 10:06:05                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -79,3 +79,30 @@ obj.latest = "kk";
 console.log(obj.latest);
 console.log(obj2);
 console.log(obj2.notifier);
+
+// setter
+
+const obj3 = {
+  logs: [],
+  /**
+   * @param {any} val
+   */
+  set current(val) {
+    this.logs.push(val);
+  },
+};
+console.log(obj3);
+obj3.current = "value";
+console.log(obj3);
+console.log(obj3.current);
+
+Object.defineProperty(obj3, "first", {
+  configurable: true,
+  enumerable: false,
+  set(val) {
+    this.logs.unshift(val);
+  },
+});
+obj3.first = "newValue";
+console.log(obj3);
+console.log(obj3.first);

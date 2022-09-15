@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 8.2.4.4.2 for...in .js                                               *
- * @Date: 2022-09-14 23:58:33                                                  *
- * @LastModifiedDate: 2022-09-15 14:52:33                                      *
+ * @File: 8.2.4.5.1 Object.keys.js                                             *
+ * @Date: 2022-09-15 14:58:30                                                  *
+ * @LastModifiedDate: 2022-09-15 15:10:04                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,26 +12,24 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// for in 获取对象上可枚举的属性，可以获取原型链上的可枚举属性
-
+// 获取对象的自有可枚举非符号属性
+let sym = Symbol("123");
 function Person(age, name) {
   this.age = age;
   this.name = name;
   this[1] = 3;
+  this[sym] = "123";
+  this.sayName = function () {
+    console.log(this.name);
+  };
 }
 Person.prototype.sayName = function () {
   console.log(this.name);
 };
 
 const person = new Person(22, "mangwu");
-let sym = Symbol("123");
 Object.defineProperties(Object.prototype, {
   constructor: {
-    enumerable: true,
-    configurable: true,
-  },
-  [sym]: {
-    value: "123",
     enumerable: true,
     configurable: true,
   },
@@ -41,23 +39,9 @@ Object.defineProperties(Object.prototype, {
   },
 });
 console.log(sym in person);
-for (const key in person) {
-  console.log(key,typeof key);
-  if (key === "hasOwnProperty") {
-    console.log(person[key]("name"));
-  }
-}
-
-Person.prototype.hasOwnProperty = function () {
-  return false;
-};
-for (const key in person) {
-  console.log(key);
-  if (key === "hasOwnProperty") {
-    console.log(person[key]("name"));
-  }
-}
-console.log("-----------");
 for (const key of Object.keys(person)) {
   console.log(key);
 }
+console.log(Object.keys(sym));
+console.log(Object.keys("123"));
+console.log(Object.keys(123));

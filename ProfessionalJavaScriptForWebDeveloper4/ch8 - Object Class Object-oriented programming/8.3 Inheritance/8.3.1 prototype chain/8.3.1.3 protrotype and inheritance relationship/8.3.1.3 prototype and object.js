@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 8.3.1.1 understand prototype chain.js                                *
- * @Date: 2022-09-16 16:39:31                                                  *
- * @LastModifiedDate: 2022-09-16 23:34:20                                      *
+ * @File: 8.3.1.3 prototype and object.js                                      *
+ * @Date: 2022-09-16 23:40:00                                                  *
+ * @LastModifiedDate: 2022-09-16 23:44:37                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,8 +12,7 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 理解原型链
-
+// 原型和实例的关系
 function SuperType() {
   this.property = true;
 }
@@ -23,18 +22,20 @@ SuperType.prototype.getSuperValue = function () {
 function SubType() {
   this.subproperty = false;
 }
-const instance2 = new SubType();
-// 继承SuperType
+const primaryInstance = new SubType();
 SubType.prototype = new SuperType();
 SubType.prototype.getSubValue = function () {
   return this.subproperty;
 };
-
 const instance = new SubType();
-console.log(instance.getSuperValue()); // true
-console.log(instance); // SuperType { subproperty: false }
-console.log(instance instanceof SubType); // true
-console.log(instance instanceof SuperType); // true
-console.log(instance2 instanceof SubType);
-console.log(instance2 instanceof SuperType);
+console.log(Object.prototype.isPrototypeOf(instance));
+console.log(SuperType.prototype.isPrototypeOf(instance));
+console.log(SubType.prototype.isPrototypeOf(instance));
 
+console.log(Object.prototype.isPrototypeOf(primaryInstance));
+console.log(SuperType.prototype.isPrototypeOf(primaryInstance));
+console.log(SubType.prototype.isPrototypeOf(primaryInstance));
+
+console.log(primaryInstance instanceof Object);
+console.log(primaryInstance instanceof SuperType);
+console.log(primaryInstance instanceof SubType);

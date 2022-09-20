@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 8.4.3.2.1 prototype method.js                                        *
  * @Date: 2022-09-20 00:30:40                                                  *
- * @LastModifiedDate: 2022-09-20 00:52:09                                      *
+ * @LastModifiedDate: 2022-09-20 21:35:09                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -47,3 +47,28 @@ class Test {
 const test = new Test();
 console.log(test);
 console.log(Object.getOwnPropertyDescriptors(test));
+
+// try {
+//   class Test2 {
+//     name: 3; //  语法错误，无法处理
+//   }
+// } catch (error) {
+//   console.log(error.message);
+// }
+
+class Test2 {
+  constructor() {
+    Test2.prototype.name = 3;
+  }
+}
+const test2 = new Test2();
+console.log(test2.__proto__);
+console.log(Object.getOwnPropertyDescriptors(test2.__proto__));
+
+class Test3 {
+  constructor() {
+    Test3.prototype = {};
+  }
+}
+const test3 = new Test3();
+// console.log(test3);

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 8.4.4.2 super.js                                                     *
  * @Date: 2022-09-21 14:36:47                                                  *
- * @LastModifiedDate: 2022-09-21 23:53:43                                      *
+ * @LastModifiedDate: 2022-09-22 10:17:44                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -198,3 +198,13 @@ Object.defineProperties(D.prototype, {
   },
 });
 e.setX(3);
+
+class Car extends Vehicle {} // 默认调用super
+class Van extends Vehicle {
+  constructor() {
+    return {}; // 不调用super
+  }
+}
+console.log(new Car());
+console.log(new Van());
+

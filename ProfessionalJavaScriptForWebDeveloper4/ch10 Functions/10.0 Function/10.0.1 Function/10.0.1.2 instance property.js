@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.0.1.2 instance property.js                                        *
  * @Date: 2022-09-29 16:56:14                                                  *
- * @LastModifiedDate: 2022-09-29 17:44:23                                      *
+ * @LastModifiedDate: 2022-09-30 14:08:15                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -40,3 +40,6 @@ try {
     );
   }
 })();
+
+// 2. caller
+

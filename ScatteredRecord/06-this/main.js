@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: main.js                                                              *
  * @Date: 2022-09-30 17:04:18                                                  *
- * @LastModifiedDate: 2022-09-30 17:28:00                                      *
+ * @LastModifiedDate: 2022-10-01 22:29:41                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -11,7 +11,7 @@
  * Date   	            By 	    Comments                                       *
  * ---------------------	--------	----------------------------------------------- *
  */
-// "use strict";
+"use strict";
 // 1. 一个简单的例子，说明this运行时绑定
 global.prop = 22; //
 function func() {
@@ -30,4 +30,13 @@ try {
 test.func();
 
 // 2. this值
-console.log();
+function func2() {
+  console.log(this);
+  console.log(this.length);
+}
+func2.apply(5);
+func2.apply("5");
+
+// 全局上下文
+console.log(this === globalThis);
+console.log(globalThis === global);

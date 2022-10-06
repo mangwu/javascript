@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.3.1.3.2 arguments and named argument.js                           *
  * @Date: 2022-10-06 00:18:41                                                  *
- * @LastModifiedDate: 2022-10-06 00:51:00                                      *
+ * @LastModifiedDate: 2022-10-06 21:05:35                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -52,10 +52,21 @@ console.log("-------");
     console.log(num);
     num = 7;
     console.log(arguments[0]);
+    return arguments[0];
   }
   // 二者相互独立
-  syncNamedArguments(1);
+  console.log(syncNamedArguments(1));
+  // 不能修改arguments
   function overwriteArguments(num) {
     // arguments = [1];
   }
 })();
+console.log("-------");
+function syncNamedArguments(num, ohter) {
+  console.log(arguments.length);
+  arguments.length = 1;
+  console.log(arguments.length);
+  arguments[0] = 5;
+  console.log(num);
+}
+syncNamedArguments();

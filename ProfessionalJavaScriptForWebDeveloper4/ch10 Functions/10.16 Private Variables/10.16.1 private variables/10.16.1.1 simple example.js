@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 10.14.2 scope chain.js                                               *
- * @Date: 2022-10-10 17:31:20                                                  *
- * @LastModifiedDate: 2022-10-10 17:32:27                                      *
+ * @File: 10.16.1.1 simple example.js                                          *
+ * @Date: 2022-10-12 16:04:52                                                  *
+ * @LastModifiedDate: 2022-10-12 16:08:09                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,14 +12,10 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// 作用域链
-function compare(value1, value2) {
-  if (value1 < value2) {
-    return -1;
-  } else if (value1 > value2) {
-    return 1;
-  } else {
-    return 0;
-  }
+// 简单例子
+function sum(num1, num2) {
+  let sum = num1 + num2;
+  return sum;
 }
-let result = compare(5, 10);
+// 这个函数中有sum num1 num2三个私有变量
+

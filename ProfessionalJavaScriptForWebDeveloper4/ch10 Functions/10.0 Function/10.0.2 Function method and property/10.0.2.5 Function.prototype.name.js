@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.0.2.5 FUnction.prototype.name.js                                  *
  * @Date: 2022-10-14 13:57:57                                                  *
- * @LastModifiedDate: 2022-10-14 17:17:05                                      *
+ * @LastModifiedDate: 2022-10-15 20:24:17                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -118,4 +118,13 @@ class F {
     console.log(this.#method.name);
   }
 }
-new F().getNames()
+new F().getNames();
+
+// 不要使用name属性值
+function Bar() {}
+const bar = new Bar();
+if (bar.constructor.name === "Bar") {
+  console.log("bar is an instance of Bar");
+} else {
+  console.log("Oops");
+}

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.0.2.6 Function.prototype.prototype.js                             *
  * @Date: 2022-10-15 22:13:51                                                  *
- * @LastModifiedDate: 2022-10-15 22:30:27                                      *
+ * @LastModifiedDate: 2022-10-17 11:31:33                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -45,8 +45,16 @@ arrow.prototype = {
   constructor: arrow,
   __proto__: Object.prototype,
 };
+console.log(arrow);
 try {
-  
+  const o = new arrow();
 } catch (error) {
-  
+  console.log(error.toString());
 }
+
+// 原型是原始数据类型
+function foo() {}
+foo.prototype = 3;
+const f = new foo();
+console.log(foo.prototype);
+console.log(f.__proto__ === Object.prototype);

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.0.2.6 Function.prototype.prototype.js                             *
  * @Date: 2022-10-15 22:13:51                                                  *
- * @LastModifiedDate: 2022-10-17 11:31:33                                      *
+ * @LastModifiedDate: 2022-10-17 13:45:08                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -58,3 +58,23 @@ foo.prototype = 3;
 const f = new foo();
 console.log(foo.prototype);
 console.log(f.__proto__ === Object.prototype);
+
+// 给类添加原型属性
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+}
+Dog.prototype.species = "dog";
+
+console.log(new Dog("Jack").species);
+
+class Dog2 {
+  constructor(name) {
+    this.name = name;
+  }
+  static {
+    this.prototype.species = "dog";
+  }
+}
+console.log(new Dog2("Jack").species);

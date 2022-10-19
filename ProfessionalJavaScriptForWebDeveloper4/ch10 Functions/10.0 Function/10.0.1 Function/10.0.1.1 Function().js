@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.0.1.1 Function().js                                               *
  * @Date: 2022-09-29 10:45:30                                                  *
- * @LastModifiedDate: 2022-09-29 16:51:34                                      *
+ * @LastModifiedDate: 2022-10-19 15:41:01                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -106,3 +106,22 @@ console.log(
     .call({})
     .call({}, [78, 25, 36, 87, 41, 25, 96, 34, 54, 24, 13, 39, 64])
 );
+
+// 创建的函数对象只能访问全局作用域和自己局部作用域中的变量，不能访问构造函数所在的作用域中的变量
+
+globalThis.x = "global x";
+
+function createFunc(type = "standard") {
+  const x = "createFunc scope x";
+  if (type == "constructor") {
+    // 通过构造函数创建
+    return new Function("return x;"); // 引用全局作用域中的x
+  } else {
+    return function () {
+      return x;
+    }; // 引用当前作用域中的x，是一个闭包
+  }
+}
+
+console.log(createFunc()()); // createFunc scope x
+console.log(createFunc("constructor")()); // global x

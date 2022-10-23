@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 11.2.2.5 Promise.reject.js                                           *
- * @Date: 2022-10-21 17:21:59                                                  *
- * @LastModifiedDate: 2022-10-22 00:55:48                                      *
+ * @File: 11.2.3.3 Promise.prototype.catch().js                                *
+ * @Date: 2022-10-23 22:26:24                                                  *
+ * @LastModifiedDate: 2022-10-23 22:32:50                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -12,18 +12,22 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// Promise.reject()静态方法实例化一个处于拒绝状态的期约对象
+// 语法糖，用于给期约添加拒绝处理程序
 
-// let p1 = Promise.reject();
-// let p2 = new Promise((resolve, reject) => reject());
-// console.log(p1);
-// console.log(p2);
-
-// 第一个参数接受拒绝的期约的理由
 let p = Promise.reject("reason");
-console.log(p);
-let c = p.then(null, (e) => {
+let onRejected = function (e) {
   console.log(e);
-});
+  setTimeout(console.log, 0, "rejected");
+};
 
-console.log(Promise.reject(Promise.resolve(5)));
+// 两种添加拒绝处理程序的方式是一样的
+p.then(null, onRejected); // rejected
+p.catch(onRejected); // rejected
+
+// 返回一个Promise实例
+
+let p1 = new Promise(() => {});
+let p2 = p1.catch();
+setTimeout(console.log, 0, p1);
+setTimeout(console.log, 0, p2);
+setTimeout(console.log, 0, p1 === p2);

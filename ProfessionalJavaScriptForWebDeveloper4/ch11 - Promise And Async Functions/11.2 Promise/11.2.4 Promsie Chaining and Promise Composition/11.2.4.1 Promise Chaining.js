@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 11.2.4.1 Promise Chaining.js                                         *
  * @Date: 2022-10-25 16:48:55                                                  *
- * @LastModifiedDate: 2022-10-25 17:26:56                                      *
+ * @LastModifiedDate: 2022-10-26 11:11:27                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -79,3 +79,51 @@ delayedResolve("p1 executor", "p1 data")
   .then((res) => delayedResolve("p2 executor", "p2 data", res))
   .then((res) => delayedResolve("p3 executor", "p3 data", res))
   .then((res) => delayedResolve("p4 executor", "p4 data", res));
+
+// 使用回调的结构
+
+/**
+ * @description 回调的结构
+ * @param {string} pStr 表示正在执行的回调
+ * @param {string} pdata 当前回调获得的数据，这里直接传递，实际上是在回调内部通过异步操作获取的
+ * @param {Function} callback 下一个回调函数
+ * @param {string} preData 上一个回调产生的数据
+ */
+function delayedCallback(pStr, pdata, callback, preData = "初始回调") {
+  console.log(preData);
+  console.log(pStr);
+  setTimeout(() => {
+    callback && callback(pdata);
+  }, 1000);
+}
+
+delayedCallback("p1 callback", "p1 data", (res) => {
+  delayedCallback(
+    "p2 callback",
+    "p2 data",
+    (res) => {
+      delayedCallback(
+        "p3 callback",
+        "p3 data",
+        (res) => {
+          delayedCallback("p4 callback", "p4 data", null, res);
+        },
+        res
+      );
+    },
+    res
+  );
+});
+
+let pa = new Promise((resovle, reject) => {
+  console.log("inital pa promise rejects");
+  setTimeout(() => {
+    reject("test");
+  }, 500);
+});
+pa.catch((reason) => {
+  console.log("捕获异步错误：", reason);
+  return "默认数据";
+})
+  .then((res) => console.log("处理获取到的数据：", res))
+  .finally(() => console.log("一些拒绝和解决都有的冗余操作"));

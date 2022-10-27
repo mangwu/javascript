@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 11.2.5.1 Promise Canceling.js                                        *
  * @Date: 2022-10-27 14:44:17                                                  *
- * @LastModifiedDate: 2022-10-27 15:41:18                                      *
+ * @LastModifiedDate: 2022-10-27 16:10:41                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -83,7 +83,7 @@ function createLi(text) {
   return a;
 }
 function startRequest(time) {
-  ul.append(createLi(`开始了一次Promise请求,时效${time}`));
+  ul.append(createLi(`开始了一次Promise请求,时效${time / 1000}s`));
 }
 function cancelRequest() {
   ul.append(createLi(`取消了一次Promise`));

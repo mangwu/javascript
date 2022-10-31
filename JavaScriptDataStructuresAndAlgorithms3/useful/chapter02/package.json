@@ -1,0 +1,19 @@
+{
+  "name": "chapter02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "2.2.7.2 使用属性存取器.js",
+  "type": "module",
+  "scripts": {
+    "test": "node \"lib\\2.2.9.2 import module.js\"",
+    "build": "babel src -d lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
+    "@babel/preset-env": "^7.19.4"
+  }
+}

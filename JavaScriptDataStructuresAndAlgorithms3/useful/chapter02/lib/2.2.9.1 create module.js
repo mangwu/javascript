@@ -1,3 +1,12 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.squareArea = exports["default"] = exports.circleArea = void 0;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 /*
  * @Author: mangwu                                                             *
  * @File: 2.2.8.1 create module.js                                             *
@@ -13,17 +22,27 @@
  */
 
 // 创建模块
-const circleArea = r => Math.PI * r ** 2;
-const squareArea = s => s * s;
-
-export { circleArea, squareArea }; // 这就是创建的一个模块，可被其它文件使用
-
+var circleArea = function circleArea(r) {
+  return Math.PI * Math.pow(r, 2);
+};
+exports.circleArea = circleArea;
+var squareArea = function squareArea(s) {
+  return s * s;
+};
+exports.squareArea = squareArea;
+// 这就是创建的一个模块，可被其它文件使用
 // 导出默认值
-export default class Book {
-  constructor(title) {
+var Book = /*#__PURE__*/function () {
+  function Book(title) {
+    _classCallCheck(this, Book);
     this.title = title;
   }
-  printTitle() {
-    console.log(this.title);
-  }
-}
+  _createClass(Book, [{
+    key: "printTitle",
+    value: function printTitle() {
+      console.log(this.title);
+    }
+  }]);
+  return Book;
+}();
+exports["default"] = Book;

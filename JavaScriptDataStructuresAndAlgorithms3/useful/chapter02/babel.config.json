@@ -1,0 +1,12 @@
+{
+  "presets": ["@babel/env"],
+  "plugins": [
+    [
+      "@babel/plugin-transform-modules-commonjs",
+      {
+        "allowTopLevelThis": true,
+        "importInterop": "babel"
+      }
+    ]
+  ]
+}

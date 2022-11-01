@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 4.2.2 private property.js                                            *
  * @Date: 2022-11-01 14:45:29                                                  *
- * @LastModifiedDate: 2022-11-01 15:03:33                                      *
+ * @LastModifiedDate: 2022-11-01 21:20:51                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -47,7 +47,7 @@ class Stack {
     this.#items = {};
   }
   valueOf() {
-    return "123"
+    return "123";
   }
   toString() {
     if (this.isEmpty()) {
@@ -59,18 +59,19 @@ class Stack {
     }
     return str;
   }
-  [Symbol.species]
 }
 
-const safeStack = new Stack();
-safeStack.push(1, 3, 4, 5);
-console.log(safeStack.pop());
-console.log(safeStack.pop());
-safeStack.push(8);
+// const safeStack = new Stack();
+// safeStack.push(1, 3, 4, 5);
+// console.log(safeStack.pop());
+// console.log(safeStack.pop());
+// safeStack.push(8);
 
-console.log(safeStack);
-console.log(safeStack.toString());
-console.log(safeStack.size());
+// console.log(safeStack);
+// console.log(safeStack.toString());
+// console.log(safeStack.size());
 
-safeStack.clear();
-console.log(safeStack.isEmpty());
+// safeStack.clear();
+// console.log(safeStack.isEmpty());
+
+module.exports = { Stack };

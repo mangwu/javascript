@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bottom</title>
+    <style>
+      .bottom {
+        background-color: rgb(244, 255, 127);
+      }
+    </style>
+  </head>
+  <script>
+    window.parent.son = window;
+    window.top.grandSon = window;
+  </script>
+  <body class="bottom">
+    <script>
+      window.a = "bottom";
+      console.log("------bottom的打印开始-------");
+      console.log(window.a);
+      console.log(window.parent.a);
+      console.log(window.parent.parent.a);
+      console.log(window.top.a);
+      console.log(window === window.parent);
+      console.log(window === window.parent.parent);
+      console.log(window === window.top);
+      console.log(window === self);
+      console.log("------bottom的打印开始结束-------");
+    </script>
+    <h3>bottom</h3>
+  </body>
+</html>

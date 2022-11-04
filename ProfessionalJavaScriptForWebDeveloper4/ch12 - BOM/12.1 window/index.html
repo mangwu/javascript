@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>top</title>
+  </head>
+  <body>
+    <script>
+      window.a = "top";
+      console.log("------top的打印开始-------");
+      console.log(window.a);
+      console.log(window.parent.a);
+      console.log(window.parent.parent.a);
+      console.log(window.top.a);
+      console.log(window === window.parent);
+      console.log(window === window.parent.parent);
+      console.log(window === window.top);
+      console.log(window === self);
+      console.log("------top的打印结束-------");
+    </script>
+    <h1>top</h1>
+    <iframe
+      src="./frame1.html"
+      title="Inline Frame Example"
+      width="500"
+      height="500"
+    ></iframe>
+    <script src="./12.1.2 relationship.js"></script>
+  </body>
+</html>

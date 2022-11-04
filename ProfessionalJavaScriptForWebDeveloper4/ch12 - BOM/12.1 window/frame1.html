@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>middle</title>
+    <style>
+      .middle {
+        background-color: #2bff00;
+      }
+    </style>
+  </head>
+  <body class="middle">
+    <script>
+      window.a = "middle";
+      console.log("------middle的打印开始-------");
+      console.log(window.a);
+      console.log(window.parent.a);
+      console.log(window.parent.parent.a);
+      console.log(window.top.a);
+      console.log(window === window.parent);
+      console.log(window === window.parent.parent);
+      console.log(window === window.top);
+      console.log(window === self);
+      console.log("------middle的打印开始结束-------");
+    </script>
+    <script>
+      window.parent.son = window;
+    </script>
+    <h2>middle</h2>
+    <iframe
+      src="./frame2.html"
+      frameborder="2"
+      width="300"
+      height="200"
+    ></iframe>
+  </body>
+</html>

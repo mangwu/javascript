@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面视口</title>
+  </head>
+  <body>
+    <script>
+      let pageWidth = window.innerWidth;
+      let pageHeight = window.innerHeight;
+      if (typeof pageWidth !== "number") {
+        if (document.compatMode === "CSS1Compat") {
+          pageHeight = document.documentElement.clientHeight;
+          pageWidth = document.documentElement.clientWidth;
+        } else {
+          pageHeight = document.body.clientHeight;
+          pageWidth = document.body.clientWidth;
+        }
+      }
+    </script>
+  </body>
+</html>

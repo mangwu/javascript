@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window size</title>
+  </head>
+  <body>
+    <h3>Mobile Window Size</h3>
+    <p>window.innerWidth: <span class="inner-width"></span></p>
+    <p>window.innerHeight: <span class="inner-height"></span></p>
+    <p>window.outerWidth: <span class="outer-width"></span></p>
+    <p>window.outerHeight: <span class="outer-height"></span></p>
+    <p>
+      document.documentElement.clientWidth:
+      <span class="html-client-width"></span>
+    </p>
+    <p>
+      document.documentElement.clientHeight:
+      <span class="html-client-height"></span>
+    </p>
+    <p>
+      document.body.clientWidth:
+      <span class="body-client-width"></span>
+    </p>
+    <p>
+      document.body.clientHeight:
+      <span class="body-client-height"></span>
+    </p>
+    <p>window.devicePixelRatio: <span class="device-pixel-ratio"></span></p>
+
+    <script>
+      window.resizeTo(
+        1920 / window.devicePixelRatio,
+        1080 / window.devicePixelRatio
+      );
+      const iw = document.querySelector(".inner-width");
+      const ih = document.querySelector(".inner-height");
+      const ow = document.querySelector(".outer-width");
+      const oh = document.querySelector(".outer-height");
+      const dpr = document.querySelector(".device-pixel-ratio");
+      const hch = document.querySelector(".html-client-height");
+      const hcw = document.querySelector(".html-client-width");
+      const bcw = document.querySelector(".body-client-width");
+      const bch = document.querySelector(".body-client-height");
+
+      iw.textContent = window.innerWidth;
+      ih.textContent = window.innerHeight;
+      ow.textContent = window.outerWidth;
+      oh.textContent = window.outerHeight;
+      dpr.textContent = window.devicePixelRatio;
+      hcw.textContent = document.documentElement.clientWidth;
+      hch.textContent = document.documentElement.clientHeight;
+      bch.textContent = document.body.clientHeight;
+      bcw.textContent = document.body.clientWidth;
+
+      window.addEventListener("resize", () => {
+        iw.textContent = window.innerWidth;
+        ih.textContent = window.innerHeight;
+        ow.textContent = window.outerWidth;
+        oh.textContent = window.outerHeight;
+        dpr.textContent = window.devicePixelRatio;
+        hcw.textContent = document.documentElement.clientWidth;
+        hch.textContent = document.documentElement.clientHeight;
+        bch.textContent = document.body.clientHeight;
+        bcw.textContent = document.body.clientWidth;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>1.5秒后变化为800 × 500（逻辑像素）</p>
+    <script>
+      const p = document.querySelector("p");
+      setTimeout(() => {
+        resizeTo(800, 500);
+        p.textContent = "2.5秒后减少300宽度（CSS像素），增加100高度（CSS像素）";
+        setTimeout(() => {
+          resizeBy(-300, 100);
+          p.textContent = "变化窗口成功！";
+        }, 2500);
+      }, 1500);
+    </script>
+  </body>
+</html>

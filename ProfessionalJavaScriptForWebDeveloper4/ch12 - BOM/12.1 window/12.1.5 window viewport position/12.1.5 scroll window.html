@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>监听视口位置</title>
+    <style>
+      body {
+        height: 150vh;
+        width: 150vw;
+        position: relative;
+      }
+      div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .tips {
+        position: sticky;
+        top: 15%;
+        margin-left: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>window.scrollX: <span class="scroll-x">0</span></p>
+      <p>window.scrollY: <span class="scroll-y">0</span></p>
+    </div>
+    <p class="tips">1.5s后移动到(300,400)视口</p>
+    <script>
+      const sx = document.querySelector(".scroll-x");
+      const sy = document.querySelector(".scroll-y");
+      window.addEventListener("scroll", () => {
+        sx.textContent = window.scrollX;
+        sy.textContent = window.scrollY;
+      });
+      const tips = document.querySelector(".tips");
+      setTimeout(() => {
+        scrollTo({
+          top: 300,
+          left: 400,
+          behavior: "smooth",
+        });
+        tips.textContent = "2s后向上移动100，向左移动200";
+        setTimeout(() => {
+          scrollBy({
+            top: -100,
+            left: -200,
+            behavior: "smooth",
+          });
+          tips.textContent = "移动完毕";
+        }, 2000);
+      }, 1500);
+    </script>
+  </body>
+</html>

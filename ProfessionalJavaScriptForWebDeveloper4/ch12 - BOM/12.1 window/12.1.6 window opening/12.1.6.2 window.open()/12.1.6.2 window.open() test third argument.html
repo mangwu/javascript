@@ -42,8 +42,8 @@
       <button class="btn2">open(url,_blank, width/height)</button>
       <button class="btn3">open(url, _blank, left/top)</button>
       <button class="btn4">open(url, _blank, noopener)</button>
-      <button class="btn5">open(url, _blank,noreferrer)</button>
-      <button class="btn6">open(url, _top)</button>
+      <button class="btn5">open(url, _blank, noreferrer)</button>
+      <button class="btn6">open(url, _blank)</button>
     </div>
     <script>
       const btn1 = document.querySelector(".btn1");
@@ -57,19 +57,27 @@
         window.open("https://example.com/", "_blank", "popup");
       });
       btn2.addEventListener("click", () => {
-        window.open("https://example.com/", "_blank", "width:200,height:200");
+        window.open(
+          "https://example.com/",
+          "_blank",
+          "innerWidth=400,innerHeight=400,width=300,height=300"
+        );
       });
       btn3.addEventListener("click", () => {
-        window.open("https://example.com/", "_blank", "left:200,top:200");
+        window.open(
+          "https://example.com/",
+          "_blank",
+          "screenX=400,screenY=400"
+        );
       });
       btn4.addEventListener("click", () => {
         window.open("https://example.com/", "_blank", "noopener");
       });
       btn5.addEventListener("click", () => {
-        window.open("https://example.com/", "_parent", "noreferrer");
+        window.open("https://example.com/", "_blank", "noreferrer");
       });
       btn6.addEventListener("click", () => {
-        window.open("https://example.com/", "_top");
+        window.open("https://example.com/", "_blank", "");
       });
     </script>
   </body>

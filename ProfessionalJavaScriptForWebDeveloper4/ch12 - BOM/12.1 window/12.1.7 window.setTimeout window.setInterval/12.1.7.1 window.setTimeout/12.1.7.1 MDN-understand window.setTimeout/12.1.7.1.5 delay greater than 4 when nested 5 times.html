@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout</title>
+    <style>
+      pre {
+        font-family: Arial 微软雅黑;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Run</button>
+    <input type="number" value="0" />
+    <pre>pre time   this time   actual delay</pre>
+    <div id="log"></div>
+  </body>
+  <script>
+    const btn = document.querySelector("button");
+    const log = document.querySelector("#log");
+    const input = document.querySelector("input");
+    let last = 0;
+    function logline(now) {
+      const newLine = document.createElement("pre");
+      newLine.textContent = `  ${pad(last)}          ${pad(
+        now
+      )}           ${Math.abs(now - last)}`;
+      log.appendChild(newLine);
+      last = now;
+    }
+    function timeout(times) {
+      logline(new Date().getMilliseconds());
+      if (times > 0) {
+        setTimeout(timeout, 0, times - 1);
+      }
+    }
+    function run() {
+      const times = input.value;
+      while (log.lastElementChild) {
+        log.removeChild(log.lastElementChild);
+      }
+      if (times <= 0) {
+        const tips = document.createElement("p");
+        tips.textContent = "至少要嵌套一次";
+        log.appendChild(tips);
+        return;
+      }
+      last = new Date().getMilliseconds();
+      setTimeout(timeout, 0, times - 1);
+    }
+    function pad(num) {
+      return num.toString().padStart(3, "0");
+    }
+    btn.addEventListener("click", run);
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>left top</title>
+  </head>
+  <body>
+    <ul>
+      <li>screen.availLeft: <span class="availLeft">0</span></li>
+      <li>screen.left: <span class="left">0</span></li>
+      <li>screen.availTop <span class="availTop">0</span></li>
+      <li>screen.top <span class="top">0</span></li>
+    </ul>
+    <script>
+      const screenAvailLeft = document.querySelector(".availLeft");
+      const screenLeft = document.querySelector(".left");
+      const screenAvailTop = document.querySelector(".availTop");
+      const scrennTop = document.querySelector(".top");
+      screenAvailLeft.textContent = screen.availLeft;
+      screenLeft.textContent = screen.left;
+      scrennTop.textContent = screen.top;
+      screenAvailTop.textContent = screen.availTop;
+    </script>
+  </body>
+</html>

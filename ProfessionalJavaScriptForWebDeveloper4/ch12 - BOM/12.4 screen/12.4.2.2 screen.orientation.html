@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>朝向</title>
+  </head>
+  <body>
+    <p>screen.orientation: <pre></pre></p>
+    <script>
+      const pre = document.querySelector("pre");
+      pre.innerHTML = 
+`{
+  type: ${screen.orientation.type},
+  angle: ${screen.orientation.angle},
+  onchange: ${String(screen.orientation.onchange)}
+}`
+    </script>
+  </body>
+</html>

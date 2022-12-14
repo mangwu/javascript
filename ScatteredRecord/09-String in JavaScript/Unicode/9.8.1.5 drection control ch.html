@@ -10,11 +10,27 @@
     <p id="special1"></p>
     <p>سالس<span dir="ltr">(+86)138-3456-1000</span></p>
     <p><span dir="ltr">سالس</span>(+86)138-3456-1000</p>
+    <p>سالس&lrm;(+86)138-3456-1000&lrm;</p>
+    <hr />
+    <p dir="rtl">(+86)-138-3456-1000</p>
+    <p dir="rtl">سالس(+86)138-3456-1000</p>
+    <p dir="rtl">&#8235;سالس(+86)138-3456-1000&#8236;</p>
+    <p dir="rtl">سالس&#8235;(+86)138-3456-1000</p>
+    <p dir="rtl">سالس&#8238;(+86)138-3456-1000&#8236;</p>
+    <hr />
+    <p dir="rtl" id="special2"></p>
+    <!---->
+
+    <hr />
+    <bdo dir="rtl">سالس(+86)138-3456-1000</bdo>
 
     <script>
       let s = "سالس\u200e(+86)138-3456-1000\u200e";
       const p = document.querySelector("#special1");
       p.textContent = s;
+      let s2 = "سالس\u202e(+86)138-3456-1000\u202d";
+      const p2 = document.querySelector("#special2");
+      p2.textContent = s2;
     </script>
   </body>
 </html>

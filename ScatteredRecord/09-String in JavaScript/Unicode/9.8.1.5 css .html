@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS等效项</title>
+  </head>
+  <body>
+    <div dir="rtl">● RLI…PDI</div>
+    <div dir="ltr">● LRI…PDI</div>
+    <div style="unicode-bidi: plaintext">● FSI...PDI</div>
+    <div style="direction: rtl; unicode-bidi: embed">● RLE...PDF</div>
+    <div style="direction: ltr; unicode-bidi: embed">● LRE...PDF</div>
+    <div style="direction: rtl; unicode-bidi: bidi-override">● RLO...PDF</div>
+    <div style="direction: ltr; unicode-bidi: bidi-override">● LRO...PDF</div>
+    <div><bdo dir="rtl">● FSI RLO…PDF PDI</bdo></div>
+    <div><bdo dir="ltr">● FSI LRO…PDF PDI</bdo></div>
+    <hr>
+    <div dir="rtl">سنشمؤ</div>
+    <div dir="ltr">سنشمؤ</div>
+    <div style="unicode-bidi: plaintext">سنشمؤ</div>
+    <div style="direction: rtl; unicode-bidi: embed">سنشمؤ</div>
+    <div style="direction: ltr; unicode-bidi: embed">سنشمؤ</div>
+    <div style="direction: rtl; unicode-bidi: bidi-override">سنشمؤ</div>
+    <div style="direction: ltr; unicode-bidi: bidi-override">سنشمؤ</div>
+    <div><bdo dir="rtl">سنشمؤ</bdo></div>
+    <div><bdo dir="ltr">سنشمؤ</bdo></div>
+  </body>
+</html>

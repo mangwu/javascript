@@ -8,8 +8,11 @@
   </head>
   <body>
     <p id="special1"></p>
+    <p>سالس<span dir="ltr">(+86)138-3456-1000</span></p>
+    <p><span dir="ltr">سالس</span>(+86)138-3456-1000</p>
+
     <script>
-      let s = "سالس\u200e(+\u200e86\u200e)\u200e138\u200e-\u200e3456";
+      let s = "سالس\u200e(+86)138-3456-1000\u200e";
       const p = document.querySelector("#special1");
       p.textContent = s;
     </script>

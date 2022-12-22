@@ -10,30 +10,33 @@
     <div>你好么？</div>
     <div>How are you?</div>
     <div>كيف حالك؟</div>
-    <div lang="ar"></div>
-    <hr>
+    <div lang="ar"> ه٥晴子middle.last.❤️</div>
+    <hr />
     <div style="direction: rtl">你好么？</div>
     <div style="direction: rtl">How are you?</div>
     <div style="direction: rtl">كيف حالك؟</div>
-    <div style="direction: rtl" lang="ar">ه٥晴子middle.last.❤️</div>
-    <hr>
+    <div style="direction: rtl;">ه٥晴子middle.last.❤️</div>
+    <hr />
     <div style="unicode-bidi: bidi-override">你好么？</div>
     <div style="unicode-bidi: bidi-override">How are you?</div>
     <div style="unicode-bidi: bidi-override">كيف حالك؟</div>
-    <div style="unicode-bidi: bidi-override" lang="ar">ه٥晴子middle.last.❤️</div>
-    <hr>
+    <div style="unicode-bidi: bidi-override">ه٥晴子middle.last.❤️</div>
+    <hr />
     <div style="direction: rtl; unicode-bidi: bidi-override">你好么？</div>
     <div style="direction: rtl; unicode-bidi: bidi-override">How are you?</div>
     <div style="direction: rtl; unicode-bidi: bidi-override">كيف حالك؟</div>
-    <div style="direction: rtl; unicode-bidi: bidi-override" lang="ar">ه٥晴子middle.last.❤️</div>
+    <div style="direction: rtl; unicode-bidi: bidi-override">
+      ه٥晴子middle.last.❤️
+    </div>
+    <div style="direction: rtl;">كيف حالك哈我·❤️؟</div>
     <script>
-      let text = "ه٥晴子" + "middle." + "last." + "❤️";
+      // let text = "ه٥晴子" + "middle." + "last." + "❤️";
       const divs = document.querySelectorAll("div[lang='ar']");
       for (const div of divs) {
         div.textContent = text;
-      } 
+      }
       let k = "كيف حالك؟";
-      for(const ch of k) {
+      for (const ch of k) {
         console.log(ch);
       }
     </script>

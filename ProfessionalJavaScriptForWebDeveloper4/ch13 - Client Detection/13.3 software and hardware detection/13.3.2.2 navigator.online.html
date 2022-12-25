@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>联网状态</title>
+  </head>
+  <body>
+    <h1></h1>
+    <script>
+      const h1 = document.querySelector("h1");
+      window.addEventListener("online", () => {
+        h1.textContent = "联网了" + navigator.onLine;
+      });
+      window.addEventListener("offline", () => {
+        h1.textContent = "断网了" + navigator.onLine;
+      });
+    </script>
+  </body>
+</html>

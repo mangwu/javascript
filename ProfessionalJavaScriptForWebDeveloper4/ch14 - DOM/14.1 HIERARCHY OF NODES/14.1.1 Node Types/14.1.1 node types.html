@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12种节点类型</title>
+  </head>
+  <body>
+    <p>
+      <!-- 注释节点 -->
+    </p>
+    <script>
+      console.log(typeof Node); // "function"
+      console.log(document instanceof Node); // true
+      console.log(document.documentElement instanceof Node); // true
+      console.log(Node.ATTRIBUTE_NODE);
+      console.log(Node.CDATA_SECTION_NODE);
+      console.log(Node.COMMENT_NODE);
+      console.log(Node.DOCUMENT_FRAGMENT_NODE);
+      console.log(Node.DOCUMENT_NODE);
+      console.log(Node.DOCUMENT_TYPE_NODE);
+      console.log(Node.ELEMENT_NODE);
+      console.log(Node.ENTITY_NODE);
+      console.log(Node.NOTATION_NODE);
+      console.log(Node.ENTITY_REFERENCE_NODE);
+      console.log(Node.PROCESSING_INSTRUCTION_NODE);
+      console.log(Node.TEXT_NODE);
+
+      const p = document.querySelector("p");
+      console.log(p.nodeType);
+    </script>
+  </body>
+</html>

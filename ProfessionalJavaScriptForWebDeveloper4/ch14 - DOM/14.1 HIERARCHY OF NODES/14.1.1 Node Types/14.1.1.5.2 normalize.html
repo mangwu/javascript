@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>normalize</title>
+  </head>
+  <body>
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+    </ul>
+    <button class="btn1">在ul后增加文本</button>
+    <button class="btn2">ul调用normalize</button>
+    <h2>ul的子节点列表</h2>
+    <pre></pre>
+    <script>
+      const myList = document.querySelector("ul");
+      const btn1 = document.querySelector(".btn1");
+      const btn2 = document.querySelector(".btn2");
+      const p = document.querySelector("pre");
+      btn1.addEventListener("click", () => {
+        myList.appendChild(document.createTextNode("文本节点"));
+        updateP();
+      });
+      btn2.addEventListener("click", () => {
+        myList.normalize();
+        updateP();
+      });
+      updateP();
+      function updateP() {
+        let str = "";
+        myList.childNodes.forEach((v) => {
+          str += v.nodeName + "\n";
+        });
+        p.textContent = str;
+      }
+    </script>
+  </body>
+</html>

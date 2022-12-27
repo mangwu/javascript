@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改标题</title>
+  </head>
+  <body>
+    <input type="text" /><button>点击修改标题</button>
+    <script>
+      const input = document.querySelector("input");
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", () => {
+        if (input.value) {
+          document.title = input.value;
+          input.value = "";
+        } else {
+          alert("请输入标题");
+        }
+      });
+    </script>
+  </body>
+</html>

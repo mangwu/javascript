@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定位元素</title>
+  </head>
+  <body>
+    <div id="mydiv">定位元素</div>
+    <p name="p1">1</p>
+    <p name="p2">2</p>
+    <p name="p3">3</p>
+    <fieldset>
+      <legend>Which color do you perfer?</legend>
+      <ul>
+        <li>
+          <input type="radio" name="color" id="red" value="red" />
+          <label for="red">Red</label>
+        </li>
+        <li>
+          <input type="radio" name="color" id="green" value="green" />
+          <label for="green">Green</label>
+        </li>
+        <li>
+          <input type="radio" name="color" id="blue" value="blue" />
+          <label for="blue">Blue</label>
+        </li>
+      </ul>
+    </fieldset>
+    <script>
+      const mydiv = document.getElementById("mydiv");
+      console.log(mydiv);
+      const ps = document.getElementsByTagName("p");
+      console.log(ps);
+      const radio = document.getElementsByName("color");
+      console.log(radio);
+    </script>
+  </body>
+</html>

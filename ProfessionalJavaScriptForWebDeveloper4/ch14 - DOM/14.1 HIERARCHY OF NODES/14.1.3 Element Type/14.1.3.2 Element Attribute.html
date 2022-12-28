@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>标准属性</title>
+  </head>
+  <body>
+    <p lang="ar_EG" dir="rtl" title="阿拉伯语言" id="myP" class="unkown">
+      شسيسلشسلؤ
+    </p>
+    <script>
+      const myP = document.getElementById("myP");
+      console.log(myP.id, myP.className, myP.dir, myP.lang, myP.title);
+    </script>
+  </body>
+</html>

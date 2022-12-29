@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>属性s</title>
+  </head>
+  <body>
+    <p
+      class="myP"
+      id="myP"
+      data-my-attribute="hello"
+      style="color: blue; background-color: antiquewhite"
+      align="center"
+    >
+      Hello
+    </p>
+    <script>
+      const p = document.getElementById("myP");
+      console.log(p.attributes);
+      console.log(
+        p.attributes[0],
+        typeof p.attributes[0],
+        p.attributes[0] instanceof Attr
+      );
+      console.log(p.attributes["align"].nodeValue);
+      let oldAttr = p.attributes.removeNamedItem("id");
+      console.log(oldAttr, typeof oldAttr, oldAttr instanceof Attr);
+      let newAttr = document.createAttribute("id");
+      newAttr.nodeValue = "my-p";
+      p.attributes.setNamedItem(newAttr);
+
+      function outputAttributes(element) {
+        let pairs = [];
+        for (let i = 0, len = element.attributes.length; i < len; i++) {
+          const attribute = element.attributes[i];
+          pairs.push(`${attribute.nodeName}=${attribute.nodeValue}`);
+        }
+        return pairs.join(" ");
+      }
+      let pairstring = outputAttributes(p);
+      p.textContent = pairstring;
+    </script>
+  </body>
+</html>

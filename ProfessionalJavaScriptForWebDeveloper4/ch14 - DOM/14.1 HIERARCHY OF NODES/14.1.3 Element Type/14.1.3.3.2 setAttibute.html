@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设置属性</title>
+  </head>
+  <body>
+    <p>设置属性</p>
+    <script>
+      const p = document.querySelector("p");
+      p.setAttribute("CLaSs", "my-p");
+      p.setAttribute("LanG", "zh-CN");
+      p.setAttribute("DaTa-my-attribute", "hello");
+      console.log(p.dataset);
+      p.align = "center";
+      p.dataset.specailAttribute = "hello,world";
+    </script>
+  </body>
+</html>

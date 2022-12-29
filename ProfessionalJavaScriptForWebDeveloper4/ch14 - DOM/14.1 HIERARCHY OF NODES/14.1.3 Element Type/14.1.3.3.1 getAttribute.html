@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取属性</title>
+  </head>
+  <body>
+    <p
+      class="p"
+      id="myP"
+      lang="zh-CN"
+      dir="ltr"
+      data-special-attribute="hello"
+      my-special-attribute="hello"
+    >
+      你好
+    </p>
+    <p
+      id="myP2"
+      style="color: blue; text-align: center; background-color: antiquewhite"
+    >
+      Hello, world
+    </p>
+    <p onclick="alert('Hello, world')" id="myP3">你好，世界</p>
+    <script>
+      const p = document.getElementById("myP");
+      console.log(p.getAttribute("class"));
+      console.log(p.getAttribute("id"));
+      console.log(p.getAttribute("lang"));
+      console.log(p.getAttribute("dir"));
+      console.log(p.getAttribute("title"));
+      console.log(p.getAttribute("DATA-special-attribute"));
+      console.log(p.getAttribute("my-special-attribute"));
+      const p2 = document.getElementById("myP2");
+      console.log(p2.style);
+      console.log(p2.getAttribute("style"));
+      const p3 = document.getElementById("myP3");
+      console.log(p3.onclick, typeof p3.onclick);
+      console.log(p3.getAttribute("onclick"));
+    </script>
+  </body>
+</html>

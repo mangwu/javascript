@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>删除属性</title>
+  </head>
+  <body>
+    <p class="myP" id="myP" data-my-attribute="hello">Hello</p>
+    <script>
+      const p = document.getElementById("myP");
+      p.removeAttribute("class");
+      p.removeAttribute("id");
+      p.removeAttribute("data-my-attribute");
+      console.log(p.dataset);
+      console.log(p.id, typeof p.id, p.id === "");
+      console.log(p.className);
+    </script>
+  </body>
+</html>

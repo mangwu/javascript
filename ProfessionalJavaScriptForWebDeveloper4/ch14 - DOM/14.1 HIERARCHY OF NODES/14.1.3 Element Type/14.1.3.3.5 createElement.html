@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建元素</title>
+    <style>
+      .content {
+        background-color: antiquewhite;
+        border: 1px solid olive;
+        width: 800px;
+        height: 500px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>创建元素</legend>
+      <label for="tag-name">输入元素标签名</label>
+      <input type="text" name="tag-name" />
+      <label for="node-value">输入元素文本内容</label>
+      <input type="text" name="node-value" />
+      <input type="submit" value="创建" />
+    </fieldset>
+    <p>创建的元素挂载到下面的content-div上</p>
+    <div class="content"></div>
+    <script>
+      const submit = document.querySelector("input[type='submit']");
+      const tagNameInput = document.querySelector("input[name='tag-name']");
+      const nodeValueInput = document.querySelector("input[name='node-value']");
+      const content = document.querySelector(".content");
+      submit.addEventListener("click", () => {
+        if (tagNameInput && nodeValueInput) {
+          const newEle = document.createElement(tagNameInput.value);
+          tagNameInput.value = "";
+          if (newEle) {
+            newEle.textContent = nodeValueInput.value;
+            content.appendChild(newEle);
+            nodeValueInput.value = "";
+          } else {
+            alert("非法的标签");
+          }
+        } else {
+          alert("请输入元素标签名和元素文本内容");
+        }
+      });
+    </script>
+  </body>
+</html>

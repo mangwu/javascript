@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注释节点</title>
+  </head>
+  <body>
+    <p>
+      <!-- 注释节点 -->
+    </p>
+    <script>
+      const p = document.querySelector("p");
+      console.log(p.childNodes);
+      p.childNodes[1].data = "Hello, world";
+      let newComment = new Comment("新注释1");
+      let newComment2 = document.createComment("新注释2");
+      p.appendChild(newComment);
+      p.appendChild(newComment2);
+
+    </script>
+  </body>
+</html>

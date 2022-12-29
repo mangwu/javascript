@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文本节点</title>
+  </head>
+  <body>
+    <!-- 没有内容，因此没有文本节点 -->
+    <div></div>
+
+    <!-- 有空格，因此有一个文本节点 -->
+    <div> </div>
+
+    <!-- 有内容，因此有一个文本节点 -->
+    <div>Hello World!</div>
+    <script>
+      console.log(document.body.children[0].childNodes);
+      console.log(document.body.children[1].childNodes);
+      console.log(document.body.children[2].childNodes);
+      document.body.children[1].childNodes[0].nodeValue =
+        "Some <strong>'other'</strong> message";
+    </script>
+  </body>
+</html>

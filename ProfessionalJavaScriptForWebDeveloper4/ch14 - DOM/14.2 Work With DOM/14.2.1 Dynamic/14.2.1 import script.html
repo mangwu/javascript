@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>引入脚本</title>
+    <!-- HTML src代码引入 -->
+    <script src="./foo.js"></script>
+
+    <!-- DOM 编程引入 -->
+    <script>
+      let script = document.createElement("script");
+      script.src = "foo.js";
+      document.documentElement.firstChild.appendChild(script);
+    </script>
+
+    <!-- DOM编程 抽象函数 -->
+    <script>
+      function loadScript(url) {
+        let script = document.createElement("script");
+        script.src = url;
+        document.documentElement.firstChild.appendChild(script);
+      }
+      loadScript("./foo.js");
+      loadScript("./foo.js");
+    </script>
+
+    <!-- 嵌入源代码 -->
+    <script>
+      let s = document.createElement("script");
+      s.appendChild(
+        document.createTextNode("function sayHi() {alert('Hi')};sayHi()")
+      );
+      document.documentElement.firstChild.appendChild(s);
+    </script>
+    <!-- 嵌入源代码，抽象成函数 -->
+    <script>
+      function loadScriptString(code) {
+        let s = document.createElement("script");
+        // 浏览器兼容性，IE旧版本不支持给script新增子文本节点
+        try {
+          s.appendChild(document.createTextNode(code));
+        } catch (error) {
+          s.text = code;
+        }
+        document.documentElement.firstChild.appendChild(s);
+      }
+      loadScriptString("function sayHi() {alert('Hi')};sayHi()");
+    </script>
+  </head>
+  <body></body>
+</html>

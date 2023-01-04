@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 14.3.1.2 attributeOldValue.js                                        *
- * @Date: 2023-01-04 17:36:35                                                  *
- * @LastModifiedDate: 2023-01-04 23:20:23                                      *
+ * @File: 14.3.1.4 Multiplexing a MutationObserver.js                 *
+ * @Date: 2023-01-05 02:15:38                                                  *
+ * @LastModifiedDate: 2023-01-05 02:20:03                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -13,20 +13,18 @@
  */
 
 const div = document.querySelector("div");
+const p = document.querySelector("p");
 
 const observer = new MutationObserver((mutationRecords) =>
   console.log(mutationRecords)
 );
+observer.observe(div, { attributes: true });
+observer.observe(p, { attributes: true });
+p.className = "bar";
+div.className = "foo";
 
-observer.observe(div, {
-  subtree: true,
-  attributeOldValue: true,
-  attributes: true, // 可以不设置或设置成true，但不能设置为false
+setTimeout(() => {
+  observer.disconnect();
+  p.className = "bar2";
+  div.className = "foo2";
 });
-
-div.className = "bar";
-div.className = "barz";
-
-div.appendChild(document.createElement("p"));
-div.children[0].className = "my-p";
-div.children[0].className = "my-p2";

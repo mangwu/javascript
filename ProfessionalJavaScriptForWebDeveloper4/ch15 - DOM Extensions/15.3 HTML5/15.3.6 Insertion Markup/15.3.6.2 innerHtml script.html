@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerHTML</title>
+  </head>
+  <body>
+    <script>
+      document.body.innerHTML = "<script>console.log('hi!')<\/script>";
+      document.body.innerHTML = "_<script>console.log('hi!')<\/script>";
+      document.body.innerHTML =
+        "<div>&nbsp;</div><script>console.log('hi!')<\/script>";
+      document.body.innerHTML =
+        "<input type='hidden'><script>console.log('hi!')<\/script>";
+
+      // document.body.innerHTML =
+      //   "<style>body { background-color: red; }<\/style>";
+      document.body.innerHTML =
+        "<input type='hidden'><style>body { background-color: red; }<\/style>";
+    </script>
+  </body>
+</html>

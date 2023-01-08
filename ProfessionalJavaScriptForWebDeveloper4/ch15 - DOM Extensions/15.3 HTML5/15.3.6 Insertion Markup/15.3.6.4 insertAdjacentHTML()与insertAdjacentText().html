@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插入节点</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="sss">sss</div>
+      <div class="kkk">kkk</div>
+      <div class="mmm">mmm</div>
+    </div>
+    <script>
+      const content = document.querySelector(".content");
+      // 作为前一个同胞节点插入
+      content.insertAdjacentHTML("beforebegin", "<p>Hello world!</p>");
+      content.insertAdjacentText("beforebegin", "Hello world!");
+
+      // 作为第一个子节点插入
+      content.insertAdjacentHTML("afterbegin", "<p>Hello world!2</p>");
+      content.insertAdjacentText("afterbegin", "Hello world!2");
+
+      // 作为最后一个子节点插入
+      content.insertAdjacentHTML("beforeend", "<p>Hello world!3</p>");
+      content.insertAdjacentText("beforeend", "Hello world!3");
+
+      // 作为下一个同胞节点插入
+      content.insertAdjacentHTML("afterend", "<p>Hello world!4</p>");
+      content.insertAdjacentText("afterend", "Hello world!4");
+
+    </script>
+  </body>
+</html>

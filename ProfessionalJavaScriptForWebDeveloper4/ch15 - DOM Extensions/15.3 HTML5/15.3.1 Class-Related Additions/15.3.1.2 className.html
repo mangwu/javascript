@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>className</title>
+  </head>
+  <body>
+    <div class="a b c"></div>
+    <script>
+      const div = document.querySelector("div");
+      const classNames = div.className.split(/\s+/);
+      // 找到想要修改的类名
+      let idx = classNames.indexOf("b");
+      if (idx !== -1) classNames.splice(idx, 1, "d"); // 修改成想要的类名
+      div.className = classNames.join(" ");
+    </script>
+  </body>
+</html>

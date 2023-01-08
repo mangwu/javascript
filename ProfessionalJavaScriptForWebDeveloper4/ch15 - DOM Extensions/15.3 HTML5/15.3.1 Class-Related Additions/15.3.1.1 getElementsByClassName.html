@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>根据类名获取元素节点</title>
+  </head>
+  <body>
+    <div class="a b c d">
+      <p class="a b c">abc</p>
+      <p class="a b d">abd</p>
+      <p class="c b d">bcd</p>
+      <p class="a c d">acd</p>
+    </div>
+    <div class="c d b">
+      cdb
+      <span class="b a d"> bad </span>
+      <p class="a c d">acd</p>
+    </div>
+    <script>
+      const ads = document.getElementsByClassName("a d");
+      console.log(ads);
+      const abcd = document.getElementsByClassName("a b c d")[0];
+      const bcs = abcd.getElementsByClassName("b c");
+      console.log(bcs);
+    </script>
+  </body>
+</html>

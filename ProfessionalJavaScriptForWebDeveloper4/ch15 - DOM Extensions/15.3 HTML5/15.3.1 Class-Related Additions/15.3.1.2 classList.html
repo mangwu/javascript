@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classList</title>
+  </head>
+  <body>
+    <p class="a b c d"></p>
+    <script>
+      const p = document.querySelector("p");
+      console.log(p.classList.toggle("a")); // 删除之，返回false
+      console.log(p.classList.toggle("e")); // 添加之，返回true
+
+      console.log(p.classList.toggle("b", true)); // 强制重复添加，返回true
+      console.log(p.classList.toggle("f", true)); // 强制添加，返回true
+
+      console.log(p.classList.contains("c")); // true
+      console.log(p.classList.replace("c", "a")); // true
+    </script>
+  </body>
+</html>

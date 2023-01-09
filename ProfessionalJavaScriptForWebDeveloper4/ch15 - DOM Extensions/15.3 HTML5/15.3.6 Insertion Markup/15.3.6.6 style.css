@@ -1,48 +1,28 @@
-
-.container {
-  height: 500px;
-  width: 500px;
-  margin: 0 auto;
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
   background-color: antiquewhite;
   font-size: 25px;
   overflow: auto;
-}
-.btn {
-  height: 60px;
-  box-sizing: border-box;
-  width: 100%;
-  border: 1px solid rgb(255, 204, 0);
-  cursor: pointer;
-  background-color: rgb(179, 179, 247);
-  font-size: 25px;
+  position: relative;
 }
 p {
   height: 1000px;
 }
-ul {
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-}
-li {
-  margin: 0;
-  text-align: center;
-  height: 60px;
-  width: 40%;
-  line-height: 60px;
-  list-style: none;
+.btns {
+  width: 2000px;
+  min-height: 50px;
+  position:sticky;
+  top: 0;
+  background-color: aquamarine;
 }
 .wrapper {
-  width: 120%;
-}
-li:nth-child(even) {
-  background-color: rgb(253, 253, 255);
-}
-li:nth-child(odd) {
-  background-color: rgba(253, 253, 255, 0.363);
+  padding: 0 1000px;
+  background-color: rgb(174, 91, 250);
 }
 .special {
+  width: 150px;
+  height: 100px;
   background-color: yellow !important;
-  width: 250px;
-  margin-left: 700px;
 }

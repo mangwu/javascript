@@ -9,10 +9,75 @@
   </head>
   <body>
     <div class="btns">
-      <label for="arg1">布尔值</label>
-      <input type="radio" name="arg" id="arg1" />
-      <label for="arg2">选项对象 </label>
-      <input type="radio" name="arg" id="arg2" />
+      <fieldset>
+        <legend>选择参数类型</legend>
+        <input type="radio" name="arg" id="arg1" value="arg1" checked />
+        <label for="arg1">布尔值</label>
+        <input type="radio" name="arg" id="arg2" value="arg2" />
+        <label for="arg2">选项对象 </label>
+      </fieldset>
+      <fieldset>
+        <legend>选择参数值</legend>
+        <div class="arg1-value">
+          <input type="radio" name="boolean" id="true" value="true" checked />
+          <label for="true">true</label>
+          <input type="radio" name="boolean" id="false" value="false" />
+          <label for="false">false</label>
+        </div>
+        <div class="arg2-value" style="display: none">
+          <span style="border-right: 2px solid gray" data-type="behavior">
+            <span class="attribute"> behavior: </span>
+            <input
+              type="radio"
+              name="behavior"
+              id="smooth"
+              value="smooth"
+              checked
+            />
+            <label for="smooth">smooth</label>
+            <input type="radio" name="behavior" id="auto" value="auto" />
+            <label for="auto">auto</label>
+          </span>
+          <span
+            style="border-right: 2px solid gray; padding-left: 15px"
+            data-type="block"
+          >
+            <span class="attribute"> block: </span>
+
+            <input type="radio" name="block" id="start" value="start" checked />
+            <label for="start">start</label>
+            <input type="radio" name="block" id="center" value="center" />
+            <label for="center">center</label>
+            <input type="radio" name="block" id="end" value="end" />
+            <label for="end">end</label>
+            <input type="radio" name="block" id="nearest" value="nearest" />
+            <label for="nearest">nearest</label>
+          </span>
+          <span style="padding-left: 15px" data-type="inline">
+            <span class="attribute"> inline: </span>
+            <input type="radio" name="inline" id="inline-start" value="start" />
+            <label for="inline-start">start</label>
+            <input
+              type="radio"
+              name="inline"
+              id="inline-center"
+              value="center"
+            />
+            <label for="inline-center">center</label>
+            <input type="radio" name="inline" id="inline-end" value="end" />
+            <label for="inline-end">end</label>
+            <input
+              type="radio"
+              name="inline"
+              id="inline-nearest"
+              value="nearest"
+              checked
+            />
+            <label for="inline-nearest">nearest</label>
+          </span>
+        </div>
+      </fieldset>
+      <input type="submit" value="提交" />
     </div>
     <p></p>
     <div class="wrapper">

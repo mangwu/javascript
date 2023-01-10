@@ -13,9 +13,11 @@ p {
 .btns {
   width: 2000px;
   min-height: 50px;
-  position:sticky;
+  position: sticky;
   top: 0;
   background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
 }
 .wrapper {
   padding: 0 1000px;
@@ -25,4 +27,15 @@ p {
   width: 150px;
   height: 100px;
   background-color: yellow !important;
+}
+.attribute {
+  color: rgb(115, 95, 244);
+  font-weight: 700;
+}
+
+input[type="submit"] {
+  font-size: 23px;
+  background-color: rgb(149, 142, 231);
+  border:  none;
+  border-radius: 5px;
 }

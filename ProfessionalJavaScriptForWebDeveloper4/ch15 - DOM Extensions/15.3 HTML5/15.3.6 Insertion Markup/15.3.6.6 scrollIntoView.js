@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 15.3.6.6 scrollIntoView.js                                           *
  * @Date: 2023-01-09 15:52:45                                                  *
- * @LastModifiedDate: 2023-01-10 10:45:54                                      *
+ * @LastModifiedDate: 2023-01-10 11:03:35                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -21,7 +21,7 @@ let arg = {
   type: "arg1",
   value1: true,
   value2: {
-    behavior: "auto",
+    behavior: "smooth",
     block: "start",
     inline: "nearest",
   },

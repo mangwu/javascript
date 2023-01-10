@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>compareDocumentPosition</title>
+  </head>
+  <body class="my-body">
+    <div class="my-div">
+      <span class="my-span">Hello, world</span>
+    </div>
+    <ul></ul>
+    <script>
+      const div = document.querySelector("div");
+      console.log(div.compareDocumentPosition(document.body));
+      console.log(div.compareDocumentPosition(document.head));
+      console.log(div.compareDocumentPosition(document.body.attributes[0]));
+      console.log(div.compareDocumentPosition(div.attributes[0]));
+      console.log(div.compareDocumentPosition(div));
+      const span = document.querySelector("span");
+      console.log(div.compareDocumentPosition(span));
+      console.log(div.compareDocumentPosition(span.attributes[0]));
+      console.log(span.compareDocumentPosition(span.firstChild));
+      const ul = document.querySelector("ul");
+      const li = document.createElement("li");
+      console.log(div.compareDocumentPosition(ul));
+      console.log(div.compareDocumentPosition(li));
+
+    </script>
+  </body>
+</html>

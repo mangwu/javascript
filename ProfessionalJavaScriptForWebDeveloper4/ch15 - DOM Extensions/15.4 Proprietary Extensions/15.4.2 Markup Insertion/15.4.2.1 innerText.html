@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerText</title>
+  </head>
+  <body>
+    <div id="content">
+      <style>
+        #source {
+          color: red;
+        }
+      </style>
+      <p>This is a <strong>paragraph</strong> with a list following it.</p>
+      <span style="display: none">HIDDEN TEXT</span>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+    <script>
+      const content = document.querySelector("#content");
+      console.log(content.innerText);
+      console.log(content.textContent);
+
+      let innerTexts = [];
+      const dfs = (element) => {
+        for (const child of element.childNodes) {
+          // 子节点
+          if (child.nodeType === Node.ELEMENT_NODE) {
+            dfs(child);
+          }
+          // 文本节点
+          innerTexts.push(child.nodeValue);
+        }
+      };
+      dfs(content);
+      console.log(innerTexts.join(""));
+      // content.innerText = "Hello, world!";
+      // content.innerText = "Hello & welcome, <b>\"reader\"!</b>"
+      content.innerText = content.innerText;
+    </script>
+  </body>
+</html>

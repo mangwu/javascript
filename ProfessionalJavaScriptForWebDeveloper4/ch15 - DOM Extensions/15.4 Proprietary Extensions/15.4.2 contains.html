@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>contains</title>
+  </head>
+  <body>
+    <div class="my-div">
+      <span class="my-span">Hello, world</span>
+    </div>
+    <script>
+      const div = document.querySelector("div");
+      console.log(div.contains(div.attributes[0]));
+      console.log(div.contains(div));
+      const span = document.querySelector("span");
+      console.log(div.contains(span));
+      console.log(div.contains(span.attributes[0]));
+      console.log(span.contains(span.firstChild));
+    </script>
+  </body>
+</html>

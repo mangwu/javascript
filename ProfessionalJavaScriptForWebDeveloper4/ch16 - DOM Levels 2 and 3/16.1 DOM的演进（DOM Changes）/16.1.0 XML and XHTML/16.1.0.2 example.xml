@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE body [
+  <!ENTITY warning "Warning: Something bad happened... please refresh and try again.">
+]>
+<body>
+  <message> &warning; </message>
+  &lt;hello&gt;mmm&lt;/hello&gt;
+</body>

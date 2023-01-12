@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="./16.1.0.5 stylesheet.css"?>
 <!DOCTYPE body [
-  <!ENTITY warning "Warning: Something bad happened... please refresh and try again.">
+  <!ENTITY warning "XML is usually used for descriptive purposes, but there are ways to display XML data.
+  If you don't define a specific way for the XML to be rendered, the raw XML is displayed in the browser.">
 ]>
-<body>
-  <message> &warning; </message>
-  &lt;hello&gt;mmm&lt;/hello&gt;
-</body>
+<message>
+  <warning>警告</warning>
+  <title>Hello</title>
+  <content>
+    &warning;
+  </content>
+</message>

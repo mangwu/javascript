@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nutrition>  <!-- 建立日均摄取量 -->
+  <daily-values>
+    <total-fat units="g"> 65 </total-fat>    <!--脂肪总量-->
+    <saturated-fat units="g"> 20 </saturated-fat>    <!--饱和脂肪-->
+    <cholesterol units="mg"> 300 </cholesterol>    <!--胆固醇-->
+    <sodium units="mg"> 2400 </sodium>    <!--钠-->
+    <carb units="g"> 300 </carb>    <!--碳水化合物-->
+    <fiber units="g"> 25 </fiber>    <!--纤维素-->
+    <protein units="g"> 50 </protein>    <!--蛋白质-->
+  </daily-values>
+  <p>    <!-- Now list the individual foods --></p>
+  <food>
+    <name>Avocado Dip</name>    <!--蘸酱-->
+    <mfr>Sunnydale</mfr>    <!--mfr表示生产商，其中内容为生产商名称-->
+    <serving units="g"> 29 </serving>    <!--提供的含量-->
+    <calorie total="110" fat="100"/>
+    <!--卡路里-->
+    <total-fat> 11 </total-fat>    <!--脂肪总量-->
+    <saturated-fat> 3 </saturated-fat>    <!--饱和脂肪-->
+    <cholesterol> 5 </cholesterol>    <!--胆固醇-->
+    <sodium> 210 </sodium>    <!--钠-->
+    <carb> 2 </carb>    <!--碳水化合物-->
+    <fiber> 0 </fiber>    <!--纤维素-->
+    <protein> 1 </protein>    <!--蛋白质-->
+    <vitamins>      <!--维生素-->
+      <p>
+        <a> 0 </a>        <!--维生素a-->
+        <br />
+      </p>
+      <c> 0 </c>      <!--维生素c-->
+    </vitamins>
+    <minerals>      <!--矿物质-->
+      <p></p>
+      <ca> 0 </ca>      <!--钙-->
+      <p></p>
+      <fe> 0 </fe>      <!--铁-->
+    </minerals>
+  </food>
+
+  <p>    <!-- etc. --></p>
+
+</nutrition>

@@ -1,0 +1,9 @@
+<element name="calories">
+  <empty/>
+  <attribute name="total">
+    <data type="decimal"/>
+  </attribute>
+  <attribute name="fat">
+    <data type="decimal"/>
+  </attribute>
+</element>

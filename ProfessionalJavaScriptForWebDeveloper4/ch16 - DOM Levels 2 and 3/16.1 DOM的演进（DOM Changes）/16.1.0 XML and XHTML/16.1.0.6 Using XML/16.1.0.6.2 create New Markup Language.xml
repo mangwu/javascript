@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="./16.1.0.6.2 nutrition.css"?>
 <nutrition>  <!-- 建立日均摄取量 -->
   <daily-values>
     <total-fat units="g"> 65 </total-fat>    <!--脂肪总量-->

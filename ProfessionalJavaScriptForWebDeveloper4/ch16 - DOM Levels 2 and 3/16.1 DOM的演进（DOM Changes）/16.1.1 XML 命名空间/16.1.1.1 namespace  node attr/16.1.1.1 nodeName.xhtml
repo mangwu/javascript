@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Exmaple XHTML Page</title>
+  </head>
+  <body>
+    <s:svg
+      xmlns:s="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 100 100"
+      style="width: 100%; height: 100%"
+    >
+      <s:rect x="0" y="0" width="100" height="100" style="fill: red" />
+    </s:svg>
+  </body>
+  <script>
+    const svgs = document.getElementsByTagNameNS(
+      "http://www.w3.org/2000/svg",
+      "svg"
+    );
+    const rects = document.getElementsByTagNameNS(
+      "http://www.w3.org/2000/svg",
+      "rect"
+    );
+    const html = document.documentElement;
+    console.log(
+      svgs[0].prefix,
+      svgs[0].localName,
+      svgs[0].namespaceURI,
+      svgs[0].nodeName,
+      svgs[0].tagName
+    );
+    console.log(
+      rects[0].prefix,
+      rects[0].localName,
+      rects[0].namespaceURI,
+      rects[0].nodeName,
+      rects[0].tagName
+    );
+    console.log(
+      html.prefix,
+      html.localName,
+      html.namespaceURI,
+      html.nodeName,
+      html.tagName
+    );
+    console.log(
+      document.body.isDefaultNamespace("http://www.w3.org/1999/xhtml")
+    );
+    console.log(svgs[0].lookupPrefix("http://www.w3.org/2000/svg"));
+    console.log(rects[0].lookupNamespaceURI("s"));
+  </script>
+</html>

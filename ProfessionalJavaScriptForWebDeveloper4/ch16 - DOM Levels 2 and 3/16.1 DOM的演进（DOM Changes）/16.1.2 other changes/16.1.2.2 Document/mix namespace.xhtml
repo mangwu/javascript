@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Exmaple XHTML Page</title>
+  </head>
+  <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 100 100"
+      style="width: 100%; height: 100%"
+    >
+      <rect x="0" y="0" width="100" height="100" style="fill: red" />
+    </svg>
+  </body>
+  <script>
+    const svgs = document.getElementsByTagNameNS(
+      "http://www.w3.org/2000/svg",
+      "svg"
+    );
+    console.log(svgs[0].ownerDocument === document.body.ownerDocument);
+    const h2 = window.parent.document.querySelector("h2");
+    console.log(h2, h2 instanceof Node, document.body instanceof Node);
+    console.log(h2.ownerDocument === document.body.ownerDocument);
+    let newNode = document.importNode(h2, true);
+    console.log(newNode.ownerDocument === document.body.ownerDocument);
+    console.log(newNode);
+    document.body.appendChild(newNode);
+  </script>
+</html>

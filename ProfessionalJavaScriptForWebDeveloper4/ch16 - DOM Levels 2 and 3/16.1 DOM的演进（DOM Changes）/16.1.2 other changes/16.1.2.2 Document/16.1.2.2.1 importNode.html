@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>importNode</title>
+  </head>
+  <body>
+    <p>Hello mangwu</p>
+    <script>
+      let openWindow = window.open("test.html", "_target");
+      if (openWindow) {
+        let otherNode = openWindow.document.querySelector("p");
+        console.log(otherNode );
+        let newNode = document.importNode(otherNode, true);
+        document.appendChild(newNode);
+      }
+    </script>
+  </body>
+</html>

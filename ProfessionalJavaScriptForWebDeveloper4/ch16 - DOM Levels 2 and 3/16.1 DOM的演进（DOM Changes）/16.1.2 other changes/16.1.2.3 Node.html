@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello, <span class="special">mangwu</span></p>
+    <script>
+      const p = document.querySelector("p");
+      const copyP = p.cloneNode(true);
+      console.log(p,copyP);
+      console.log(p.isSameNode(copyP)); // false
+      console.log(p.isEqualNode(p)); // true
+      console.log(p.isEqualNode(copyP)); // true
+    </script>
+  </body>
+</html>

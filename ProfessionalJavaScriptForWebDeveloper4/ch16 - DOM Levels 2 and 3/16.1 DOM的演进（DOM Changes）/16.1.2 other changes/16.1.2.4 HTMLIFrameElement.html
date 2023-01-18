@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iframe</title>
+  </head>
+  <body>
+    <iframe
+      border="1"
+      src="./16.1.2.3 Node.html"
+      width="200"
+      height="300"
+    ></iframe>
+    <h2>Hello mangwu</h2>
+  </body>
+  <script>
+    const frame = document.querySelector("iframe");
+    console.log(frame.contentDocument, frame.contentDocument === document);
+    console.log(
+      frame.contentWindow,
+      frame.contentWindow.document === frame.contentDocument
+    );
+  </script>
+</html>

@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>length</title>
+    <title>setProperty</title>
     <style>
       p {
         background-color: bisque !important;
+        font-size: 16px !important;
       }
     </style>
   </head>
   <body>
-    <p style="color: blueviolet; font-size: 22px !important">Hello, mangwu</p>
+    <p style="color: blueviolet; font-size: 22px">Hello, mangwu</p>
     <script>
       const p = document.querySelector("p");
       p.style.setProperty("background", "aqua", "important");
@@ -25,6 +26,7 @@
           p.style.getPropertyPriority(p.style[i])
         );
       }
+      p.style.removeProperty("background");
     </script>
   </body>
 </html>

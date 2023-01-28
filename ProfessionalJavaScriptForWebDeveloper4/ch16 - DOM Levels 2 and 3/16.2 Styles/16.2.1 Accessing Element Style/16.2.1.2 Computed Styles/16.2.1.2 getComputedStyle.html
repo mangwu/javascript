@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getComputedStyle</title>
+    <style>
+      #custom {
+        color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <p
+      style="
+        background-color: black;
+        border: 0.5rem solid seagreen;
+        width: auto;
+      "
+      id="custom"
+    >
+      Hello, mangwu
+    </p>
+    <p id="default">Hello, mangwu</p>
+    <div>Hello, mangwu</div>
+    <script>
+      const custom = document.querySelector("#custom");
+      const div = document.querySelector("div");
+      const defaultP = document.querySelector("#default");
+
+      const customCssStyle = getComputedStyle(custom);
+      const divCssStyle = getComputedStyle(div);
+      const defaultPCssStyle = getComputedStyle(defaultP);
+
+      for (const item of defaultPCssStyle) {
+        if (defaultPCssStyle[item] !== divCssStyle[item]) {
+          console.log(item, ":", defaultPCssStyle[item]);
+        }
+      }
+      console.log(customCssStyle.backgroundColor);
+      console.log(customCssStyle.border);
+      console.log(customCssStyle.color);
+      console.log(customCssStyle.width);
+      console.log(custom.style.width);
+      console.log(customCssStyle.visibility);
+    </script>
+  </body>
+</html>

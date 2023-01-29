@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作CSS规则</title>
+  </head>
+  <body>
+    <style>
+      p {
+        color: antiquewhite;
+      }
+      #myP {
+        background-color: blueviolet;
+      }
+    </style>
+    <p id="myP">Hello, mangwu</p>
+    <script>
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule("body { background-color: silver }", 1); // 使用DOM方法
+      styleSheet.deleteRule(2);
+    </script>
+  </body>
+</html>

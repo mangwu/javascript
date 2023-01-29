@@ -7,7 +7,6 @@
     <title>styleSheet</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      @import url("./style2.css");
       p {
         color: aqua;
       }
@@ -16,8 +15,13 @@
   <body>
     <p style="background-color: gray">Hello, mangwu</p>
     <script>
+      const link = document.querySelector("link");
+      const style = document.querySelector("style");
+      console.log(link.sheet);
+      console.log(style.sheet);
       console.log(document.styleSheets);
-      console.log(document.adoptedStyleSheets);
+      console.log(document.styleSheets[0] === link.sheet);
+      console.log(document.styleSheets[1] === style.sheet);
     </script>
   </body>
 </html>

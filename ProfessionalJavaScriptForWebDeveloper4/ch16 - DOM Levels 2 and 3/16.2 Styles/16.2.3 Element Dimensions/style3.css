@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+#container {
+  margin: 90px auto;
+  width: 500px;
+  height: 500px;
+  border: 1px solid gray;
+  overflow: auto;
+}
+
+#box {
+  width: 800px;
+  height: 800px;
+  padding: 9px;
+  border: 1px solid gray;
+  background-color: antiquewhite;
+  text-align: center;
+  /* line-height: 1000px; */
+  word-wrap: normal;
+}

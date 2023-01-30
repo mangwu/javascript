@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NodeFilter</title>
+  </head>
+  <body>
+    <div><span>Hello</span><span>world</span></div>
+    <p><span>K</span></p>
+    <script>
+      const nodeIterator = document.createNodeIterator(
+        document.body,
+        NodeFilter.SHOW_ELEMENT,
+        {
+          acceptNode(node) {
+            return node.tagName.toLowerCase() === "span"
+              ? NodeFilter.FILTER_ACCEPT
+              : NodeFilter.FILTER_REJECT;
+          },
+        }
+      );
+      console.log(nodeIterator.referenceNode, nodeIterator.previousNode());
+
+      console.log(nodeIterator.referenceNode, nodeIterator.nextNode());
+      console.log(nodeIterator.referenceNode, nodeIterator.nextNode());
+      console.log(nodeIterator.referenceNode, nodeIterator.nextNode());
+      console.log(nodeIterator.previousNode());
+      const div = document.querySelector("div");
+      const span = document.createElement("span");
+      span.textContent = "M";
+      div.appendChild(span);
+      console.log(nodeIterator.previousNode());
+      console.log(nodeIterator.previousNode());
+
+      let iterator = document.createNodeIterator(
+        document,
+        NodeFilter.SHOW_ALL,
+        null
+      );
+    </script>
+  </body>
+</html>

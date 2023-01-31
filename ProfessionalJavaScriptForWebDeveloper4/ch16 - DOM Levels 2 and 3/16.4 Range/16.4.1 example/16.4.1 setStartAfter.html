@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML DOM range setStartAfter() property</title>
+  </head>
+  <body>
+    <h1>GeeksforGeeks</h1>
+    The range will start after 1st element in italics<i> RangeStart </i> The
+    range started after 1st i element <i>RangeEnd</i>
+    <div style="margin-top: 20px; border: 1px solid gray"></div>
+  </body>
+  <script>
+    var range = document.createRange();
+    var refNode1 = document.getElementsByTagName("i").item(0);
+    var refNode2 = document.getElementsByTagName("i").item(1);
+    range.setStartAfter(refNode1);
+    range.setEndAfter(refNode2);
+    console.log(range);
+    console.log(range.toString());
+
+    const div = document.querySelector("div");
+    div.textContent = range.toString();
+
+    // Get window selection
+    const selection = window.getSelection();
+
+    // Add range to window selection
+    selection.addRange(range);
+  </script>
+</html>

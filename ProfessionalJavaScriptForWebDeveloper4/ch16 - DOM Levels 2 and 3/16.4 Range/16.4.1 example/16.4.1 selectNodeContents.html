@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML DOM range selectNodeContents() method</title>
+  </head>
+
+  <body>
+    <h1>GeeksforGeeks</h1>
+    <div>This is the Range Content</div>
+
+    <script>
+      var range;
+      range = document.createRange();
+      range.selectNodeContents(document.getElementsByTagName("div")[0]);
+      console.log(range);
+      console.log(range.toString());
+    </script>
+  </body>
+</html>

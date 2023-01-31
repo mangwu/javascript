@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML DOM range selectNode() method</title>
+  </head>
+  <body>
+    <h1>GeeksforGeeks</h1>
+    <p>This is the Range Content</p>
+  </body>
+  <script>
+    let range = document.createRange();
+    let referenceNode = document.getElementsByTagName("p").item(0);
+    range.selectNode(referenceNode);
+    console.log(range);
+    console.log(range.toString());
+  </script>
+</html>

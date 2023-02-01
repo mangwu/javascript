@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>complex select</title>
+  </head>
+  <body>
+    <p><b>Hello</b> world!</p>
+    <script>
+      const range1 = document.createRange();
+      const range2 = document.createRange();
+      const p = document.querySelector("p");
+      range1.setStart(document.body, 1);
+      range1.setEnd(document.body, 2);
+      range2.setStart(p, 0);
+      range2.setEnd(p, p.childNodes.length);
+      console.log(range1);
+      console.log(range2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>collapsed</title>
+  </head>
+  <body>
+    <p id="p1">Hello</p><p id="p2">world</p>
+  </body>
+  <script>
+    const p1 = document.querySelector("#p1");
+    const p2 = document.querySelector("#p2");
+    const range1 = document.createRange();
+    const range2 = document.createRange();
+    range1.setStartAfter(p1);
+    range1.setEndBefore(p2);
+    range2.setStartBefore(p1);
+    range2.setEndAfter(p2);
+    if (range1.collapsed || range2.collapsed) {
+      console.log("p1和p2相邻");
+    }
+  </script>
+</html>

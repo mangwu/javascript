@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>collapse</title>
+  </head>
+  <body>
+    <p><b>Hello</b> world!</p>
+    <script>
+      const range = document.createRange();
+      const p = document.querySelector("p");
+      range.setStart(p.firstElementChild.firstChild, 2);
+      range.setEnd(p.lastChild, 3);
+      console.log(range.collapsed); // false
+      console.log(range.collapse());
+      console.log(range.collapsed); // true
+    </script>
+  </body>
+</html>

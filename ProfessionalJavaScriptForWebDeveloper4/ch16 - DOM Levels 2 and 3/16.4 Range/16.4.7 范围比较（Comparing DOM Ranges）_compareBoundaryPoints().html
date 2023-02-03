@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>collapse</title>
+  </head>
+  <body>
+    <p><b>Hello</b> world!</p>
+    <script>
+      const range1 = document.createRange();
+      const range2 = document.createRange();
+      const p = document.querySelector("p");
+      range1.selectNodeContents(p);
+      range2.selectNode(p.firstElementChild);
+      console.log(range1.compareBoundaryPoints(Range.START_TO_START, range2)); // 0
+      console.log(range1.compareBoundaryPoints(Range.END_TO_END, range2)); // 1
+      console.log(range1.compareBoundaryPoints(Range.END_TO_START, range2)); // -1 range2的end和range1的start比
+    </script>
+  </body>
+</html>

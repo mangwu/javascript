@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件捕获</title>
+    <style>
+      #clickme {
+        margin-top: 20px;
+        margin-left: 30px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      ul {
+        margin-top: 30px;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 部署时将开发模式的development.js换为生产模式的production.min.js-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!-- 加载JSXbabel包 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 加载prop-types库 development version -->
+    
+    <div id="root"></div>
+    <script type="text/babel" src="./17.1.2 main.js"></script>
+  </body>
+</html>

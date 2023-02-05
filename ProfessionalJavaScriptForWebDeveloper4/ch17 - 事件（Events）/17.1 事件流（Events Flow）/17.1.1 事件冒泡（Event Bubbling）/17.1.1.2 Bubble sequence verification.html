@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>冒泡机制验证</title>
+    <style>
+      div {
+        margin-top: 20px;
+        margin-left: 30px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      ul {
+        margin-top: 30px;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Click Me</div>
+    <ul></ul>
+    <script>
+      const div = document.querySelector("div");
+      const ul = document.querySelector("ul");
+      const handler = (e, who) => {
+        const li = document.createElement("li");
+        li.textContent = `触发点击事件的目标对象：${who}`;
+        ul.appendChild(li);
+        if (who === "window") {
+          ul.appendChild(document.createElement("hr"));
+        }
+      };
+      div.addEventListener("click", (e) => handler(e, "<div>"));
+      document.body.addEventListener("click", (e) => handler(e, "<body>"));
+      document.documentElement.addEventListener("click", (e) =>
+        handler(e, "<html>")
+      );
+      document.addEventListener("click", (e) => handler(e, "document"));
+      window.addEventListener("click", (e) => handler(e, "window"));
+    </script>
+  </body>
+</html>

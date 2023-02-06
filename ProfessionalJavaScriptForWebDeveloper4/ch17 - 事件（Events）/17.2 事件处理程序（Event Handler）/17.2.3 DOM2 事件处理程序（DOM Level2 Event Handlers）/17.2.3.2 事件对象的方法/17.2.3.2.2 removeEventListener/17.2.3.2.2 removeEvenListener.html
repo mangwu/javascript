@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>移除事件监听器</title>
+  </head>
+  <body>
+    <button>click me</button>
+    <button id="capture">remove capture</button>
+    <button id="bubbling">remove bubbling</button>
+
+    <ul></ul>
+    <script>
+      const btn = document.querySelector("button");
+      const ul = document.querySelector("ul");
+      let bubblingHandler = () => {
+        const li = document.createElement("li");
+        li.textContent = "click bubbling";
+        ul.appendChild(li);
+      };
+      let captureHandler = () => {
+        li.textContent = "click capture";
+        ul.appendChild(li);
+      };
+      btn.addEventListener("click", bubblingHandler);
+      btn.addEventListener("click", captureHandler, true);
+      const bubbling = document.querySelector("#bubbling");
+      const capture = document.querySelector("#capture");
+      bubbling.addEventListener("click", () => {
+        btn.removeEventListener("click", bubblingHandler);
+      });
+      capture.addEventListener("click", () => {
+        btn.removeEventListener("click", captureHandler);
+      });
+    </script>
+  </body>
+</html>

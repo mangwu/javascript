@@ -21,6 +21,7 @@
         ul.appendChild(li);
       };
       let captureHandler = () => {
+        const li = document.createElement("li");
         li.textContent = "click capture";
         ul.appendChild(li);
       };
@@ -32,7 +33,7 @@
         btn.removeEventListener("click", bubblingHandler);
       });
       capture.addEventListener("click", () => {
-        btn.removeEventListener("click", captureHandler);
+        btn.removeEventListener("click", captureHandler, true);
       });
     </script>
   </body>

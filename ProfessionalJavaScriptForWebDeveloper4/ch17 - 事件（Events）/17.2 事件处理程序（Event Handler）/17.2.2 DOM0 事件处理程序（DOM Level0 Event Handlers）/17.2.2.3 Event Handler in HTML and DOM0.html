@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      value="click me"
+      onclick="alert('Hello,world')"
+    />
+    <input
+      id="clear"
+      type="button"
+      value="clear onclick"
+      onclick="clearClick()"
+    />
+    <p></p>
+    <script>
+      const p = document.querySelector("p");
+      const input = document.querySelector("input");
+      const clear = document.querySelector("#clear");
+      p.textContent = input.onclick;
+      function clearClick() {
+        input.onclick = null;
+        p.textContent = input.onclick;
+        console.log(p.textContent);
+      }
+    </script>
+  </body>
+</html>

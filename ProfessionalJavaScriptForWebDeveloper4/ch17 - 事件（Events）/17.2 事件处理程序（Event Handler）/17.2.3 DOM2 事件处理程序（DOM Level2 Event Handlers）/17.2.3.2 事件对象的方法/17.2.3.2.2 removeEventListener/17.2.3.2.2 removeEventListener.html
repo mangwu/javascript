@@ -26,7 +26,22 @@
         ul.appendChild(li);
       };
       btn.addEventListener("click", bubblingHandler);
+      btn.addEventListener("click", bubblingHandler, false);
+      btn.addEventListener("click", bubblingHandler, {
+        useCapture: false,
+        once: true,
+      });
       btn.addEventListener("click", captureHandler, true);
+      btn.addEventListener("click", captureHandler, {
+        useCapture: true,
+      });
+
+      btn.addEventListener("click", captureHandler, {
+        useCapture: true,
+        passive: true,
+        once: true,
+      });
+
       const bubbling = document.querySelector("#bubbling");
       const capture = document.querySelector("#capture");
       bubbling.addEventListener("click", () => {
@@ -34,6 +49,7 @@
       });
       capture.addEventListener("click", () => {
         btn.removeEventListener("click", captureHandler, true);
+        btn.removeEventListener("click", captureHandler, { useCapture: true });
       });
     </script>
   </body>

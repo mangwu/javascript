@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 事件流</title>
+    <style>
+      div {
+        margin-top: 20px;
+        margin-left: 30px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      ul {
+        margin-top: 30px;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clickme">Click Me</div>
+    <ul></ul>
+    <script>
+      const div = document.querySelector("div");
+      const ul = document.querySelector("ul");
+      let cur = 0;
+      const handler = (e, who) => {
+        const li = document.createElement("li");
+        li.textContent = `currentTarget：${
+          e.currentTarget.nodeName || who
+        }；target: ${e.target.nodeName + "_" + e.target.id}`;
+        ul.appendChild(li);
+        console.log(e.composedPath(), e.composed);
+        if (who === "window") {
+          cur++;
+          if (cur % 2 == 0) {
+            ul.appendChild(document.createElement("hr"));
+          }
+        }
+      };
+      div.addEventListener("click", (e) => handler(e, "<div>"));
+      document.body.addEventListener("click", (e) => handler(e, "<body>"));
+      document.documentElement.addEventListener("click", (e) =>
+        handler(e, "<html>")
+      );
+      document.addEventListener("click", (e) => handler(e, "document"));
+      window.addEventListener("click", (e) => handler(e, "window"));
+
+      div.addEventListener("click", (e) => handler(e, "<div>"), true);
+      document.body.addEventListener(
+        "click",
+        (e) => handler(e, "<body>"),
+        true
+      );
+      document.documentElement.addEventListener(
+        "click",
+        (e) => handler(e, "<html>"),
+        true
+      );
+      document.addEventListener("click", (e) => handler(e, "document"), true);
+      window.addEventListener("click", (e) => handler(e, "window"), true);
+    </script>
+  </body>
+</html>

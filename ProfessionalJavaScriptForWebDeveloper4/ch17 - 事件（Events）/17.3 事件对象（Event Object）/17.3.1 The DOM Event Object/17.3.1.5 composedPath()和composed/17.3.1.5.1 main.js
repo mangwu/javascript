@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.3.1.5.1 main.js                                                   *
  * @Date: 2023-02-08 17:25:06                                                  *
- * @LastModifiedDate: 2023-02-09 00:01:32                                      *
+ * @LastModifiedDate: 2023-02-09 09:34:32                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -22,6 +22,7 @@ shadowRoot.innerHTML = tempate;
 const btn = shadowRoot.querySelector("button");
 const handle = (e) => {
   console.log(e.currentTarget.nodeName || "window");
+  console.log(e.composedPath());
 };
 btn.addEventListener("click", handle);
 btn.addEventListener("click", handle, true);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element load</title>
+  </head>
+  <body>
+    <img
+      src="./firefox registerProtocolHandler().gif"
+      alt=""
+      srcset=""
+      onload="var p = document.createElement('p');p.style.overflow='scroll';p.textContent=`${event.target.src} loaded`;body.appendChild(p)"
+    />
+    <img
+      src="./gitlab_logo-7ae504fe4f68fdebb3c2034e36621930cd36ea87924c11ff65dbcb8ed50dca58.png"
+      alt=""
+    />
+    <script>
+      const img = document.querySelector(
+        "img[src='./gitlab_logo-7ae504fe4f68fdebb3c2034e36621930cd36ea87924c11ff65dbcb8ed50dca58.png']"
+      );
+      img.addEventListener("load", (e) => {
+        console.log(e);
+        const p = document.createElement("p");
+        p.textContent = `${e.target.src} loaded`;
+        p.style.overflow = "scroll";
+        document.body.appendChild(p);
+      });
+      window.addEventListener("load", () => {
+        let image = document.createElement("img");
+        image.addEventListener("load", (e) => {
+          console.log(e.target.src);
+        });
+        document.body.appendChild(image);
+        image.src = "https://www.w3.org/2008/site/images/favicon.ico";
+      });
+      window.addEventListener("load", () => {
+        let image = new Image(36, 36);
+        console.log(image instanceof HTMLImageElement);
+        image.addEventListener("load", (e) => {
+          console.log(e.target.src);
+        });
+        document.body.appendChild(image);
+        image.src = "https://www.w3.org/2008/site/images/favicon.ico";
+      });
+    </script>
+  </body>
+</html>

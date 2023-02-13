@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>unload</title>
+  </head>
+  <body onunload="console.log(event.type)">
+    <a
+      href="https://w3c.github.io/uievents/#event-type-unload"
+      rel="noopener noreferrer"
+      >uievent</a
+    >
+    <script>
+      window.addEventListener("unload", (e) => {
+        console.log("Unloaded");
+        alert("Hello, unloaded");
+      });
+    </script>
+  </body>
+</html>

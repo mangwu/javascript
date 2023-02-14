@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signal</title>
+  </head>
+  <body>
+    <button class="download">download</button>
+    <button class="abort">Abort</button>
+    <script>
+      const controller = new AbortController();
+      const signal = controller.signal;
+
+      const url =
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm";
+      const downloadBtn = document.querySelector(".download");
+      const abortBtn = document.querySelector(".abort");
+
+      downloadBtn.addEventListener("click", fetchVideo);
+
+      abortBtn.addEventListener("click", () => {
+        controller.abort();
+        console.log("Download aborted");
+      });
+      signal.addEventListener("abort", (e) => {
+        const p = document.createElement("p");
+        console.log(e);
+        p.textContent = "You have aborted downloading the video";
+        document.body.appendChild(p);
+      });
+      function fetchVideo() {
+        fetch(url, { signal })
+          .then((response) => {
+            console.log("Download complete", response);
+          })
+          .catch((err) => {
+            console.error(`Download error: ${err.message}`);
+          });
+      }
+    </script>
+  </body>
+</html>

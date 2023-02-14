@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=`" />
+    <title>abort</title>
+  </head>
+  <body>
+    <video controls width="250"></video>
+    <script>
+      const video = document.querySelector("video");
+      const videoSrc =
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm";
+
+      video.addEventListener("abort", () => {
+        console.log(`Abort loading: ${videoSrc}`);
+      });
+      video.src = videoSrc;
+    </script>
+  </body>
+</html>

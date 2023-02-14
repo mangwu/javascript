@@ -7,7 +7,9 @@
     <title>Document</title>
   </head>
   <body>
-    <input value="Try selecting some text in this element." />
+    <textarea rows="10" readonly>
+Try selecting some text in this element. Your selection will be recorded.</textarea
+    >
     <p id="log"></p>
     <script>
       const log = document.getElementById("log");
@@ -20,11 +22,8 @@
         log.textContent = `You selected: ${selection}`;
       }
 
-      const input = document.querySelector("input");
-      input.addEventListener("select", logSelection);
-      log.addEventListener("select", (e) => {
-        console.log(e);
-      });
+      const textarea = document.querySelector("textarea");
+      textarea.addEventListener("select", logSelection);
     </script>
   </body>
 </html>

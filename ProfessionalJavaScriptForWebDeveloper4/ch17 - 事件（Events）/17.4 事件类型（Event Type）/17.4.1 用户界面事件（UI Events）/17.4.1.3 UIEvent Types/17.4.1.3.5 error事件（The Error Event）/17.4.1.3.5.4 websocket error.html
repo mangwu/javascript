@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>websocket error</title>
+    <style>
+      body {
+        display: flex;
+        gap: 30px;
+      }
+
+      textarea {
+        vertical-align: text-top;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="img-error" type="button">Generate websocket error</button>
+      <img class="bad-img" />
+    </div>
+
+    <div class="event-log">
+      <label for="eventLog">Event log:</label>
+      <textarea
+        readonly
+        class="event-log-contents"
+        rows="8"
+        cols="30"
+        id="eventLog"
+      ></textarea>
+    </div>
+    <script>
+      const log = document.querySelector(".event-log-contents");
+
+      const webscoketError = document.querySelector("button");
+      webscoketError.addEventListener("click", () => {
+        // Create WebSocket connection
+        const socket = new WebSocket("ws://localhost:8080");
+        // Listen for possible errors
+        socket.addEventListener("error", (event) => {
+          log.textContent = `${log.textContent}${event.type}:WebSocket connection to ${event.currentTarget.url} failed\n`;
+          console.log(event);
+        });
+      });
+    </script>
+  </body>
+</html>

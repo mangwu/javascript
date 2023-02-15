@@ -28,7 +28,12 @@
       />
     </div>
 
-    <textarea readonly class="event-log" rows="10" style="width: 250px;"></textarea>
+    <textarea
+      readonly
+      class="event-log"
+      rows="10"
+      style="width: 250px"
+    ></textarea>
     <script>
       const xhrButtonSuccess = document.querySelector(".xhr.success");
       const xhrButtonError = document.querySelector(".xhr.error");
@@ -37,6 +42,7 @@
 
       function handleEvent(e) {
         log.textContent = `${log.textContent}${e.type}: ${e.loaded} bytes transferred\n`;
+        console.log(e);
       }
 
       function addListeners(xhr) {

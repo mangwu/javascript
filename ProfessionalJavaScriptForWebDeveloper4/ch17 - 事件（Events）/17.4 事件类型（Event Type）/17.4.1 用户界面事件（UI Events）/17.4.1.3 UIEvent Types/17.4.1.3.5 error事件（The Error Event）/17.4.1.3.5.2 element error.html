@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element error</title>
+    <style>
+      body {
+        display: flex;
+        gap: 30px;
+      }
+
+      textarea {
+        vertical-align: text-top;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="img-error" type="button">Generate image error</button>
+      <img class="bad-img" />
+    </div>
+
+    <div class="event-log">
+      <label for="eventLog">Event log:</label>
+      <textarea
+        readonly
+        class="event-log-contents"
+        rows="8"
+        cols="30"
+        id="eventLog"
+      ></textarea>
+    </div>
+    <script>
+      const log = document.querySelector(".event-log-contents");
+
+      const badImg = document.querySelector(".bad-img");
+      badImg.addEventListener("error", (event) => {
+        log.textContent += `${event.type}: Loading image\n`;
+        console.log(event);
+      });
+      
+
+      const imgError = document.querySelector("#img-error");
+      imgError.addEventListener("click", () => {
+        badImg.setAttribute("src", "i-dont-exist");
+      });
+    </script>
+  </body>
+</html>

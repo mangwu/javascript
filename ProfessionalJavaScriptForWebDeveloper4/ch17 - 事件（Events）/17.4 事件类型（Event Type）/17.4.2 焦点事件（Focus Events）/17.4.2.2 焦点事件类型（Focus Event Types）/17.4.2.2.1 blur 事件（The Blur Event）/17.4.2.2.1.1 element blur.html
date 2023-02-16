@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element blur</title>
+  </head>
+  <body>
+    <form id="form">
+      <label
+        >Some text:
+        <input type="text" placeholder="text input" />
+      </label>
+      <label
+        >Password:
+        <input type="password" placeholder="password" />
+      </label>
+    </form>
+    <script>
+      const form = document.getElementById("form");
+      const text = document.querySelector("input[type='text']");
+      const password = document.querySelector("input[type='password']");
+
+      form.addEventListener(
+        "focus",
+        (event) => {
+          event.target.style.background = "pink";
+        },
+        true
+      );
+
+      form.addEventListener(
+        "blur",
+        (event) => {
+          event.target.style.background = "";
+          console.log("form");
+        },
+        true
+      );
+      text.addEventListener("blur", (e) => {
+        console.log("text");
+      });
+      document.body.addEventListener("blur", (e) => {
+        console.log(e.type, "body captrue");
+      });
+    </script>
+  </body>
+</html>

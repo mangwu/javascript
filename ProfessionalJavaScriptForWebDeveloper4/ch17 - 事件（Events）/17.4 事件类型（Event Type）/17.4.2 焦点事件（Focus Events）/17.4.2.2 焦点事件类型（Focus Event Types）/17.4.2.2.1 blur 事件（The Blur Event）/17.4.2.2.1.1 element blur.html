@@ -17,33 +17,176 @@
         <input type="password" placeholder="password" />
       </label>
     </form>
+    <a href="http://baidu.com">baidu</a>
     <script>
-      const form = document.getElementById("form");
-      const text = document.querySelector("input[type='text']");
-      const password = document.querySelector("input[type='password']");
-
-      form.addEventListener(
-        "focus",
-        (event) => {
-          event.target.style.background = "pink";
+      const a = document.querySelector("a");
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      a.addEventListener(
+        "blur",
+        (e) => {
+          console.log("a", "captrue", "blur", e);
+          setTimeout(() => {
+            console.log("-----------------");
+          }, 200);
         },
         true
       );
+      a.addEventListener("blur", (e) => {
+        console.log("a", "bubbling", "blur", e);
+      });
+
+      a.addEventListener(
+        "focus",
+        (e) => {
+          console.log("a", "captrue", "focus", e);
+        },
+        true
+      );
+      a.addEventListener("focus", (e) => {
+        console.log("a", "bubbling", "focus", e);
+      });
+    </script>
+    <script>
+      const form = document.getElementById("form");
+      const text = document.querySelector("input[type='text']");
+      form.addEventListener(
+        "focus",
+        (e) => {
+          e.target.style.background = "pink";
+          console.log("form", "capture", "focus", e);
+        },
+        true
+      );
+      form.addEventListener("focus", (e) => {
+        console.log("form", "capture", "focus", e);
+      });
 
       form.addEventListener(
         "blur",
-        (event) => {
-          event.target.style.background = "";
-          console.log("form");
+        (e) => {
+          e.target.style.background = "";
+          console.log("form", "capture", "blur", e);
+        },
+        true
+      );
+      form.addEventListener("blur", (e) => {
+        console.log("form", "bubbling", "blur", e);
+      });
+
+      text.addEventListener(
+        "blur",
+        (e) => {
+          console.log("text", "captrue", "blur", e);
+          setTimeout(() => {
+            console.log("-----------------");
+          }, 200);
         },
         true
       );
       text.addEventListener("blur", (e) => {
-        console.log("text");
+        console.log("text", "bubbling", "blur", e);
       });
+
+      text.addEventListener(
+        "focus",
+        (e) => {
+          console.log("text", "captrue", "focus", e);
+        },
+        true
+      );
+      text.addEventListener("focus", (e) => {
+        console.log("text", "bubbling", "focus", e);
+      });
+
       document.body.addEventListener("blur", (e) => {
-        console.log(e.type, "body captrue");
+        console.log("body bubbling", e.type, e);
       });
+      document.body.addEventListener(
+        "blur",
+        (e) => {
+          console.log("body captrue", e.type, e);
+        },
+        true
+      );
+
+      document.body.addEventListener("focus", (e) => {
+        console.log("body bubbling", e.type, e);
+      });
+      document.body.addEventListener(
+        "focus",
+        (e) => {
+          console.log("body captrue", e.type, e);
+        },
+        true
+      );
+
+      document.addEventListener("blur", (e) => {
+        console.log("document bubbling", e.type, e);
+      });
+      document.addEventListener(
+        "blur",
+        (e) => {
+          console.log("document captrue", e.type, e);
+        },
+        true
+      );
+
+      document.documentElement.addEventListener("focus", (e) => {
+        console.log("document bubbling", e.type, e);
+      });
+      document.addEventListener(
+        "focus",
+        (e) => {
+          console.log("document captrue", e.type, e);
+        },
+        true
+      );
+
+      document.documentElement.addEventListener("blur", (e) => {
+        console.log("documentElement bubbling", e.type);
+      });
+      document.documentElement.addEventListener(
+        "blur",
+        (e) => {
+          console.log("documentElement captrue", e.type, e);
+        },
+        true
+      );
+
+      document.documentElement.addEventListener("focus", (e) => {
+        console.log("documentElement bubbling", e.type, e);
+      });
+      document.documentElement.addEventListener(
+        "focus",
+        (e) => {
+          console.log("documentElement captrue", e.type, e);
+        },
+        true
+      );
+      window.addEventListener("blur", (e) => {
+        console.log("window bubbling", e.type, e);
+      });
+      window.addEventListener(
+        "blur",
+        (e) => {
+          console.log("window captrue", e.type, e);
+        },
+        true
+      );
+
+      window.addEventListener("focus", (e) => {
+        console.log("window bubbling", e.type, e);
+      });
+      window.addEventListener(
+        "focus",
+        (e) => {
+          console.log("window captrue", e.type, e);
+        },
+        true
+      );
     </script>
   </body>
 </html>

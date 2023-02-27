@@ -1,0 +1,45 @@
+.big-box {
+  width: 110vw;
+  height: 110vh;
+  background-color: antiquewhite;
+}
+body {
+  position: relative;
+  border: 5px solid gold;
+}
+html {
+  border: 5px solid aqua;
+}
+
+.float-box-visual {
+  padding: 5px;
+  width: 220px;
+  height: 180px;
+  position: absolute;
+  box-shadow: 4px 4px 5px rgb(205, 197, 197);
+  top: 30%;
+  left: 50px;
+  background-color: rgb(219, 184, 216);
+}
+.title {
+  border-bottom: 1px solid gray;
+  line-height: 23px;
+  height: 23px;
+  padding: 2px;
+  font-size: 23px;
+}
+.float-box-layout {
+  padding: 5px;
+  width: 220px;
+  height: 180px;
+  position: absolute;
+  box-shadow: 4px 4px 5px rgb(205, 197, 197);
+  top: 30%;
+  right: 0px;
+  background-color: rgb(184, 219, 217);
+}
+.visual-info > div,
+.layout-info > div {
+  padding: 5px;
+  margin-top: 25px;
+}

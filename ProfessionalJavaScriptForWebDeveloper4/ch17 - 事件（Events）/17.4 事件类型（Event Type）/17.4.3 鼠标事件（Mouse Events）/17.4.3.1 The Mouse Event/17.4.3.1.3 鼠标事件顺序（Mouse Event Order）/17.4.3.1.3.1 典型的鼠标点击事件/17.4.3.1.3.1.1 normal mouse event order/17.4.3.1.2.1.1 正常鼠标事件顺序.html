@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正常触发</title>
+    <style>
+      div {
+        border: 1px solid gray;
+        padding: 2px;
+        border-radius: 3px;
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+        font-size: 22px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .type,
+      .target {
+        width: 100px;
+        display: inline-block;
+      }
+      .target {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dblclick me">dblclick me</div>
+    <ul class="log">
+      <li>
+        <span class="type">类型</span>
+        <span class="target">事件目标</span>
+      </li>
+    </ul>
+    <script src="./17.4.3.1.2.1.1 正常鼠标事件顺序.js"></script>
+  </body>
+</html>

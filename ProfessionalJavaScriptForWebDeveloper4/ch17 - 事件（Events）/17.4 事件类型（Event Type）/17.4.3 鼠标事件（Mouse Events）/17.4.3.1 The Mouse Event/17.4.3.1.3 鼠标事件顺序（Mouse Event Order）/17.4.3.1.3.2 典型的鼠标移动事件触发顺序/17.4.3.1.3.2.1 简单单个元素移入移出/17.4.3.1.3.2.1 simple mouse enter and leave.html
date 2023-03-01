@@ -6,40 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>简单单个元素移入移出</title>
     <style>
-      .box1,
-      .box2 {
-        border: 1px solid gray;
+      .A {
+        border: 10px solid gray;
         padding: 2px;
         border-radius: 3px;
         width: 100px;
         height: 100px;
-        line-height: 30px;
-        font-size: 14px;
+        line-height: 100px;
+        font-size: 22px;
         text-align: center;
         cursor: pointer;
         user-select: none;
       }
-      .box2 {
-        margin-left: 150px;
-      }
-      .container {
-        display: flex;
-      }
+
       .type,
-      .target,.currentTarget {
+      .target,
+      .currentTarget {
         width: 100px;
         display: inline-block;
       }
-      .target,.currentTarget {
+      .target,
+      .currentTarget {
         margin-left: 15px;
       }
     </style>
   </head>
   <body class="body">
-    <div class="container">
-      <div class="box1">box1: mousedown self-deletion</div>
-      <div class="box2">box2: mouseup self-deletion</div>
-    </div>
+    <div class="A">A</div>
 
     <ul class="log">
       <li>

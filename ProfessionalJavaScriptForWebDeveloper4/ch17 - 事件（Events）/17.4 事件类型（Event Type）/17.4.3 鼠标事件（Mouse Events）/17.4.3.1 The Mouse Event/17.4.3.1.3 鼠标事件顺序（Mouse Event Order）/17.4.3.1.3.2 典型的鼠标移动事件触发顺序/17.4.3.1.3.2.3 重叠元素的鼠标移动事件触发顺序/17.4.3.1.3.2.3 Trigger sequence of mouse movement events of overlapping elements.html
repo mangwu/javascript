@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>嵌套元素移入移出</title>
+    <style>
+      .A,
+      .B,
+      .C {
+        font-size: 22px;
+        height: 150px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .A {
+        width: 210px;
+        background-color: aliceblue;
+      }
+      .B {
+        background-color: aqua;
+        opacity: 0.68;
+        margin-top: -28px;
+        margin-left: 30px;
+        width: 180px;
+      }
+      .C {
+        background-color: beige;
+        opacity: 0.5;
+        margin-top: -28px;
+        margin-left: 30px;
+        width: 150x;
+      }
+
+      .type,
+      .target,
+      .currentTarget {
+        width: 100px;
+        display: inline-block;
+      }
+      .target,
+      .currentTarget {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="A">
+      A
+      <div class="B">
+        B
+        <div class="C">C</div>
+      </div>
+    </div>
+
+    <ul class="log">
+      <li>
+        <span class="type">类型</span>
+        <span class="target">事件目标</span>
+        <span class="currentTarget">当前事件目标</span>
+      </li>
+    </ul>
+    <script src="./17.4.3.1.3.2.3 Trigger sequence of mouse movement events of overlapping elements.js"></script>
+  </body>
+</html>

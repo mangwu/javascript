@@ -1,8 +1,8 @@
 /*
  * @Author: mangwu                                                             *
- * @File: 17.4.3.1.2.1 mousedown.js                                            *
- * @Date: 2023-03-02 17:16:24                                                  *
- * @LastModifiedDate: 2023-03-02 19:11:10                                      *
+ * @File: 17.4.3.1.2.2 mouseup.js                                              *
+ * @Date: 2023-03-02 20:40:56                                                  *
+ * @LastModifiedDate: 2023-03-02 22:56:50                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -30,12 +30,19 @@ function handler(e) {
   `;
   log.appendChild(li);
 }
-
 A.addEventListener("mousedown", (e) => {
   handler(e);
   e.preventDefault();
 });
 B.addEventListener("mousedown", (e) => {
+  handler(e);
+  e.preventDefault();
+});
+A.addEventListener("mouseup", (e) => {
+  handler(e);
+  e.preventDefault();
+});
+B.addEventListener("mouseup", (e) => {
   handler(e);
   e.preventDefault();
 });

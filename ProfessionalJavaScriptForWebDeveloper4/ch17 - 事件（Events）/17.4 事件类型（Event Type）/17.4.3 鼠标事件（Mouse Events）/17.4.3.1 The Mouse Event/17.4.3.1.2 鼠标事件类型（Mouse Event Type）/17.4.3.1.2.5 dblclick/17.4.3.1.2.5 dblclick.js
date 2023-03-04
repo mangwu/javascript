@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.1.2.2 mouseup.js                                              *
  * @Date: 2023-03-02 20:40:56                                                  *
- * @LastModifiedDate: 2023-03-03 21:33:18                                      *
+ * @LastModifiedDate: 2023-03-04 03:03:52                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -15,7 +15,6 @@
 const log = document.querySelector("ul");
 
 const A = document.querySelector(".A");
-const B = document.querySelector(".B");
 
 function handler(e) {
   const li = document.createElement("li");
@@ -31,19 +30,10 @@ function handler(e) {
   `;
   log.appendChild(li);
 }
-A.addEventListener("mousedown", (e) => {
+A.addEventListener("click", (e) => {
   handler(e);
-  e.preventDefault();
 });
-B.addEventListener("mousedown", (e) => {
+A.addEventListener("dblclick", (e) => {
   handler(e);
-  e.preventDefault();
 });
-A.addEventListener("mouseup", (e) => {
-  handler(e);
-  e.preventDefault();
-});
-B.addEventListener("mouseup", (e) => {
-  handler(e);
-  e.preventDefault();
-});
+

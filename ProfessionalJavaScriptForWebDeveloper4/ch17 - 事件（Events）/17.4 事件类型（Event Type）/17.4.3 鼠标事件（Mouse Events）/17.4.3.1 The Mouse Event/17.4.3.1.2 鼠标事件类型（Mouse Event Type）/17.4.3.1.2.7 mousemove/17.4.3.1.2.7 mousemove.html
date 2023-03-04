@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鼠标移动事件</title>
+    <style>
+      .A {
+        padding: 2px;
+        background-color: aqua;
+        border-radius: 3px;
+        width: 100px;
+        height: 100px;
+        font-size: 22px;
+        text-align: center;
+        cursor: pointer;
+        /* user-select: none; */
+      }
+
+      .type,
+      .target,
+      .currentTarget {
+        width: 100px;
+        display: inline-block;
+      }
+      .base {
+        width: 70px;
+        display: inline-block;
+      }
+      .target,
+      .base,
+      .currentTarget {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body class="body">
+    <ul class="log">
+      <li class="log-li">
+        <span class="type">类型</span>
+        <span class="target">事件目标</span>
+        <span class="currentTarget">当前事件目标</span>
+        <span class="base">detail</span>
+        <span class="base">screenX/Y</span>
+        <span class="base">clientX/Y</span>
+        <span class="base">ctrlKey</span>
+        <span class="base">button</span>
+        <span class="base">buttons</span>
+      </li>
+    </ul>
+    <script src="./17.4.3.1.2.7 mousemove.js"></script>
+  </body>
+</html>

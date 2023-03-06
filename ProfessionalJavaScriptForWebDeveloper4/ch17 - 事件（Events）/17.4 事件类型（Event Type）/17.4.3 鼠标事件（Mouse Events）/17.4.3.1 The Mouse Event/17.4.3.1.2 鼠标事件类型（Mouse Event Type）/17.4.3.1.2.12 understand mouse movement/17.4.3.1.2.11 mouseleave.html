@@ -4,25 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mouseout事件</title>
+    <title>mouseleave事件</title>
     <style>
       .A,
-      .B {
-        padding: 2px;
-        background-color: aqua;
-        border-radius: 3px;
-        width: 100px;
-        height: 100px;
+      .B,
+      .C {
         font-size: 22px;
-        text-align: center;
         cursor: pointer;
         user-select: none;
       }
+      .A {
+        padding: 2px;
+        background-color: aqua;
+        width: 250px;
+        height: 150px;
+        display: flex;
+        position: relative;
+      }
+      .text {
+        display: inline-block;
+        position: absolute;
+      }
+      .B ,.C{
+        width: 100px;
+        height: 148px;
+      }
       .B {
-        width: 50px;
-        height: 70px;
-        margin: 0 auto;
-        background-color: bisque;
+        background-color: rgb(245, 186, 225);
+        margin-left: 22px;
+      }
+      .C {
+        background-color: rgb(130, 169, 228);
+      }
+      .D,.E {
+        width: 100px;
+        height: 100px;
+      }
+      .D {
+        background-color: sandybrown;
+      }
+      .E {
+        background-color: rgb(96, 244, 172);
+
       }
 
       .type,
@@ -44,8 +67,15 @@
   </head>
   <body class="body">
     <div class="A">
-      A
-      <div class="B">B</div>
+      <span class="text">A</span>
+      <div class="B">
+        <span>B</span>
+        <div class="D"><span>D</span></div>
+      </div>
+      <div class="C">
+        <span>C</span>
+        <div class="E"><span>E</span></div>
+      </div>
     </div>
     <ul class="log">
       <li class="log-li">
@@ -61,6 +91,6 @@
         <span class="base">relatedTarget</span>
       </li>
     </ul>
-    <script src="./17.4.3.1.2.9 mouseout.js"></script>
+    <script src="./17.4.3.1.2.11 mouseleave.js"></script>
   </body>
 </html>

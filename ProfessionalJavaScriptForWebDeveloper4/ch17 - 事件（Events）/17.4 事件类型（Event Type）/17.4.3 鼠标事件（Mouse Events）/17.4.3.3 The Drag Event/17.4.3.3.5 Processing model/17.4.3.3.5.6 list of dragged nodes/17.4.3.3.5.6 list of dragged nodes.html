@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>list of dragged nodes</title>
+    <style>
+      html {
+        all: unset;
+      }
+      div {
+        background-color: antiquewhite;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      If it is a selection that is being dragged, then the
+      <a href="https://html.spec.whatwg.org/#list-of-dragged-nodes"
+        >list of dragged nodes</a
+      >
+      contains, in
+      <a href="#concept-tree-order">tree order</a>
+      , every node that is partially or completely included in the selection
+      (including all their ancestors).
+    </p>
+    <div draggable="true">drag me</div>
+    <img
+      src="https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"
+      alt="iconfont"
+    />
+    <img src="./iconfont-logo.svg" alt="iconfont-当前" />
+    <ul class="log"></ul>
+  </body>
+  <script src="./17.4.3.3.5.6 list of dragged nodes.js"></script>
+</html>

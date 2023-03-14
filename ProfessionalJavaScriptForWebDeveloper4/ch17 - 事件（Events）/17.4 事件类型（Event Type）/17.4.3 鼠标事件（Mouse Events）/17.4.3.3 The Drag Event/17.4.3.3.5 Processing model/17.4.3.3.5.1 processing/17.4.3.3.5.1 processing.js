@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.3.5.1 processing.js                                           *
  * @Date: 2023-03-14 10:27:04                                                  *
- * @LastModifiedDate: 2023-03-14 11:22:38                                      *
+ * @LastModifiedDate: 2023-03-14 12:26:54                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -67,6 +67,10 @@ divs.forEach((v) => {
     handler(e);
   });
   v.addEventListener("dragenter", (e) => {
+    console.log(e.target.className);
+    if (e.target.className.indexOf("box5") !== -1) {
+      return;
+    }
     e.preventDefault();
     handler(e);
   });

@@ -29,7 +29,7 @@
       .target,
       .relatedTarget,
       .currentTarget {
-        width: 100px;
+        width: 110px;
         display: inline-block;
       }
       .base {
@@ -44,12 +44,13 @@
     </style>
   </head>
   <body>
-    <div class="box box1">
+    <div class="box box1" data-dropzone="true">
       <div class="item" draggable="true">drag me!</div>
     </div>
-    <div class="box box2"></div>
-    <div class="box box3"></div>
-    <div class="box box4"></div>
+    <div class="box box2" data-dropzone="true"></div>
+    <div class="box box3" data-dropzone="true"></div>
+    <div class="box box4" data-dropzone="true"></div>
+    <div class="box box5" data-dropzone="true"></div>
     <ul class="log">
       <li class="log-li">
         <span class="type">类型</span>
@@ -62,6 +63,8 @@
         <span class="base">button</span>
         <span class="base">buttons</span>
         <span class="relatedTarget">relatedTarget</span>
+        <span class="relatedTarget">effectAllowed</span>
+        <span class="relatedTarget">dropEffect</span>
       </li>
     </ul>
     <script src="./17.4.3.3.5.1 processing.js"></script>

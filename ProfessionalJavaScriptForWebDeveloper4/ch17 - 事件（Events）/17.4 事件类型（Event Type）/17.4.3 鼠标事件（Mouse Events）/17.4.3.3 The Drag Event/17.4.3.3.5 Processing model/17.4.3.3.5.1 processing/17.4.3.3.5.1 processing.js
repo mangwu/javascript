@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.3.5.1 processing.js                                           *
  * @Date: 2023-03-14 10:27:04                                                  *
- * @LastModifiedDate: 2023-03-14 20:52:52                                      *
+ * @LastModifiedDate: 2023-03-14 22:01:28                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -55,7 +55,6 @@ function handler(e) {
   <span class="relatedTarget">${
     e.dataTransfer && e.dataTransfer.dropEffect
   }</span>
-
   `;
   log.appendChild(li);
 }
@@ -82,6 +81,7 @@ divs.forEach((v, i) => {
   v.addEventListener("dragenter", (e) => {
     handler(e);
     // 对进入元素进行样式修改
+    e.preventDefault();
     if (e.target === v) {
       e.target.style.backgroundColor = "red";
     }
@@ -118,3 +118,10 @@ divs.forEach((v, i) => {
 item.addEventListener("pointercancel", (e) => {
   handler(e);
 });
+
+document.body.addEventListener("dragenter", (e) => {
+  handler(e);
+});
+
+const test = document.querySelector(".test");
+test.addEventListener("dragenter", handler);

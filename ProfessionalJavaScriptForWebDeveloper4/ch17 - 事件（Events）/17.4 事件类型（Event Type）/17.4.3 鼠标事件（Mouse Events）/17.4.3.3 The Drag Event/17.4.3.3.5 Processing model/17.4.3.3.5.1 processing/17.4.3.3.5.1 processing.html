@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>process</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 60px;
+        background-color: rgb(231, 116, 116);
+        position: relative;
+        border: 1px solid white;
+        border-radius: 3px;
+      }
+      .item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 5px;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        user-select: none;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+      .type,
+      .target,
+      .relatedTarget,
+      .currentTarget {
+        width: 100px;
+        display: inline-block;
+      }
+      .base {
+        width: 70px;
+        display: inline-block;
+      }
+      .target,
+      .base,
+      .currentTarget {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">
+      <div class="item" draggable="true">drag me!</div>
+    </div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <ul class="log">
+      <li class="log-li">
+        <span class="type">类型</span>
+        <span class="target">事件目标</span>
+        <span class="currentTarget">当前事件目标</span>
+        <span class="base">detail</span>
+        <span class="base">screenX/Y</span>
+        <span class="base">clientX/Y</span>
+        <span class="base">ctrlKey</span>
+        <span class="base">button</span>
+        <span class="base">buttons</span>
+        <span class="relatedTarget">relatedTarget</span>
+      </li>
+    </ul>
+    <script src="./17.4.3.3.5.1 processing.js"></script>
+  </body>
+</html>

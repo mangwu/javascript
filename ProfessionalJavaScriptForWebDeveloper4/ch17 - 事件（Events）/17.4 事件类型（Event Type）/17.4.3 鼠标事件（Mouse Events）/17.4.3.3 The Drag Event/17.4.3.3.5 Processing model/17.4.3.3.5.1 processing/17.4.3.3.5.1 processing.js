@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.3.5.1 processing.js                                           *
  * @Date: 2023-03-14 10:27:04                                                  *
- * @LastModifiedDate: 2023-03-14 22:01:28                                      *
+ * @LastModifiedDate: 2023-03-15 12:38:51                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -101,16 +101,16 @@ divs.forEach((v, i) => {
   v.addEventListener("drop", (e) => {
     handler(e);
     // prevent default action (open as link for some elements)
-    e.preventDefault();
+    // e.preventDefault();
     if (e.currentTarget.dataset.dropzone === "true") {
       const index = item.parentNode.removeChild(item);
       e.currentTarget.appendChild(item);
     }
   });
   v.addEventListener("dragend", (e) => {
+    handler(e);
     if (e.dataTransfer.dropEffect === "move") {
       e.currentTarget.style.backgroundColor = "rgb(231, 116, 116)";
-      handler(e);
       e.target.style.opacity = 1;
     }
   });
@@ -118,7 +118,7 @@ divs.forEach((v, i) => {
 item.addEventListener("pointercancel", (e) => {
   handler(e);
 });
-
+item.addEventListener("dragend", handler);
 document.body.addEventListener("dragenter", (e) => {
   handler(e);
 });

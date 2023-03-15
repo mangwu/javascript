@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- 部署时将开发模式的development.js换为生产模式的production.min.js-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!-- 加载JSXbabel包 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link
+      crossorigin="anonymous"
+      integrity="sha512-m0VqHoKIPbs7aFdij1PnUF46fatRWt0B4R1+jiOci57h0Ukw8JjBxeCyB3/g9Ka89Hs//2Orj1X9odiR9VRQiQ=="
+      href="https://lib.baomitu.com/antd/4.18.8/antd.compact.css"
+      rel="stylesheet"
+    />
+    <script
+      crossorigin="anonymous"
+      integrity="sha512-baA9YW6XWksadHWlyE+lOFleaHMxDpPV3PhfySgLMpOzbV81SKwfdIwAXGvl5bBUyF3mIUsxQ1vvrVgCyRh7hQ=="
+      src="https://lib.baomitu.com/antd/4.18.8/antd-with-locales.js"
+    ></script>
+    <script src="./02-SearchCpn.js" type="text/babel"></script>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+.my-select {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-top: 150px;
+  background-color: antiquewhite;
+}
+.options {
+  width: 180px;
+  background-color: #fff;
+  padding-top: 0px !important;
+  border-radius: 3px;
+}
+.ant-popover-inner-content {
+  padding: 4px 5px !important;
+}
+.ant-popover-arrow {
+  display: none !important;
+}
+.option-item {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.option-item > div {
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.option-item > div:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+.no-data {
+  min-height: 80px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

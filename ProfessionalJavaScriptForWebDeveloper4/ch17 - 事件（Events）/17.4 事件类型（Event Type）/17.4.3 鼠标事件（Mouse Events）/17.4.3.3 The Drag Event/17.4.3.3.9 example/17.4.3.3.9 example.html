@@ -5,9 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>例子</title>
+    <style>
+      h2 {
+        margin: 0 auto;
+        text-align: center;
+      }
+      body {
+        background-color: rgb(229, 226, 224);
+      }
+      .table {
+        width: 340px;
+        margin: 60px auto;
+        background-color: white;
+        padding: 15px 0;
+        min-height: 400px;
+      }
+      .row {
+        padding: 5px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 3px;
+      }
+      .row:hover {
+        background-color: aliceblue !important;
+        user-select: none;
+        cursor: pointer;
+      }
+      @keyframes dropUp {
+        100% {
+          transform: translateY(5px);
+        }
+      }
+
+      @keyframes dropDown {
+        100% {
+          transform: translateY(-5px);
+        }
+      }
+      .drop-up {
+        animation: dropUp 0.3s ease-in-out forwards;
+      }
+      .drop-down {
+        animation: dropDown 0.3s ease-in-out forwards;
+      }
+    </style>
   </head>
   <body>
-    <div class="table"></div>
+    <h2>基于HTML5的原生拖拽事件的拖拽列表</h2>
+    <div class="table dropzone"></div>
     <script src="./17.4.3.3.9 example.js"></script>
   </body>
 </html>

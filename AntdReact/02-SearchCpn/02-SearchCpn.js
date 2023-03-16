@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 02-SearchCpn.js                                                      *
  * @Date: 2023-03-15 14:24:30                                                  *
- * @LastModifiedDate: 2023-03-15 17:41:59                                      *
+ * @LastModifiedDate: 2023-03-16 10:10:53                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -11,7 +11,35 @@
  * Date   	            By 	    Comments                                       *
  * ---------------------	--------	----------------------------------------------- *
  */
+String.prototype.byteLength = function () {
+  var length = 0;
+  Array.from(this).map(function (char) {
+    if (char.charCodeAt(0) > 255) {
+      //字符编码大于255，说明是双字节字符
+      length += 2;
+    } else {
+      length++;
+    }
+  });
 
+  return length;
+};
+/**
+ * 获取文本px宽度
+ * @param font{String}: 字体样式
+ **/
+String.prototype.pxWidth = function (font) {
+  // re-use canvas object for better performance
+  var canvas =
+      String.prototype.pxWidth.canvas ||
+      (String.prototype.pxWidth.canvas = document.createElement("canvas")),
+    context = canvas.getContext("2d");
+
+  font && (context.font = font);
+  var metrics = context.measureText(this);
+
+  return metrics.width;
+};
 function X() {
   return (
     <span
@@ -47,8 +75,6 @@ const equalOptions = [
   { label: "!=", value: "!=" },
 ];
 function App() {
-  const textRef = useRef();
-
   const keysOptions = [
     { label: "author", value: "author" },
     { label: "label", value: "label" },
@@ -74,43 +100,63 @@ function App() {
   };
   const [valueOptions, setValueOptions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [searchWidth, setSearchWidth] = useState(6);
   const [value, setValue] = useState([]);
   const [options, setOptions] = useState([]);
   const [mode, setMode] = useState(0);
+  const inputRef = useRef(null);
   const handleInputSearchChange = (e) => {
     setSearchValue(e.target.value);
   };
   const handleInputKeyDown = (e) => {
     if (e.code === "Enter") {
-      console.log(value);
+      // 提交
       console.log(
         value.join(" ") + (searchValue ? "search=" + searchValue : "")
       );
+      document.querySelector(".result").lastElementChild.textContent =
+        value.join(" ") + (searchValue ? " search=" + searchValue : "");
+      inputRef.current.blur();
+    } else if (e.code === "Backspace") {
+      if (!searchValue && value.length > 0) {
+        e.preventDefault();
+        setMode(value.length - 1);
+        const newSearch = value.pop();
+        setSearchValue(newSearch);
+        setValue(value.slice());
+        inputRef.current.focus();
+      }
     }
   };
-  const handleInputChange = (value) => {
-    console.log(value);
-    setMode(value.length);
-    setOptions(equalOptions);
-    setValue(value);
-  };
+  useEffect(() => {
+    setSearchWidth(
+      Math.ceil(
+        searchValue.pxWidth(
+          "normal 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
+        ) + 4
+      )
+    );
+  }, [searchValue]);
+  useEffect(() => {
+    if (searchValue || value.length) {
+      inputRef.current.focus();
+    }
+  }, [searchValue, value]);
   const handleItemClick = (input) => {
-    setMode((value.length + 1) % 3);
+    setMode(value.length + 1);
     setValue((state) => [...state, input]);
     if (value.length % 3 === 0) {
       setValueOptions(data[input]);
     }
-    // setOptions(equalOptions);
-    // setMode()
     setSearchValue("");
+    inputRef.current.focus();
   };
-  // useEffect(() => {
-  //   const newOptions = options.filter((v) => )
-  // },[searchValue])
+
   useEffect(() => {
-    switch (mode) {
+    switch (mode % 3) {
       case 0:
-        setOptions(keysOptions);
+        const set = new Set(value);
+        setOptions(keysOptions.filter((v) => !set.has(v.value)));
         break;
       case 1:
         setOptions(equalOptions);
@@ -121,14 +167,14 @@ function App() {
         break;
     }
   }, [mode]);
-  useEffect(() => {
-    console.log(options);
-  }, [options]);
   const handleXClick = (index) => {
     value.splice(index - 2, 3);
     const newValue = value.slice();
-    console.log(newValue, index);
+    setMode(mode - 3);
     setValue(newValue);
+  };
+  const handleSelectSearchClick = () => {
+    inputRef.current.focus();
   };
   const content = () => {
     const filterArr = options.filter((v, i) => {
@@ -156,14 +202,15 @@ function App() {
       <Popover
         arrow={false}
         overlayClassName="options"
-        trigger={"focus"}
+        trigger={["focus"]}
         key={mode}
         content={content}
         placement="bottomLeft"
       >
         <div
           className="ant-select ant-select-lg ant-select-multiple ant-select-show-search"
-          style={{ width: "180px" }}
+          style={{ width: "300px" }}
+          onClick={handleSelectSearchClick}
         >
           <div className="ant-select-selector">
             <div className="ant-select-selection-overflow">
@@ -188,8 +235,12 @@ function App() {
               })}
 
               <div className="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix">
-                <div className="ant-select-selection-search">
+                <div
+                  className="ant-select-selection-search"
+                  style={{ width: searchWidth }}
+                >
                   <input
+                    ref={inputRef}
                     autoComplete="off"
                     type="search"
                     className="ant-select-selection-search-input"
@@ -205,7 +256,7 @@ function App() {
                     readOnly=""
                     unselectable="on"
                     onChange={handleInputSearchChange}
-                    onKeyPress={handleInputKeyDown}
+                    onKeyDown={handleInputKeyDown}
                   />
                   <span
                     className="ant-select-selection-search-mirror"

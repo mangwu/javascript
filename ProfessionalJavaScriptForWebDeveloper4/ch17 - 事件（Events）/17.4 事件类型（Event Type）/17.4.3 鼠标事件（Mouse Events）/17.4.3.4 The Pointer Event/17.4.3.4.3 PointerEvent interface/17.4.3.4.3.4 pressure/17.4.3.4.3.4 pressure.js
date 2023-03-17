@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.3.4 pressure.js                                             *
  * @Date: 2023-03-17 17:05:03                                                  *
- * @LastModifiedDate: 2023-03-17 17:08:07                                      *
+ * @LastModifiedDate: 2023-03-17 17:17:27                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -46,12 +46,18 @@ const columns = [
     title: "pressure",
     width: 46,
   },
+  {
+    dataIndex: "buttons",
+    key: "buttons",
+    title: "buttons",
+    width: 46,
+  },
 ];
 
 function App() {
   const [data, setData] = useState([]);
   const handlePointerClick = (e) => {
-    const { type, currentTarget, pointerId, pressure } = e;
+    const { type, currentTarget, pointerId, pressure, buttons } = e;
     setData((state) => [
       ...state,
       {
@@ -60,6 +66,7 @@ function App() {
         currentTarget: currentTarget.classList[0],
         pointerId,
         pressure,
+        buttons,
         date: new Date().getTime(),
       },
     ]);

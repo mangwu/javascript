@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.1.2.2 mouseup.js                                              *
  * @Date: 2023-03-02 20:40:56                                                  *
- * @LastModifiedDate: 2023-03-21 16:29:33                                      *
+ * @LastModifiedDate: 2023-03-21 16:27:05                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -15,6 +15,7 @@
 const log = document.querySelector("ul");
 
 function handler(e) {
+  console.log(e);
   const li = document.createElement("li");
   li.className = "log-li"
   li.innerHTML = `<span class="type">${e.type}</span>
@@ -42,6 +43,6 @@ function debounce(func, delay = 100) {
   };
 }
 const newHandler = debounce(handler);
-document.body.addEventListener("mousemove", newHandler);
-log.addEventListener("mousemove", newHandler);
+document.body.addEventListener("pointermove", newHandler);
+log.addEventListener("pointermove", newHandler);
 

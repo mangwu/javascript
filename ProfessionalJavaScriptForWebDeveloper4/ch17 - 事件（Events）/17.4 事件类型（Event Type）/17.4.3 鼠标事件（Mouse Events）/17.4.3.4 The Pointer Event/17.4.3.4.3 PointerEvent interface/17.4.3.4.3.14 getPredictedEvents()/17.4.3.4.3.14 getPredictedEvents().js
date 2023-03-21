@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.43.4.3.5 tangential pressure.js                                   *
  * @Date: 2023-03-19 19:30:12                                                  *
- * @LastModifiedDate: 2023-03-21 14:30:35                                      *
+ * @LastModifiedDate: 2023-03-21 14:44:36                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -64,29 +64,29 @@ function App() {
   };
   const handlePointerClickUp = (e) => {
     setIsPointerDown(false);
-    if (e.nativeEvent.getCoalescedEvents) {
-      const coalescedEvents = e.nativeEvent.getCoalescedEvents();
+    if (e.nativeEvent.getPredictedEvents) {
+      const predictedEvents = e.nativeEvent.getPredictedEvents();
       const newListData = [];
-      for (let i = 0; i < coalescedEvents.length; i++) {
-        const coalescedEvent = coalescedEvents[i];
+      for (let i = 0; i < predictedEvents.length; i++) {
+        const predictedEvent = predictedEvents[i];
         newListData.push({
           itemTitle: e.type,
           content:
             "Event " +
             i +
             " time: " +
-            coalescedEvent.timeStamp +
+            predictedEvent.timeStamp +
             ", position: (" +
-            coalescedEvent.clientX +
+            predictedEvent.clientX +
             ", " +
-            coalescedEvent.clientY +
+            predictedEvent.clientY +
             ")",
         });
       }
-      if (coalescedEvents.length === 0) {
+      if (predictedEvents.length === 0) {
         newListData.push({
-          itemTitle: "coalescedEvents",
-          content: `调用getCoalescedEvents()获取的数组为空数组`,
+          itemTitle: "predictedEvents",
+          content: `调用getPredictedEvents()获取的数组为空数组`,
         });
       }
       newListData.push({

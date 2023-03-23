@@ -1,0 +1,55 @@
+/*
+ * @Author: mangwu                                                             *
+ * @File: 17.4.3.4.4.1 pointerover.js                                          *
+ * @Date: 2023-03-23 22:06:57                                                  *
+ * @LastModifiedDate: 2023-03-23 23:46:43                                      *
+ * @ModifiedBy: mangwu                                                         *
+ * -----------------------                                                     *
+ * Copyright (c) 2023 mangwu                                                   *
+ * -----------------------                                                     *
+ * @HISTORY:                                                                   *
+ * Date   	            By 	    Comments                                       *
+ * ---------------------	--------	----------------------------------------------- *
+ */
+
+const log = document.querySelector(".log");
+
+function handler(e) {
+  const item = document.createElement("div");
+  item.className = "event-info";
+  item.innerHTML = `<span class="base">事件类型：${e.type}</span>
+  <span class="base">事件目标：${e.target.className}</span>
+  <span class="base">当前事件目标：${
+    e.currentTarget && e.currentTarget.className
+  }</span>
+  <span class="base">次要事件目标：${
+    e.relatedTarget && e.relatedTarget.className
+  }</span>
+  <span class="base">detail：${e.detail}</span>
+  <span class="base">屏幕位置：${e.screenX.toFixed(2)}/${e.screenY.toFixed(2)}</span>
+  <span class="base">客户端位置：${e.clientX.toFixed(2)}/${e.clientY.toFixed(2)}</span>
+  <span class="base">引发按键：${e.button}</span>
+  <span class="base">按键状态：${e.buttons}</span>
+  `;
+  if (e.type.indexOf("pointer") !== -1) {
+    item.innerHTML += `<span class="base">pointerId：${e.pointerId}</span>
+    <span class="base">主指针：${e.isPrimary}</span>
+    <span class="base">倾斜角度：${e.tiltX}/${e.tiltY}</span>
+    <span class="base">压力：${e.pressure}</span>
+    <span class="base">切向压力：${e.tangentialPressure}</span>
+    <span class="base">扭动度：${e.twist}</span>
+    <span class="base">俯仰角：${e.altitudeAngle}</span>
+    <span class="base">方位角：${e.azimuthAngle}</span>
+    `;
+  }
+  log.appendChild(item);
+}
+
+const a = document.querySelector(".A");
+
+a.addEventListener("pointerdown", handler);
+a.addEventListener("pointerover", handler);
+a.addEventListener("mousedown", handler);
+a.addEventListener("mouseover", handler);
+
+

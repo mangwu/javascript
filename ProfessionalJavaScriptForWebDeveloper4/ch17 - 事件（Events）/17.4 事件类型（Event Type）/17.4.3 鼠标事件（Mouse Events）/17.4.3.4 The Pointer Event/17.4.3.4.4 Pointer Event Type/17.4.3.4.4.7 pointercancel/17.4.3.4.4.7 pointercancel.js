@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.4.1 pointerover.js                                          *
  * @Date: 2023-03-23 22:06:57                                                  *
- * @LastModifiedDate: 2023-03-27 11:11:55                                      *
+ * @LastModifiedDate: 2023-03-27 17:29:43                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -82,29 +82,13 @@ function handler(e) {
 
 const a = document.querySelector(".A");
 
-function debounce(func, delay = 100) {
-  let timer = null;
-  return function (...args) {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, delay);
-  };
-}
-const debounceHander = debounce(handler);
-let pointerrawupdate = 0;
-let pointermove = 0;
-a.addEventListener("pointerrawupdate", (e) => {
-  handler(e);
-  pointerrawupdate++;
-});
+a.addEventListener("pointerover", handler);
+a.addEventListener("pointerenter", handler);
+a.addEventListener("pointerdown", handler);
+a.addEventListener("dragstart", handler);
 
-a.addEventListener("pointermove", (e) => {
-  handler(e);
-  pointermove++;
-});
+a.addEventListener("pointerrawupdate", handler);
+a.addEventListener("pointercancel", handler);
 
-setInterval(() => {
-  console.log(`pointerrawupdate:${pointerrawupdate}`);
-  console.log(`pointermove:${pointermove}`);
-}, 1000);
+
+

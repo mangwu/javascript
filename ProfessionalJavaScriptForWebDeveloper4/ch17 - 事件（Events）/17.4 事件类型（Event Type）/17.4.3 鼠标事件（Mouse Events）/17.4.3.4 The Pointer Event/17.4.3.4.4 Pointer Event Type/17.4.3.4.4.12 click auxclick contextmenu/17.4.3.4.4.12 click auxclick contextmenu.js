@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.4.1 pointerover.js                                          *
  * @Date: 2023-03-23 22:06:57                                                  *
- * @LastModifiedDate: 2023-03-28 17:53:50                                      *
+ * @LastModifiedDate: 2023-03-29 01:11:52                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -70,6 +70,7 @@ function handler(e) {
   if (e instanceof PointerEvent) {
     item.innerHTML += `<span class="base">pointerId：${e.pointerId}</span>
     <span class="base">主指针：${e.isPrimary}</span>
+    <span class="base">指针类型：${e.pointerType}</span>
     <span class="base">倾斜角度：${e.tiltX}/${e.tiltY}</span>
     <span class="base">压力：${e.pressure}</span>
     <span class="base">切向压力：${e.tangentialPressure}</span>

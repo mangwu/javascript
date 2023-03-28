@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.4.1 pointerover.js                                          *
  * @Date: 2023-03-23 22:06:57                                                  *
- * @LastModifiedDate: 2023-03-28 10:09:22                                      *
+ * @LastModifiedDate: 2023-03-28 16:40:52                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -80,10 +80,51 @@ function handler(e) {
   log.appendChild(item);
 }
 
+let capturePointerId = null;
+
 const a = document.querySelector(".A");
+const c = document.querySelector(".C");
 
-a.addEventListener("pointerout", handler);
-a.addEventListener("pointercancel", handler);
-a.addEventListener("pointerleave", handler);
+a.addEventListener("pointerdown", (e) => {
+  handler(e);
+  a.setPointerCapture(e.pointerId);
+  capturePointerId = e.pointerId;
+  a.addEventListener("gotpointercapture", handler);
+});
+a.addEventListener("lostpointercapture", (e) => {
+  if (e.pointerId === capturePointerId && !e.pointerIsDown) {
+    capturePointerId = null;
+  }
+  handler(e);
+});
+a.addEventListener("pointermove", (e) => {
+  if (e.pointerId === capturePointerId) {
+    let rect = c.getBoundingClientRect();
+    if (
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom
+    ) {
+      // 在element2内部移动，手动触发pointerenter事件
+      console.log("手动触发c元素的pointerenter事件");
+      let enterEvent = new PointerEvent("pointerenter", e);
+      c.dispatchEvent(enterEvent);
+    }
+  }
+});
 
-
+c.addEventListener("pointerenter", (e) => {
+  if (capturePointerId === e.pointerId) {
+    a.releasePointerCapture(capturePointerId);
+    c.setPointerCapture(capturePointerId);
+    handler(e);
+    c.addEventListener("gotpointercapture", handler);
+  }
+});
+c.addEventListener("lostpointercapture", (e) => {
+  if (e.pointerId === capturePointerId && !e.pointerIsDown) {
+    capturePointerId = null;
+  }
+  handler(e);
+});

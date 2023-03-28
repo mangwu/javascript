@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>click auxclick contextmenu</title>
+    <style>
+      .wrapper {
+        display: flex;
+        gap: 20px;
+      }
+      .A {
+        padding: 10px;
+        background-color: aqua;
+        border-radius: 3px;
+        width: fit-content;
+        height: 60px;
+        font-size: 22px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 5px;
+      }
+      .log {
+        margin-top: 16px;
+      }
+      .event-info {
+        border: 1px solid gainsboro;
+        border-radius: 5px;
+        padding: 16px 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .base {
+        display: inline-block;
+        background-color: rgb(198, 202, 205);
+        border-radius: 5px;
+        padding: 4px;
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="wrapper">
+      <div class="A">A：Click/AuxClick Me</div>
+    </div>
+    <div class="log"></div>
+    <script src="./17.4.3.4.4.12 click auxclick contextmenu.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.4.1 pointerover.js                                          *
  * @Date: 2023-03-23 22:06:57                                                  *
- * @LastModifiedDate: 2023-03-28 10:09:22                                      *
+ * @LastModifiedDate: 2023-03-28 17:53:50                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -25,6 +25,7 @@ TouchList.prototype.map = function (callback) {
 
 function handler(e) {
   const item = document.createElement("div");
+  console.log(e);
   item.className = "event-info";
   item.innerHTML = `<span class="base">事件类型：${e.type}</span>
     <span class="base">事件目标：${e.target.className}</span>
@@ -82,8 +83,9 @@ function handler(e) {
 
 const a = document.querySelector(".A");
 
-a.addEventListener("pointerout", handler);
-a.addEventListener("pointercancel", handler);
-a.addEventListener("pointerleave", handler);
+a.addEventListener("click", handler);
+a.addEventListener("auxclick", handler);
+a.addEventListener("pointerdown", handler);
 
-
+a.addEventListener("contextmenu", handler);
+document.documentElement.addEventListener("contextmenu", handler);

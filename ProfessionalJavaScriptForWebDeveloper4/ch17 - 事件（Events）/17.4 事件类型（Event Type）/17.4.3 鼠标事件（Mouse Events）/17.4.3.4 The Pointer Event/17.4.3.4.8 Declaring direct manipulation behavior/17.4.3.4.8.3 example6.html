@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>声明直接操作行为</title>
+    <style>
+      div {
+        touch-action: pan-x;
+        border: 1px solid gray;
+        border-radius: 4px;
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      This element receives pointer events when not panning in the horizontal
+      direction. 当不在水平方向平移时，此元素接收指针事件。
+    </div>
+  </body>
+</html>

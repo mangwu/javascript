@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>声明直接操作行为</title>
+  </head>
+  <body>
+    <div style="overflow: auto">
+      <div style="touch-action: none">
+        This element receives pointer events for all direct manipulation
+        interactions that otherwise lead to panning or zooming.
+      </div>
+      <div>
+        Direct manipulation interactions on this element MAY be consumed for
+        manipulating the parent.
+      </div>
+    </div>
+  </body>
+</html>

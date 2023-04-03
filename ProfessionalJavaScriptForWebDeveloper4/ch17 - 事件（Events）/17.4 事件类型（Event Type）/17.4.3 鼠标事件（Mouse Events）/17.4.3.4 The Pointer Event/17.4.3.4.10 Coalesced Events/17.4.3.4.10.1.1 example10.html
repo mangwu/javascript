@@ -12,16 +12,55 @@
         height: 500px;
         border: 1px solid black;
         box-sizing: border-box;
+        vertical-align: top;
       }
       body {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+      input[name="range"] {
+        width: 286px;
+      }
+      datalist {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* writing-mode: vertical-lr; */
+        width: 250px;
+      }
+      option {
+        min-width: 23px;
+      }
     </style>
   </head>
   <body>
-    <canvas id="drawSurface"></canvas>
+    <input type="color" name="color" id="" />
+    <br />
+    <input
+      type="range"
+      name="range"
+      id=""
+      min="1"
+      max="50"
+      value="1"
+      list="tickmarks"
+    />
+    <datalist id="tickmarks">
+      <option value="1" label="1">1</option>
+      <option value="5" label="5">5</option>
+      <option value="10" label="10">10</option>
+      <option value="15" label="15">15</option>
+      <option value="20" label="20">20</option>
+      <option value="25" label="25">25</option>
+      <option value="30" label="30">30</option>
+      <option value="35" label="35">35</option>
+      <option value="40" label="40">40</option>
+      <option value="45" label="45">45</option>
+      <option value="50" label="50">50</option>
+    </datalist>
+    <canvas id="drawSurface" width="500" height="500"></canvas>
+
     <script src="./17.4.3.4.10.1.1 example10.js"></script>
   </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兼容性鼠标事件——不支持悬停设备的事件触发</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .buttons {
+        height: 50px;
+        border-bottom: 1px solid gray;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .A,
+      .B {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: rgb(22, 26, 26);
+        color: aliceblue;
+        padding: 1px 10px;
+        border-radius: 10px;
+        height: 80%;
+        opacity: 0.9;
+        box-sizing: border-box;
+      }
+      .log {
+        display: flex;
+        align-items: center;
+        padding: 3px;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: rgb(186, 218, 218);
+        padding: 1px 10px;
+        border-radius: 10px;
+        height: 50px;
+        opacity: 0.9;
+        box-sizing: border-box;
+      }
+      .divider {
+        border-left: 1px solid gray;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttons">
+      <div class="A">A:click me</div>
+      <div class="B">B:pointerdown canceled</div>
+    </div>
+    <div class="log"></div>
+    <script src="./17.4.3.4.11.3 Mapping for devices that do not support hover.js"></script>
+  </body>
+</html>

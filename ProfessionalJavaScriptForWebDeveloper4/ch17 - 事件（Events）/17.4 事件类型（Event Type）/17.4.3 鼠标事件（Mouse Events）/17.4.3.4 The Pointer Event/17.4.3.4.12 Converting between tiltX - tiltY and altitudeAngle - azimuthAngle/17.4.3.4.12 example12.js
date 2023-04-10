@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.4.12 example12.js                                             *
  * @Date: 2023-04-10 17:36:40                                                  *
- * @LastModifiedDate: 2023-04-10 17:40:25                                      *
+ * @LastModifiedDate: 2023-04-10 21:39:16                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -14,7 +14,7 @@
 /* Converting between tiltX/tiltY and altitudeAngle/azimuthAngle */
 
 /**
- * @description 将弧度的俯仰角和高度角转换为度数的倾斜角 
+ * @description 将弧度的俯仰角和高度角转换为度数的倾斜角
  * @param {number} altitudeAngle 俯仰角
  * @param {number} azimuthAngle 高度角
  * @returns {{titlX, titlY}}
@@ -25,6 +25,7 @@ function spherical2tilt(altitudeAngle, azimuthAngle) {
   let tiltXrad = 0; // 保存X倾斜角弧度
   let tiltYrad = 0; // 保存Y倾斜角弧度
 
+  // 特殊情况讨论
   if (altitudeAngle == 0) {
     // the pen is in the X-Y plane
     if (azimuthAngle == 0 || azimuthAngle == 2 * Math.PI) {
@@ -71,9 +72,15 @@ function spherical2tilt(altitudeAngle, azimuthAngle) {
   return { tiltX: tiltXrad * radToDeg, tiltY: tiltYrad * radToDeg };
 }
 
+/**
+ * @description 将度数的倾斜角度转换为弧度的俯仰角和高度角
+ * @param {number} tiltX X轴倾斜角度
+ * @param {number} tiltY Y轴倾斜角度
+ * @returns {{altitudeAngle, azimuthAngle}}
+ */
 function tilt2spherical(tiltX, tiltY) {
-  const tiltXrad = (tiltX * Math.PI) / 180;
-  const tiltYrad = (tiltY * Math.PI) / 180;
+  const tiltXrad = (tiltX * Math.PI) / 180; // 获取弧度值
+  const tiltYrad = (tiltY * Math.PI) / 180; // 获取弧度值
 
   // calculate azimuth angle
   let azimuthAngle = 0;
@@ -123,3 +130,33 @@ function tilt2spherical(tiltX, tiltY) {
 
   return { altitudeAngle: altitudeAngle, azimuthAngle: azimuthAngle };
 }
+
+const div = document.querySelector(".click");
+const log = document.querySelector(".log");
+div.addEventListener("click", (e) => {
+  const { tiltX, tiltY, altitudeAngle, azimuthAngle } = e;
+  const { tiltX: tranTiltX, tiltY: tranTiltY } = spherical2tilt(
+    altitudeAngle,
+    azimuthAngle
+  );
+  const { altitudeAngle: tranAlitudeAngle, azimuthAngle: tranAzimuthAngle } =
+    tilt2spherical(tiltX, tiltY);
+  const newDiv = document.createElement("div");
+  newDiv.className = "item";
+  newDiv.innerHTML = `
+  <div class="tag">tiltX:${tiltX.toFixed(2)}</div>
+  <div class="tag">tiltY:${tiltY.toFixed(2)}</div>
+  <div class="tag">altitudeAngle:${altitudeAngle.toFixed(2)}</div>
+  <div class="tag">azimuthAngle:${azimuthAngle.toFixed(2)}</div>
+  `;
+  const newDiv2 = document.createElement("div");
+  newDiv2.className = "item";
+  newDiv2.innerHTML = `
+  <div class="tag">tiltX:${tranTiltX.toFixed(2)}</div>
+  <div class="tag">tiltY:${tranTiltY.toFixed(2)}</div>
+  <div class="tag">altitudeAngle:${tranAlitudeAngle.toFixed(2)}</div>
+  <div class="tag">azimuthAngle:${tranAzimuthAngle.toFixed(2)}</div>
+  `;
+  log.appendChild(newDiv);
+  log.appendChild(newDiv2);
+});

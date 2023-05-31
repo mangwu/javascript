@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 17.4.3.2.2 wheel.js                                                  *
  * @Date: 2023-03-10 15:49:10                                                  *
- * @LastModifiedDate: 2023-05-05 15:17:31                                      *
+ * @LastModifiedDate: 2023-05-06 11:19:56                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -21,6 +21,7 @@ function handler(e) {
 
   let innerHTML = `<span class="type">${e.type}</span>
   <span class="currentTarget">${e.currentTarget.className}</span>
+  <span class="base">${e.cancelable}</span>
   `;
   if (e.type === "wheel") {
     innerHTML += `<span class="target">${e.target.className}</span>
@@ -48,10 +49,14 @@ box1.addEventListener(
   { passive: true }
 );
 
-box2.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  handler(e);
-});
+box2.addEventListener(
+  "wheel",
+  (e) => {
+    e.preventDefault();
+    handler(e);
+  },
+  { passive: false } // 默认值，可以去掉
+);
 
 box3.addEventListener(
   "scroll",
@@ -59,6 +64,6 @@ box3.addEventListener(
     e.preventDefault();
     handler(e);
   },
-  { passive: false }
+  { passive: false } // 默认值，可以去掉
 );
-document.body.addEventListener("wheel", handler);
+// document.body.addEventListener("wheel", handler);

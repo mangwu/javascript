@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: main.js                                                              *
  * @Date: 2023-06-06 16:38:03                                                  *
- * @LastModifiedDate: 2023-06-07 10:24:42                                      *
+ * @LastModifiedDate: 2023-06-09 10:37:00                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -39,6 +39,12 @@ class FileTree {
   initial() {
     if (this.type === "folder") {
       const files = fs.readdirSync(this.path, "utf-8");
+      // 排序成创建日期
+      files.sort((a,b) => {
+        const statsA = fs.statSync(this.path + '/' + a);
+        const statsB = fs.statSync(this.path + '/' + b);
+        return statsA.birthtimeMs - statsB.birthtimeMs
+      })
       for (const file of files) {
         if (ignore.has(file)) return;
         const curPath = this.path + "/" + file;
@@ -110,8 +116,9 @@ function main() {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>文件结构</title>
+    <title>JavaScript学习笔记源码文档结构</title>
     <link rel="stylesheet" href="./style.css">
+		<link rel="shortcut icon" href="./images/结构.svg" type="image/x-icon">
     <link >
   </head>
   <body>

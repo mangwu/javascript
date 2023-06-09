@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: DOMActivate and Click.js                                             *
  * @Date: 2023-06-09 10:47:06                                                  *
- * @LastModifiedDate: 2023-06-09 11:21:25                                      *
+ * @LastModifiedDate: 2023-06-09 15:36:11                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -29,6 +29,10 @@ const handleEvent = (e) => {
   <div class="base target">${e.target.tagName}</div>`;
   log.appendChild(div);
 };
+
+a.addEventListener("keydown", (e) => {
+  handleEvent(e);
+});
 
 a.addEventListener("DOMActivate", (e) => {
   handleEvent(e);

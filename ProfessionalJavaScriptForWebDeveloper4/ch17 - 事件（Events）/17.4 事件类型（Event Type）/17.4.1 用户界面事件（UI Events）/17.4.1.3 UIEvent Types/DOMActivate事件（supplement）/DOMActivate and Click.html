@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOMActivate and Click</title>
+    <style>
+      .grid-layout {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 150px);
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      href="https://mangwu.github.io/uievents-cn/#event-type-DOMActivate"
+      target="_blank"
+      >UIEvents-DOMActivate</a
+    >
+    <input type="checkbox" name="m" id="">是否阻止click事件</input>
+    <div class="log">
+      <div class="columns grid-layout">
+        <div class="base type">类型</div>
+        <div class="base view">view</div>
+        <div class="base detail">detail</div>
+        <div class="base target">target.tagName</div>
+      </div>
+    </div>
+    <script src="./DOMActivate and Click.js"></script>
+  </body>
+</html>

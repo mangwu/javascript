@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.3.1 circle queue.js                                                *
  * @Date: 2022-11-02 17:09:30                                                  *
- * @LastModifiedDate: 2023-07-14 17:31:00                                      *
+ * @LastModifiedDate: 2023-07-17 10:29:06                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -38,7 +38,7 @@ var hotPotatoGame = function (names, k) {
 };
 
 const players = ["John", "Jack", "Camia", "Ingrid", "Carl"];
-console.log(hotPotatoGame(players, 1));
+// console.log(hotPotatoGame(players, 1));
 
 /**
  * @description 击鼓传花游戏计算胜利者
@@ -51,8 +51,8 @@ var hotPotatoGame = function (names, k) {
   k++;
   for (let i = 2; i <= n; i++) {
     ansIdx = (ansIdx + k) % i;
-    console.log(ansIdx);
   }
   return names[ansIdx];
 };
 console.log(hotPotatoGame(players, 1));
+

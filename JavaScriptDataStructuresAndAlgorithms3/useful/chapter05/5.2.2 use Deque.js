@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 5.2.2 use Deque.js                                                   *
  * @Date: 2022-11-02 16:34:33                                                  *
- * @LastModifiedDate: 2022-11-02 16:45:55                                      *
+ * @LastModifiedDate: 2023-07-17 10:29:29                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2022 mangwu                                                   *
@@ -30,3 +30,5 @@ console.log(deque.removeBack());
 console.log(deque.removeFront());
 console.log(deque.isEmpty());
 console.log(deque);
+
+

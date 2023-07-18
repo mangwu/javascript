@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.1.1 LinkedNodeList.js                                              *
  * @Date: 2023-07-17 14:51:44                                                  *
- * @LastModifiedDate: 2023-07-17 17:29:51                                      *
+ * @LastModifiedDate: 2023-07-18 17:27:12                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -78,13 +78,13 @@ class LinkedNodeList {
    */
   push(node) {
     node.next = null;
-    this.count++;
-    if (this.head) {
+    if (!this.head) {
       // 判断是否是首次添加节点
-      this.head = this.node;
+      this.head = node;
     } else {
       this.getNodeAt(this.count - 1).next = node;
     }
+    this.count++;
     return this;
   }
   /**
@@ -96,9 +96,12 @@ class LinkedNodeList {
   insert(node, pos) {
     if (pos === 0) {
       // 插入位置是否是首节点位置
+      this.count++;
       node.next = this.head;
       this.head = node;
+      return this;
     } else if (pos > 0 && pos <= this.count) {
+      this.count++;
       const preNode = this.getNodeAt(pos - 1);
       node.next = preNode.next;
       preNode.next = node;
@@ -148,7 +151,7 @@ class LinkedNodeList {
     let cur = this.head;
     let idx = 0;
     while (cur) {
-      if (this.defaultEquals(cur, ele)) return idx;
+      if (this.equalsFn(cur, ele)) return idx;
       cur = cur.next;
       idx++;
     }
@@ -160,12 +163,19 @@ class LinkedNodeList {
    * @returns {Node | undefined}
    */
   remove(ele) {
-    if (this.defaultEquals(ele, this.head)) {
-      // 移除的是首节点
-      return this.removeHead();
-    } else {
-      const idx = this.indexOf(ele);
-      return this.removeAt(idx);
+    const idx = this.indexOf(ele);
+    return this.removeAt(idx);
+  }
+  /**
+   * @description 清空链表
+   */
+  clear() {
+    let cur = this.head;
+    this.head = null;
+    while (cur) {
+      const temp = cur.next;
+      cur.next = null;
+      cur = temp;
     }
   }
   /**
@@ -175,4 +185,39 @@ class LinkedNodeList {
   isEmpty() {
     return this.count === 0;
   }
+  /**
+   * @description 链表长度
+   * @returns {number}
+   */
+  size() {
+    return this.count;
+  }
+  /**
+   * @description 链表的第一个节点
+   * @returns {Node}
+   */
+  getHead() {
+    return this.head;
+  }
+  /**
+   * @description 把LinkedNodeList 对象转换成一个字符串
+   * @returns {string}
+   */
+  toString() {
+    let res = ["LinkedNodeList {"];
+    let node = this.head;
+    while (node) {
+      res.push("Node {");
+      res.push(node.value);
+      res.push("}");
+      if (node.next) {
+        res.push("=>");
+      }
+      node = node.next;
+    }
+    res.push("}");
+    return res.join(" ");
+  }
 }
+
+module.exports = { LinkedNodeList, Node, defaultEquals };

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.3 CircularLinkedNodeList .js                                                              *
  * @Date: 2023-07-18 17:00:26                                                  *
- * @LastModifiedDate: 2023-07-18 17:34:06                                      *
+ * @LastModifiedDate: 2023-07-19 11:12:28                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -79,7 +79,7 @@ class CircularLinkedNodeList extends LinkedNodeList {
       // 移除位置是首节点位置
       return this.removeHead();
     } else if (this.count === 1) {
-      // 移除的位置是尾部节点位置
+      // 链表长度是1
       const res = this.head;
       this.head = null;
       this.count--;
@@ -93,6 +93,21 @@ class CircularLinkedNodeList extends LinkedNodeList {
       return node;
     }
     return undefined;
+  }
+  /**
+   * @description 返回一个元素的位置
+   * @param {any} ele 查找的元素，可能是节点，也可能是值，因为它要使用equalsFn进行比较
+   * @returns {number} pos
+   */
+  indexOf(ele) {
+    let cur = this.head;
+    let idx = 0;
+    while (cur && idx < this.size()) {
+      if (this.equalsFn(cur, ele)) return idx;
+      cur = cur.next;
+      idx++;
+    }
+    return -1;
   }
   /**
    * @description 移除一个元素
@@ -122,7 +137,7 @@ class CircularLinkedNodeList extends LinkedNodeList {
    * @returns {string}
    */
   toString() {
-    let res = ["LinkedNodeList {"];
+    let res = ["CircularLinkedNodeList {"];
     let node = this.head;
     while (node) {
       res.push("Node {");
@@ -140,3 +155,5 @@ class CircularLinkedNodeList extends LinkedNodeList {
     return res.join(" ");
   }
 }
+
+module.exports = { CircularLinkedNodeList };

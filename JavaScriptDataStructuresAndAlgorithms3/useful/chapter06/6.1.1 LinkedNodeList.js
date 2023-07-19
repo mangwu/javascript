@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.1.1 LinkedNodeList.js                                              *
  * @Date: 2023-07-17 14:51:44                                                  *
- * @LastModifiedDate: 2023-07-18 17:27:12                                      *
+ * @LastModifiedDate: 2023-07-19 14:49:12                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -150,7 +150,7 @@ class LinkedNodeList {
   indexOf(ele) {
     let cur = this.head;
     let idx = 0;
-    while (cur) {
+    while (cur && idx < this.size()) {
       if (this.equalsFn(cur, ele)) return idx;
       cur = cur.next;
       idx++;
@@ -204,7 +204,7 @@ class LinkedNodeList {
    * @returns {string}
    */
   toString() {
-    let res = ["LinkedNodeList {"];
+    let res = [`${this.constructor.name} {`];
     let node = this.head;
     while (node) {
       res.push("Node {");

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: Set.js                                                               *
  * @Date: 2023-07-19 16:40:28                                                  *
- * @LastModifiedDate: 2023-07-19 17:27:51                                      *
+ * @LastModifiedDate: 2023-07-21 14:47:38                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -36,6 +36,7 @@ class MySet {
   }
   clear() {
     this.items = {};
+    this.count = 0;
   }
   size() {
     return this.count;
@@ -43,8 +44,8 @@ class MySet {
   values() {
     return Object.values(this.items);
   }
-  [Symbol.iterator] () {
-    return this.values()[Symbol.iterator]()
+  [Symbol.iterator]() {
+    return this.values()[Symbol.iterator]();
   }
 }
 

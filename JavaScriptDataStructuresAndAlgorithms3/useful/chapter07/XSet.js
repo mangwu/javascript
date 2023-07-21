@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: XSet.js                                                              *
  * @Date: 2023-07-20 15:03:44                                                  *
- * @LastModifiedDate: 2023-07-20 17:16:28                                      *
+ * @LastModifiedDate: 2023-07-21 09:52:18                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -83,6 +83,22 @@ class XSet extends Set {
       }
     }
     return this;
+  }
+  /**
+   * @description 当前集合是否是传入集合的子集
+   * @param {XSet} xSet
+   * @returns {boolean}
+   */
+  isSubsetOf(xSet) {
+    return [...this].every((v) => xSet.has(v));
+  }
+  /**
+   * @description 传入的集合是否是当前集合的子集
+   * @param {XSet} xSet
+   * @returns {boolean}
+   */
+  hasSubsetOf(xSet) {
+    return [...xSet].every((v) => this.has(v));
   }
 }
 

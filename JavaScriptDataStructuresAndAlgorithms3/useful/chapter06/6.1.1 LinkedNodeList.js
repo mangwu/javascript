@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 6.1.1 LinkedNodeList.js                                              *
  * @Date: 2023-07-17 14:51:44                                                  *
- * @LastModifiedDate: 2023-07-19 14:49:12                                      *
+ * @LastModifiedDate: 2023-07-24 09:44:42                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *

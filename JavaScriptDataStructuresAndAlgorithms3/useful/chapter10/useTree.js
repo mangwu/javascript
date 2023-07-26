@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useTree.js                                                           *
  * @Date: 2023-07-25 10:49:02                                                  *
- * @LastModifiedDate: 2023-07-25 16:09:36                                      *
+ * @LastModifiedDate: 2023-07-26 14:59:45                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -34,8 +34,8 @@ bst.insert(15);
 //         ↘     ↙
 //          7  15
 // console.log(bst.toString());
-console.log(bst.root);
-console.log("-----inOrderTraverse-----");
-bst.inOrderTraverse((node) => console.log(node.value));
-console.log("-----preOrderTranverse-----");
-bst.preOrderTranverse((node) => console.log(node.value));
+console.log(bst.toString());
+// console.log("-----inOrderTraverse-----");
+// bst.inOrderTraverse((node) => console.log(node.value));
+// console.log("-----preOrderTranverse-----");
+// bst.preOrderTranverse((node) => console.log(node.value));

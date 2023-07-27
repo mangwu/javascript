@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.1 Tree.js                                                         *
  * @Date: 2023-07-25 09:27:31                                                  *
- * @LastModifiedDate: 2023-07-27 09:52:32                                      *
+ * @LastModifiedDate: 2023-07-27 11:24:19                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -79,192 +79,6 @@ class BinarySearchTree {
     }
     return false;
   }
-  // 一个toString例子
-  //      8
-  //    ↙   ↘
-  //   2     11
-  //  ↙ ↘      ↘
-  // 0   3      12
-  //      ↘       ↘
-  //       4       21
-  //        ↘     ↙
-  //         7  15
-  toString() {
-    if (!this.root) return "null tree";
-    const dfs = (node) => {
-      if (!node.left && !node.right) return node.value.toString();
-      const resStrArr = [node.value.toString()];
-      // 左箭头位置
-      let leftArrowIdx = 0;
-      // 右箭头位置
-      let rightArrowIdx = 0;
-      // 左结果字符串数组
-      let leftStrArr = [];
-      // 右结果字符串数组
-      let rightStrArr = [];
-      // 处理左节点
-      if (node.left) {
-        let leftArrow = "↙";
-        const left = dfs(node.left);
-        leftStrArr = left.split("\n");
-        const head = leftStrArr[0];
-        const n = head.length;
-        for (let i = 0; i < n; i++) {
-          if (head[i] === " ") continue;
-          else {
-            while (head[i] !== " " && i < n) i++;
-            leftArrowIdx = i;
-            leftArrow = " ".repeat(i) + leftArrow;
-            break;
-          }
-        }
-        if (n > leftArrow.length) leftArrow += " ".repeat(n - leftArrow.length);
-        else
-          leftStrArr.forEach(
-            (ele, i) => (leftStrArr[i] = ele + " ".repeat(leftArrow.length - n))
-          );
-        leftStrArr.unshift(leftArrow);
-      }
-      // 无右节点
-      if (!node.right) {
-        resStrArr.push(...leftStrArr);
-        resStrArr[0] = " ".repeat(leftArrowIdx + 1) + resStrArr[0];
-        const diff = resStrArr[0].length - resStrArr[1].length;
-        if (diff > 0) {
-          for (let i = 1; i < resStrArr.length; i++)
-            resStrArr[i] += " ".repeat(diff);
-        } else if (diff < 0) resStrArr[0] += " ".repeat(-diff);
-        return resStrArr.join("\n");
-      }
-      if (node.right) {
-        const right = dfs(node.right);
-        rightStrArr = right.split("\n");
-        const head = rightStrArr[0];
-        const n = head.length;
-        let rightArrow = "↘";
-        for (let i = 0; i < n; i++) {
-          if (head[i] === " ") continue;
-          else if (i === 0) {
-            // 特殊情况
-            rightArrow += " ".repeat(n);
-            rightStrArr.forEach((v, i) => (rightStrArr[i] = " " + v));
-          } else {
-            rightArrow = " ".repeat(i - 1) + rightArrow + " ".repeat(n - i);
-            rightArrowIdx = i - 1;
-          }
-        }
-        rightStrArr.unshift(rightArrow);
-        if (node.left) {
-          // 有左节点
-          const leftLen = leftStrArr[0].length;
-          const rightLen = rightStrArr[0].length;
-          const diff = leftStrArr.length - rightStrArr.length;
-          const commonLen = Math.max(leftStrArr.length, rightStrArr.length);
-          if (diff > 0)
-            rightStrArr.push(...new Array(diff).fill(" ".repeat(rightLen)));
-          else if (diff < 0)
-            leftStrArr.push(...new Array(-diff).fill(" ".repeat(leftLen)));
-          const spacing = rightArrowIdx + leftLen - leftArrowIdx - 1;
-          const minDistance = getArrDistance(leftStrArr, rightStrArr);
-          const diffspacing = resStrArr[0].length - spacing;
-          if (diffspacing > 0) {
-            // 间距太小，需要扩大
-            resStrArr[0] =
-              " ".repeat(leftArrowIdx + 1) +
-              resStrArr[0] +
-              " ".repeat(rightLen - rightArrowIdx);
-            for (let i = 0; i < commonLen; i++) {
-              resStrArr.push(
-                leftStrArr[i] + " ".repeat(diffspacing) + rightStrArr[i]
-              );
-            }
-            return resStrArr.join("\n");
-          } else if (diffspacing === 0) {
-            if (minDistance === 0) {
-              // 需要间距两格
-              resStrArr[0] =
-                " ".repeat(leftArrowIdx + 1) +
-                " " +
-                resStrArr[0] +
-                " " +
-                " ".repeat(rightLen - rightArrowIdx);
-              for (let i = 0; i < commonLen; i++) {
-                resStrArr.push(leftStrArr[i] + " ".repeat(2) + rightStrArr[i]);
-              }
-            } else {
-              // 直接拼接
-              resStrArr[0] =
-                " ".repeat(leftArrowIdx + 1) +
-                resStrArr[0] +
-                " ".repeat(rightLen - rightArrowIdx);
-              for (let i = 0; i < commonLen; i++) {
-                resStrArr.push(leftStrArr[i] + rightStrArr[i]);
-              }
-            }
-          } else {
-            if (minDistance === 0) {
-              // 需要间距两格
-              resStrArr[0] =
-                " ".repeat(leftArrowIdx + 1) +
-                " " +
-                resStrArr[0] +
-                " " +
-                " ".repeat(rightLen - rightArrowIdx);
-              for (let i = 0; i < commonLen; i++) {
-                resStrArr.push(leftStrArr[i] + " ".repeat(2) + rightStrArr[i]);
-              }
-            } else {
-              // 可以缩小，但是直接拼接
-              let leftAddLen = Math.floor(-diffspacing / 2);
-              let rightAddLen = Math.floor(-diffspacing / 2);
-              -diffspacing % 2 === 1 ? leftAddLen++ : null;
-              resStrArr[0] =
-                " ".repeat(leftArrowIdx + 1 + leftAddLen) +
-                resStrArr[0] +
-                " ".repeat(rightLen - rightArrowIdx + rightAddLen);
-              for (let i = 0; i < commonLen; i++) {
-                resStrArr.push(leftStrArr[i] + rightStrArr[i]);
-              }
-            }
-          }
-          return resStrArr.join("\n");
-        } else {
-          // 无左节点
-          const diff = resStrArr[0].length - rightArrowIdx;
-          resStrArr[0] += " ".repeat(n - rightArrowIdx);
-          if (diff > 0) {
-            rightArrowIdx += diff;
-            rightStrArr.forEach(
-              (v, i) => (rightStrArr[i] = " ".repeat(diff) + v)
-            );
-          } else if (diff < 0) resStrArr[0] = " ".repeat(-diff) + resStrArr[0];
-          resStrArr.push(...rightStrArr);
-          return resStrArr.join("\n");
-        }
-      }
-    };
-    const getArrDistance = (leftStrArr, rightStrArr) => {
-      const leftLen = leftStrArr[0].length;
-      const rightLen = rightStrArr[0].length;
-      const n = leftStrArr.length;
-      let res = leftLen + rightLen;
-      for (let i = 0; i < n; i++) {
-        const leftStr = leftStrArr[i];
-        const rightStr = rightStrArr[i];
-        let leftIdx = leftLen - 1;
-        while (leftIdx >= 0 && leftStr[leftIdx] === " ") {
-          leftIdx--;
-        }
-        let rightIdx = 0;
-        while (rightIdx < rightLen && rightStr[rightIdx] === " ") {
-          rightIdx++;
-        }
-        res = Math.min(res, rightIdx + leftLen - leftIdx - 1);
-      }
-      return res;
-    };
-    return dfs(this.root);
-  }
   inOrderTraverse(callback) {
     this.inOrderTraverseNode(this.root, callback);
   }
@@ -285,7 +99,17 @@ class BinarySearchTree {
       this.preOrderTranverseNode(node.right, callback);
     }
   }
-  toString2() {
+  // 一个toString例子
+  //       8
+  //     ↙   ↘
+  //    2     11
+  //   ↙ ↘      ↘
+  //  0   3      12
+  //       ↘       ↘
+  //        4       21
+  //         ↘     ↙
+  //          7  15
+  toString() {
     if (!this.root) return "null tree";
     const dfs = (node) => {
       if (!node.left && !node.right) return node.value.toString();
@@ -329,14 +153,16 @@ class BinarySearchTree {
         rightLen = head.length;
         // 获取首行节点值开始的位置
         rightArrowIdx = getFirstNonBlankIndex(head.join(""));
-        const rightArrowArr = new Array(leftLen).fill(" ");
+        const rightArrowArr = new Array(rightLen).fill(" ");
         if (rightArrowIdx === 0) {
           // 节点值在最前，需要增加宽度
-          leftStrArr.forEach((ele) => ele.unshift(" "));
-          leftLen++;
-          rightArrowArr.unshift(rightArrow);
-        } else rightArrowArr[rightArrowIdx] = rightArrow;
-        rightStrArr.unshift(rightArrow);
+          rightStrArr.forEach((ele) => ele.unshift(" "));
+          rightLen++;
+          rightArrowArr.unshift(" ");
+        } else rightArrowIdx--;
+        rightArrowArr[rightArrowIdx] = rightArrow;
+
+        rightStrArr.unshift(rightArrowArr);
       }
       // 只有左节点的情况
       if (node.left && !node.right) {
@@ -359,10 +185,10 @@ class BinarySearchTree {
       if (node.right && !node.left) {
         const firstRow = new Array(rightLen - rightArrowIdx).fill(" ");
         const firstLen = firstRow.unshift(...nodeValueStrArr);
-        const diffLen = firstLen - leftLen;
+        const diffLen = firstLen - rightLen;
         if (diffLen > 0) {
           // 首行很长，其它行需要增加宽度
-          leftStrArr.forEach((ele) =>
+          rightStrArr.forEach((ele) =>
             ele.unshift(...new Array(diffLen).fill(" "))
           );
         } else if (diffLen < 0) {
@@ -392,7 +218,7 @@ class BinarySearchTree {
         // 节点值占用宽度
         const nodeValueLen = nodeValueStrArr.length;
         // 箭头中间空白和节点值的差
-        const spacingDiff = spacing - nodeValueLen;
+        let spacingDiff = spacing - nodeValueLen;
         // 分情况考虑拼接情况
         if (minDistance <= 1) {
           // 不可去除空白，至少增加1 - minDistance个空白
@@ -407,6 +233,8 @@ class BinarySearchTree {
               leftStrArr,
               rightStrArr,
               nodeValueStrArr,
+              leftArrowIdx,
+              rightArrowIdx,
               addLen,
               nVAddLen
             );
@@ -416,6 +244,8 @@ class BinarySearchTree {
               leftStrArr,
               rightStrArr,
               nodeValueStrArr,
+              leftArrowIdx,
+              rightArrowIdx,
               -spacingDiff // 子树增加宽度，节点值增加宽度为0
             );
           }
@@ -427,6 +257,8 @@ class BinarySearchTree {
               leftStrArr,
               rightStrArr,
               nodeValueStrArr,
+              leftArrowIdx,
+              rightArrowIdx,
               -spacingDiff // 子树增加宽度，节点值增加宽度为0
             );
           } else {
@@ -441,6 +273,8 @@ class BinarySearchTree {
               leftStrArr,
               rightStrArr,
               nodeValueStrArr,
+              leftArrowIdx,
+              rightArrowIdx,
               removeLen,
               spacingDiff / 2
             );
@@ -479,7 +313,9 @@ class BinarySearchTree {
      * @description 拼接左右子树
      * @param {string[][]} leftStrArr 左子树字符串数组
      * @param {string[][]} rightStrArr 右子树字符串数组
-     * @param {string[]} nodeValueStrArr 节点值字符数组
+     * @param {string[]} nodeValueStrArr 节点值字符数组\
+     * @param {number} leftArrowIdx 左箭头位置
+     * @param {number} rightArrowIdx 右箭头位置
      * @param {number} addLen 子树拼接增加的空白长度
      * @param {number} nVAddLen 节点值额外增加的左右空白长度
      * @returns
@@ -488,9 +324,12 @@ class BinarySearchTree {
       leftStrArr,
       rightStrArr,
       nodeValueStrArr,
+      leftArrowIdx,
+      rightArrowIdx,
       addLen = 0,
       nVAddLen = 0
     ) => {
+      const rightLen = rightStrArr[0].length;
       nodeValueStrArr.unshift(
         // 左边空白
         ...new Array(leftArrowIdx + 1 + nVAddLen).fill(" ")
@@ -500,7 +339,7 @@ class BinarySearchTree {
         ...new Array(rightLen - rightArrowIdx + nVAddLen).fill(" ")
       );
       // 拼接leftStrArr和rightStrArr
-      leftStrArr.foreEach((v, i) => {
+      leftStrArr.forEach((v, i) => {
         v.push(...new Array(addLen).fill(" "));
         v.push(...rightStrArr[i]);
       });
@@ -512,6 +351,8 @@ class BinarySearchTree {
      * @param {string[][]} leftStrArr 左子树字符串数组
      * @param {string[][]} rightStrArr 右子树字符串数组
      * @param {string[]} nodeValueStrArr 节点值字符数组
+     * @param {number} leftArrowIdx 左箭头位置
+     * @param {number} rightArrowIdx 右箭头位置
      * @param {number} removeLen 子树拼接减少的空白长度
      * @param {number} nVAddLen 节点值额外增加的左右空白长度
      * @returns
@@ -520,27 +361,37 @@ class BinarySearchTree {
       leftStrArr,
       rightStrArr,
       nodeValueStrArr,
+      leftArrowIdx,
+      rightArrowIdx,
       removeLen = 0,
       nVAddLen = 0
     ) => {
-      while (removeLen) {
-        if (leftStrArr.every((v) => v[v.length - 1] === " ")) {
-          removeLen--;
-          leftStrArr.forEach((v) => v.pop());
+      const len = leftStrArr.length;
+      while (removeLen > 0) {
+        for (let i = 0; i < len; i++) {
+          const leftArr = leftStrArr[i];
+          const rightArr = rightStrArr[i];
+          if (leftArr[leftArr.length - 1] === " ") {
+            leftArr.pop();
+          } else {
+            rightArr.shift();
+            if (i === 0)
+              // 这里的rightArrowIdx会因为rightStrArr[0]的改变而发生改变
+              rightArrowIdx--;
+          }
         }
-        if (removeLen === 0) break;
-        if (rightStrArr.every((v) => v[0] === " ")) {
-          removeLen--;
-          rightStrArr.forEach((v) => v.shift());
-        }
+        removeLen--;
       }
-      return jointStrArrWithBlank(
+      const res = jointStrArrWithBlank(
         leftStrArr,
         rightStrArr,
         nodeValueStrArr,
+        leftArrowIdx,
+        rightArrowIdx,
         0,
         nVAddLen
       );
+      return res;
     };
     return dfs(this.root);
   }
@@ -548,266 +399,5 @@ class BinarySearchTree {
 
 module.exports = { BinarySearchTree };
 
-//     8
-//   2   11
-//  0 3    12
-//     4     21
-//      7  15
 
-function toString() {
-  if (!this.root) return "null tree";
-  const dfs = (node) => {
-    if (!node.left && !node.right) return node.value.toString();
-    const nodeValueStrArr = node.value.toString().split("");
-    // 左箭头位置
-    let leftArrowIdx = 0;
-    // 右箭头位置
-    let rightArrowIdx = 0;
-    // 左结果字符串数组
-    let leftStrArr = [];
-    // 右结果字符串数组
-    let rightStrArr = [];
-    // 左节点字符串长度
-    let leftLen = 0;
-    // 右节点字符串长度
-    let rightLen = 0;
-    // 处理左节点
-    if (node.left) {
-      const leftArrow = "↙";
-      const left = dfs(node.left);
-      leftStrArr = left.split("\n").map((v) => v.split(""));
-      const head = leftStrArr[0];
-      leftLen = head.length;
-      const leftArrowArr = new Array(leftLen).fill(" ");
-      // 获取首行节点值结束的位置
-      leftArrowIdx = getFirstNonBlankIndex(head.join(""), false) + 1;
-      leftArrowArr[leftArrowIdx] = leftArrow;
-      if (leftArrowIdx === leftLen) {
-        // 节点值在最后，需要增加宽度
-        leftStrArr.forEach((ele) => ele.push(" "));
-        leftLen++;
-      }
-      leftStrArr.unshift(leftArrowArr);
-    }
-    // 处理右节点
-    if (node.right) {
-      const rightArrow = "↘";
-      const right = dfs(node.right);
-      rightStrArr = right.split("\n").map((v) => v.split(""));
-      const head = rightStrArr[0];
-      rightLen = head.length;
-      // 获取首行节点值开始的位置
-      rightArrowIdx = getFirstNonBlankIndex(head.join(""));
-      const rightArrowArr = new Array(leftLen).fill(" ");
-      if (rightArrowIdx === 0) {
-        // 节点值在最前，需要增加宽度
-        leftStrArr.forEach((ele) => ele.unshift(" "));
-        leftLen++;
-        rightArrowArr.unshift(rightArrow);
-      } else rightArrowArr[rightArrowIdx] = rightArrow;
-      rightStrArr.unshift(rightArrow);
-    }
-    // 只有左节点的情况
-    if (node.left && !node.right) {
-      const firstRow = new Array(leftArrowIdx + 1).fill(" ");
-      const firstLen = firstRow.push(...nodeValueStrArr);
-      const diffLen = firstLen - leftLen;
-      if (diffLen > 0) {
-        // 首行很长，其它行需要增加宽度
-        leftStrArr.forEach((ele) => ele.push(...new Array(diffLen).fill(" ")));
-      } else if (diffLen < 0) {
-        // 首行比较短，需要自行增加宽度
-        firstRow.push(...new Array(-diffLen).fill(" "));
-      }
-      leftStrArr.unshift(firstRow);
-      return leftStrArr.map((v) => v.join("")).join("\n");
-    }
-    // 只有右节点的情况
-    if (node.right && !node.left) {
-      const firstRow = new Array(rightLen - rightArrowIdx).fill(" ");
-      const firstLen = firstRow.unshift(...nodeValueStrArr);
-      const diffLen = firstLen - leftLen;
-      if (diffLen > 0) {
-        // 首行很长，其它行需要增加宽度
-        leftStrArr.forEach((ele) =>
-          ele.unshift(...new Array(diffLen).fill(" "))
-        );
-      } else if (diffLen < 0) {
-        // 首行比较短，需要自行增加宽度
-        firstRow.unshift(...new Array(-diffLen).fill(" "));
-      }
-      rightStrArr.unshift(firstRow);
-      return rightStrArr.map((v) => v.join("")).join("\n");
-    }
-    // 二者都有
-    if (node.right && node.left) {
-      // 行数差异
-      const diff = leftStrArr.length - rightStrArr.length;
-      // 补充空白
-      if (diff > 0)
-        rightStrArr.push(
-          ...new Array(diff).fill(0).map(() => new Array(rightLen).fill(" "))
-        );
-      else if (diff < 0)
-        leftStrArr.push(
-          ...new Array(-diff).fill(0).map(() => new Array(leftLen).fill(" "))
-        );
-      // 左箭头和右箭头中间空白间距
-      const spacing = rightArrowIdx + leftLen - leftArrowIdx - 1;
-      // 左子树和右子树之间的最小空白距离
-      const minDistance = getArrDistance(leftStrArr, rightStrArr);
-      // 节点值占用宽度
-      const nodeValueLen = nodeValueStrArr.length;
-      // 箭头中间空白和节点值的差
-      const spacingDiff = spacing - nodeValueLen;
-      // 分情况考虑拼接情况
-      if (minDistance <= 1) {
-        // 不可去除空白，至少增加1 - minDistance个空白
-        if (spacingDiff >= 0) {
-          // 是否增加由1 - minDistance和 spaceingDiff % 2 决定
-          let addLen = 1 - minDistance;
-          spacingDiff += addLen;
-          spacingDiff % 2 === 1 ? addLen++ : null;
-          // 计算 nodeValueStrArr
-          const nVAddLen = Math.ceil(spacingDiff / 2);
-          return jointStrArrWithBlank(
-            leftStrArr,
-            rightStrArr,
-            nodeValueStrArr,
-            addLen,
-            nVAddLen
-          );
-        } else {
-          // spacingDiff小于0，一定要增加空白宽度
-          return jointStrArrWithBlank(
-            leftStrArr,
-            rightStrArr,
-            nodeValueStrArr,
-            -spacingDiff // 子树增加宽度，节点值增加宽度为0
-          );
-        }
-      } else {
-        // minDistance大于1，最多可以收缩minDistance - 1个空格
-        if (spacingDiff <= 0) {
-          // spacingDiff不大于0，一定不能收缩
-          return jointStrArrWithBlank(
-            leftStrArr,
-            rightStrArr,
-            nodeValueStrArr,
-            -spacingDiff // 子树增加宽度，节点值增加宽度为0
-          );
-        } else {
-          // spacingDiff大于0，可以收缩Math.min(spacingDiff, minDistance - 1)个
-          let removeLen = Math.min(spacingDiff, minDistance - 1);
-          spacingDiff -= removeLen;
-          if (spacingDiff % 2 === 1) {
-            removeLen--;
-            spacingDiff++;
-          }
-          return jointStrArrWithReduce(
-            leftStrArr,
-            rightStrArr,
-            nodeValueStrArr,
-            removeLen,
-            spacingDiff / 2
-          );
-        }
-      }
-    }
-  };
-  const getFirstNonBlankIndex = (str, flag = true) => {
-    // flag表示从头还是从尾部开始遍历
-    const strTrim = str.trim();
-    return flag
-      ? str.indexOf(strTrim[0])
-      : str.indexOf(strTrim[strTrim.length - 1]);
-  };
-  const getArrDistance = (leftStrArr, rightStrArr) => {
-    const leftLen = leftStrArr[0].length;
-    const rightLen = rightStrArr[0].length;
-    const n = leftStrArr.length;
-    let res = leftLen + rightLen;
-    for (let i = 0; i < n; i++) {
-      const leftStr = leftStrArr[i];
-      const rightStr = rightStrArr[i];
-      let leftIdx = leftLen - 1;
-      while (leftIdx >= 0 && leftStr[leftIdx] === " ") {
-        leftIdx--;
-      }
-      let rightIdx = 0;
-      while (rightIdx < rightLen && rightStr[rightIdx] === " ") {
-        rightIdx++;
-      }
-      res = Math.min(res, rightIdx + leftLen - leftIdx - 1);
-    }
-    return res;
-  };
-  /**
-   * @description 拼接左右子树
-   * @param {string[][]} leftStrArr 左子树字符串数组
-   * @param {string[][]} rightStrArr 右子树字符串数组
-   * @param {string[]} nodeValueStrArr 节点值字符数组
-   * @param {number} addLen 子树拼接增加的空白长度
-   * @param {number} nVAddLen 节点值额外增加的左右空白长度
-   * @returns
-   */
-  const jointStrArrWithBlank = (
-    leftStrArr,
-    rightStrArr,
-    nodeValueStrArr,
-    addLen = 0,
-    nVAddLen = 0
-  ) => {
-    nodeValueStrArr.unshift(
-      // 左边空白
-      ...new Array(leftArrowIdx + 1 + nVAddLen).fill(" ")
-    );
-    nodeValueStrArr.push(
-      // 右边空白
-      ...new Array(rightLen - rightArrowIdx + nVAddLen).fill(" ")
-    );
-    // 拼接leftStrArr和rightStrArr
-    leftStrArr.foreEach((v, i) => {
-      v.push(...new Array(addLen).fill(" "));
-      v.push(...rightStrArr[i]);
-    });
-    leftStrArr.unshift(nodeValueStrArr);
-    return leftStrArr.map((v) => v.join("")).join("\n");
-  };
-  /**
-   * @description 拼接左右子树
-   * @param {string[][]} leftStrArr 左子树字符串数组
-   * @param {string[][]} rightStrArr 右子树字符串数组
-   * @param {string[]} nodeValueStrArr 节点值字符数组
-   * @param {number} removeLen 子树拼接减少的空白长度
-   * @param {number} nVAddLen 节点值额外增加的左右空白长度
-   * @returns
-   */
-  const jointStrArrWithReduce = (
-    leftStrArr,
-    rightStrArr,
-    nodeValueStrArr,
-    removeLen = 0,
-    nVAddLen = 0
-  ) => {
-    while (removeLen) {
-      if (leftStrArr.every((v) => v[v.length - 1] === " ")) {
-        removeLen--;
-        leftStrArr.forEach((v) => v.pop());
-      }
-      if (removeLen === 0) break;
-      if (rightStrArr.every((v) => v[0] === " ")) {
-        removeLen--;
-        rightStrArr.forEach((v) => v.shift());
-      }
-    }
-    return jointStrArrWithBlank(
-      leftStrArr,
-      rightStrArr,
-      nodeValueStrArr,
-      0,
-      nVAddLen
-    );
-  };
-  return dfs(this.root);
-}
+

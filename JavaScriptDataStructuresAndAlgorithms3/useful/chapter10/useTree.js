@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useTree.js                                                           *
  * @Date: 2023-07-25 10:49:02                                                  *
- * @LastModifiedDate: 2023-07-27 09:50:59                                      *
+ * @LastModifiedDate: 2023-07-27 11:24:30                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -17,15 +17,16 @@ const bst = new BinarySearchTree();
 bst.insert(8);
 bst.insert(2);
 bst.insert(11);
-bst.insertIterative(3);
-bst.insertIterative(4);
-bst.insert(12);
-bst.insertIterative(7);
-bst.insert(0);
+bst.insertIterative(12);
 bst.insertIterative(21);
 bst.insert(15);
+bst.insertIterative(3);
+bst.insert(4);
+bst.insertIterative(7);
+bst.insertIterative(0);
+
 //       8
-//      ↙ ↘
+//     ↙   ↘
 //    2     11
 //   ↙ ↘      ↘
 //  0   3      12
@@ -33,15 +34,9 @@ bst.insert(15);
 //        4       21
 //         ↘     ↙
 //          7  15
-// console.log(bst.toString());
-// console.log(bst.toString());
-try {
-  console.log(bst.toString2());
-} catch (error) {
-  console.log(error.message);
-}
+console.log(bst.toString());
 
-// console.log("-----inOrderTraverse-----");
-// bst.inOrderTraverse((node) => console.log(node.value));
-// console.log("-----preOrderTranverse-----");
-// bst.preOrderTranverse((node) => console.log(node.value));
+console.log("-----inOrderTraverse-----");
+bst.inOrderTraverse((node) => console.log(node.value));
+console.log("-----preOrderTranverse-----");
+bst.preOrderTranverse((node) => console.log(node.value));

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.1 Tree.js                                                         *
  * @Date: 2023-07-25 09:27:31                                                  *
- * @LastModifiedDate: 2023-07-27 11:24:19                                      *
+ * @LastModifiedDate: 2023-07-27 17:13:10                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -97,6 +97,191 @@ class BinarySearchTree {
       callback(node);
       this.preOrderTranverseNode(node.left, callback);
       this.preOrderTranverseNode(node.right, callback);
+    }
+  }
+  postOrderTranverse(callback) {
+    this.postOrderTranverseNode(this.root, callback);
+  }
+  postOrderTranverseNode(node, callback) {
+    if (node) {
+      this.postOrderTranverseNode(node.left, callback);
+      this.postOrderTranverseNode(node.right, callback);
+      callback(node);
+    }
+  }
+  min() {
+    return this.minNode()?.value;
+  }
+  minNode() {
+    let cur = this.root;
+    while (cur && cur.left) {
+      cur = cur.left;
+    }
+    return cur;
+  }
+  // 更具有适用性的方法，在任意一个二叉搜索树的节点上寻找最小节点
+  minNode(node = this.root) {
+    let cur = node;
+    while (cur && cur.left) {
+      cur = cur.left;
+    }
+    return cur;
+  }
+  max() {
+    return this.maxNode()?.value;
+  }
+  maxNode() {
+    let cur = this.root;
+    while (cur && cur.right) {
+      cur = cur.right;
+    }
+    return cur;
+  }
+  // 更具有适用性的方法，在任意一个二叉搜索树的节点上寻找最大节点
+  maxNode(node = this.root) {
+    let cur = node;
+    while (cur && cur.right) {
+      cur = cur.right;
+    }
+    return cur;
+  }
+  search(value) {
+    return Boolean(this.searchNode(value));
+  }
+  // 复用遍历方法，全局搜索
+  searchNode(value) {
+    let res = undefined;
+    this.inOrderTraverse((node) => {
+      if (this.compareFn(node.value, value) === 0) res = node;
+    });
+    return res;
+  }
+  // 迭代搜索
+  searchNode(value) {
+    let res = undefined;
+    let cur = this.root;
+    while (cur) {
+      const comparisonRes = this.compareFn(cur.value, value);
+      if (comparisonRes === 0) {
+        res = cur;
+        break;
+      } else if (comparisonRes < 0) {
+        // cur.value小于value 在右边
+        cur = cur.right;
+      } else {
+        // cur.value大于value，在左边
+        cur = cur.left;
+      }
+    }
+    return res;
+  }
+  // 递归搜索
+  searchNode(value) {
+    const binarySearchNode = (node, value) => {
+      if (!node) return;
+      const comparisonRes = this.compareFn(node.value, value);
+      if (comparisonRes === 0) {
+        return node;
+      } else if (comparisonRes < 0) {
+        // cur.value小于value 在右边
+        return binarySearchNode(node.right, value);
+      } else {
+        // cur.value大于value，在左边
+        return binarySearchNode(node.left, value);
+      }
+    };
+    return binarySearchNode(this.root, value);
+  }
+  // 更具有适用性的方法，在任意一个二叉搜索树的节点上进行搜索
+  searchNode(value, node = this.root) {
+    let res = undefined;
+    let cur = node;
+    while (cur) {
+      const comparisonRes = this.compareFn(cur.value, value);
+      if (comparisonRes === 0) {
+        res = cur;
+        break;
+      } else if (comparisonRes < 0) {
+        // cur.value小于value 在右边
+        cur = cur.right;
+      } else {
+        // cur.value大于value，在左边
+        cur = cur.left;
+      }
+    }
+    return res;
+  }
+  remove(value, perfer = "left") {
+    if (!this.root) return;
+    if (this.compareFn(this.root.value, value) === 0) {
+      // 移除根节点
+      const res = this.root;
+      this.root = this.removeNode(this.root, perfer, "remove");
+      return res;
+    }
+    // 被移除的节点
+    let pre = null;
+    let cur = this.root;
+    while (cur) {
+      const comparisonRes = this.compareFn(cur.value, value);
+      if (comparisonRes === 0) {
+        // 找到移除的节点了
+        const res = cur;
+        if (pre.value > cur.value) {
+          // cur是pre的左节点
+          pre.left = this.removeNode(cur, perfer, "remove");
+        } else {
+          // cur是pre的右节点
+          pre.right = this.removeNode(cur, perfer, "remove");
+        }
+        return res;
+      } else if (comparisonRes < 0) {
+        // cur.value小于value 在右边
+        pre = cur;
+        cur = cur.right;
+      } else {
+        // cur.value大于value，在左边
+        pre = cur;
+        cur = cur.left;
+      }
+    }
+    return;
+  }
+  // 移除当前节点，当前节点子树构成的新子树使用perfer作为新的子树根节点
+  removeNode(node, perfer = "left") {
+    if (!node) return;
+    // 检查内部调用的额外参数
+    if (arguments[2] !== "remove") {
+      // 外部调用，传入的node可能不是本BTS的节点
+      const res = this.searchNode(node.value);
+      if (res === node) return this.remove(node.value, perfer);
+      return console.log("传入的节点非本BST的节点"); // node非本BTS的节点
+    }
+    if (!node.left && !node.right) return null;
+    else if (node.left && node.right) {
+      const res = node[perfer];
+      if (perfer === "left") {
+        // 默认左节点作为子树根节点
+        const maxNode = this.maxNode(res);
+        maxNode.right = node.right;
+      } else {
+        // 使用右节点作为子树根节点
+        const minNode = this.minNode(res);
+        minNode.left = node.left;
+      }
+      node.right = null;
+      node.left = null;
+      return res;
+    } else if (node.left) {
+      // 只有左节点
+      const res = node.left;
+      node.left = null;
+      return res;
+    } else {
+      // 只有右节点
+      const res = node.right;
+      node.right = null;
+      return res;
     }
   }
   // 一个toString例子
@@ -397,7 +582,4 @@ class BinarySearchTree {
   }
 }
 
-module.exports = { BinarySearchTree };
-
-
-
+module.exports = { BinarySearchTree, BinaryTreeNode };

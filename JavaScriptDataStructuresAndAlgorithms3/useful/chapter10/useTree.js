@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useTree.js                                                           *
  * @Date: 2023-07-25 10:49:02                                                  *
- * @LastModifiedDate: 2023-07-27 17:10:25                                      *
+ * @LastModifiedDate: 2023-07-28 10:25:23                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -81,6 +81,37 @@ console.log(
 console.log(bst.toString());
 console.log(
   "remove existent 2 root node, perfer right: ",
-  bst.removeNode(bst.searchNode(2),"right")
+  bst.removeNode(bst.searchNode(2), "right")
 );
 console.log(bst.toString());
+console.log("-----removeRecursive-----");
+const preNode3 = bst.searchNode(3);
+const preNode4 = bst.searchNode(4);
+console.log("remove existent 3 root node");
+bst.removeRecursive(3);
+console.log(bst.toString());
+const curNode4 = bst.searchNode(4);
+console.log("cur node 4 is pre node 4 ? ", preNode4 === curNode4);
+console.log("cur node 4 is pre node 3 ? ", preNode3 === curNode4);
+console.log();
+console.log("-----The problem of Normal Binary Search Tree:-------");
+const bst2 = new BinarySearchTree();
+bst2.insert(1);
+bst2.insert(2);
+bst2.insert(3);
+bst2.insert(4);
+bst2.insert(0);
+bst2.insert(5);
+bst2.insert(6);
+console.log("This show it's out of balance");
+console.log(bst2.toString());
+const bst3 = new BinarySearchTree();
+bst3.insert(3);
+bst3.insert(1);
+bst3.insert(5);
+bst3.insert(2);
+bst3.insert(0);
+bst3.insert(4);
+bst3.insert(6);
+console.log("better format:");
+console.log(bst3.toString());

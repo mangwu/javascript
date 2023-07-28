@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.1 Tree.js                                                         *
  * @Date: 2023-07-25 09:27:31                                                  *
- * @LastModifiedDate: 2023-07-27 17:13:10                                      *
+ * @LastModifiedDate: 2023-07-28 09:55:11                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -246,6 +246,33 @@ class BinarySearchTree {
       }
     }
     return;
+  }
+  removeRecursive(value) {
+    this.root = this.removeNodeRecursive(this.root, value);
+  }
+  removeNodeRecursive(node, value) {
+    if (!node) return null;
+    const camparisonRes = this.compareFn(node.value, value);
+    if (camparisonRes > 0) {
+      // node节点值大于value，移除的节点在node的左子树中
+      node.left = this.removeNodeRecursive(node.left, value);
+      return node;
+    } else if (camparisonRes < 0) {
+      // node节点值小于value，移除的节点在node的右子树中
+      node.right = this.removeNodeRecursive(node.right, value);
+    } else {
+      // 被移除的节点是node
+      // 第一种情况，是叶子节点
+      if (!node.left && !node.right) return null;
+      // 第二种情况，只有一个子节点
+      if (!node.left) return node.right;
+      else if (!node.right) return node.left;
+      // 第三种情况，两个子节点
+      const minNode = this.minNode(node.right);
+      node.value = minNode.value; // 将当前节点值赋值为右子树的最小节点，然后删除右子树最小节点
+      node.right = this.removeNodeRecursive(node.right, node.value);
+      return node;
+    }
   }
   // 移除当前节点，当前节点子树构成的新子树使用perfer作为新的子树根节点
   removeNode(node, perfer = "left") {

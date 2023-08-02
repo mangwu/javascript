@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.4 AVL.js                                                          *
  * @Date: 2023-07-28 11:18:36                                                  *
- * @LastModifiedDate: 2023-08-01 17:52:07                                      *
+ * @LastModifiedDate: 2023-08-02 11:09:34                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -186,5 +186,21 @@ class AVLTree extends BinarySearchTree {
     }
     return node;
   }
+  // 覆盖继承的remove和removenNode，不再支持perfer参数
+  remove(value, _perfer = "left") {
+    this.removeRecursive(value);
+  }
+  removeNode(node, _perfer = "left") {
+    console.log("请使用remove方法，不再支持直接删除node");
+  }
 }
 module.exports = { AVLTree };
+
+// left right
+
+// leftH - rightH = x
+
+// maxLeftH  minRightH
+
+// max(leftH, leftH - maxLeftH + rightH)
+// max(rightH, rightH - minRigthH + leftH)

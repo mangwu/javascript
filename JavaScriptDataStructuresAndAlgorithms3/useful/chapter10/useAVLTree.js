@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useAVLTree.js                                                        *
  * @Date: 2023-08-01 11:11:11                                                  *
- * @LastModifiedDate: 2023-08-01 17:51:58                                      *
+ * @LastModifiedDate: 2023-08-02 10:59:09                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -54,7 +54,7 @@ avl.insert(-20);
 console.log(avl.toString());
 avl.insertIterative(-39);
 console.log(avl.toString());
-console.log("----------------remove---------------");
+console.log("----------------removeRecursive---------------");
 avl.removeRecursive(-20);
 console.log(avl.toString());
 avl.removeRecursive(1);
@@ -74,4 +74,9 @@ console.log(avl.toString());
 avl.removeRecursive(18);
 console.log(avl.toString());
 avl.removeRecursive(28);
+console.log(avl.toString());
+console.log("----------------remove---------------");
+avl.remove(-11);
+console.log(avl.toString());
+avl.remove(-2);
 console.log(avl.toString());

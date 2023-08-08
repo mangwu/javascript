@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: 10.5 RedBlackTree.js                                                 *
  * @Date: 2023-08-02 17:28:30                                                  *
- * @LastModifiedDate: 2023-08-07 17:22:44                                      *
+ * @LastModifiedDate: 2023-08-08 10:37:23                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -98,8 +98,10 @@ class RedBlackTree extends BinarySearchTree {
             // 情况四
             // 左旋父节点形成情况5
             this.rotateL(parent);
+            node.setBlack();
+          } else {
+            parent.setBlack();
           }
-          node.setBlack();
           grandParent.setRed();
           // 情况5
           // 右旋祖父节点
@@ -122,8 +124,11 @@ class RedBlackTree extends BinarySearchTree {
             // 情况四（镜像）
             // 右旋父节点形成情况五
             this.rotateR(parent);
+            node.setBlack();
+          } else {
+            parent.setBlack();
           }
-          node.setBlack();
+          // node.setBlack();
           grandParent.setRed();
           // 情况五（镜像）
           // 左旋祖父节点
@@ -172,8 +177,36 @@ class RedBlackTree extends BinarySearchTree {
     node.parent = left;
     return left;
   }
-  toString() {
-    
+  toString(flag = false) {
+    const res = super.toString();
+    if (!flag) return res;
+    // 彩色树
+    const strArr = res.split("\n");
+    const n = strArr.length;
+    for (let i = 0; i < n; i += 2) {
+      let cur = "";
+      const str = strArr[i];
+      const m = str.length;
+      for (let i = 0; i < m; i++) {
+        if (str[i] === " ") {
+          cur += str[i];
+          continue;
+        }
+        let num = "";
+        while (i < m && str[i] !== " ") {
+          num += str[i];
+          i++;
+        }
+        i--;
+        num = parseInt(num);
+        const node = this.searchNode(num);
+        if (node && node.isRed()) num = `\x1b[31m${num}\x1b[0m`;
+        if (node && node.isBlack()) num = `\x1b[35m${num}\x1b[0m`;
+        cur += num;
+      }
+      strArr[i] = cur;
+    }
+    return strArr.join("\n");
   }
 }
 

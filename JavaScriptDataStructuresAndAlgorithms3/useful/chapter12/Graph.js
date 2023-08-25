@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: Graph.js                                                             *
  * @Date: 2023-08-22 16:26:43                                                  *
- * @LastModifiedDate: 2023-08-23 14:40:57                                      *
+ * @LastModifiedDate: 2023-08-25 16:34:17                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -73,7 +73,7 @@ F.children = [A, B, D];
 const adjacencyNodeList = new GraphLinkedNodeList();
 adjacencyNodeList.push(A).push(B).push(C).push(D).push(E).push(F);
 // console.log(adjacencyNodeList.toString());
-
+const { Queue } = require("../chapter05/5.1.1 Queue.js");
 class Graph {
   constructor(isDirected = false) {
     this.isDirected = isDirected;
@@ -116,5 +116,113 @@ class Graph {
     return res.join("\n");
   }
 }
+const COLORS = {
+  get WHITE() {
+    return 0;
+  },
+  get GREY() {
+    return 1;
+  },
+  get BLACK() {
+    return 2;
+  },
+};
+// 记录节点的访问情况
+const initializeColor = (vertices) => {
+  const colors = {};
+  for (const vertex of vertices) {
+    colors[vertex] = COLORS.WHITE;
+  }
+  return colors;
+};
 
-module.exports = { Graph };
+function breadthFirstSearch(graph, startVertex, callback) {
+  const queue = new Queue();
+  const colors = initializeColor(graph.getVertices());
+  queue.enqueue(startVertex);
+  colors[startVertex] = COLORS.GREY;
+  while (!queue.isEmpty()) {
+    const cur = queue.dequeue();
+    const neighbors = graph.getAdjList().get(cur);
+    for (const neighbor of neighbors) {
+      if (colors[neighbor] === COLORS.WHITE) {
+        colors[neighbor] = COLORS.GREY;
+        queue.enqueue(neighbor);
+      }
+    }
+    colors[cur] = COLORS.BLACK;
+    if (callback) callback(cur);
+  }
+}
+
+function simpleBreadthFirstSearch(graph, startVertex, callback) {
+  const queue = new Queue();
+  queue.enqueue(startVertex);
+  const visited = new Set();
+  visited.add(startVertex);
+  while (!queue.isEmpty()) {
+    const cur = queue.dequeue();
+    const neighbors = graph.getAdjList().get(cur);
+    for (const neighbor of neighbors) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.enqueue(neighbor);
+      }
+    }
+    if (callback) callback(cur);
+  }
+}
+
+function superSimpleBreadthFirstSearch(graph, startVertex, callback) {
+  let queue = [];
+  queue.push(startVertex);
+  const visited = new Set();
+  visited.add(startVertex);
+  while (queue.length) {
+    const next = [];
+    for (const cur of queue) {
+      const neighbors = graph.getAdjList().get(cur);
+      for (const neighbor of neighbors) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          next.push(neighbor);
+        }
+      }
+      if (callback) callback(cur);
+    }
+    queue = next;
+  }
+}
+
+function minDistanceFromStartV(graph, startVertex, callback = null) {
+  const queue = new Queue();
+  const colors = initializeColor(graph.getVertices());
+  const distance = {};
+  distance[startVertex] = 0;
+  queue.enqueue(startVertex);
+  colors[startVertex] = COLORS.GREY;
+  const prodecessors = {};
+  while (!queue.isEmpty()) {
+    const cur = queue.dequeue();
+    const neighbors = graph.getAdjList().get(cur);
+    for (const neighbor of neighbors) {
+      if (colors[neighbor] === COLORS.WHITE) {
+        queue.enqueue(neighbor);
+        prodecessors[neighbor] = cur;
+        colors[neighbor] = COLORS.GREY;
+        distance[neighbor] = distance[cur] + 1;
+      }
+    }
+    colors[cur] = COLORS.BLACK;
+    if (callback) callback(cur, distance, prodecessors);
+  }
+  return { distance, prodecessors };
+}
+
+module.exports = {
+  Graph,
+  breadthFirstSearch,
+  simpleBreadthFirstSearch,
+  superSimpleBreadthFirstSearch,
+  minDistanceFromStartV,
+};

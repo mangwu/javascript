@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useGraph.js                                                          *
  * @Date: 2023-08-23 14:41:05                                                  *
- * @LastModifiedDate: 2023-08-25 16:37:32                                      *
+ * @LastModifiedDate: 2023-08-28 11:03:58                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -18,6 +18,9 @@ const {
   simpleBreadthFirstSearch,
   superSimpleBreadthFirstSearch,
   minDistanceFromStartV,
+  depthFirstSearch,
+  depthFirstSearchWithStack,
+  DFS,
 } = require("./Graph.js");
 
 const graph = new Graph();
@@ -59,3 +62,11 @@ minDistanceFromStartV(graph, "C", (cur, distance, prodecessors) => {
   );
   console.log(`One of the shortest path is: ${res}`);
 });
+console.log("------depthFirstSearch-------");
+depthFirstSearch(graph, "A", (cur) => console.log(`Visited vertex: ${cur}`));
+console.log("------depthFirstSearchWithStack-------");
+depthFirstSearchWithStack(graph, "A", (cur) =>
+  console.log(`Visited vertex: ${cur}`)
+);
+console.log("------DFS-------");
+console.log(DFS(graph));

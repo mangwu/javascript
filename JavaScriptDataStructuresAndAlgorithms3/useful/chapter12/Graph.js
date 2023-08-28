@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: Graph.js                                                             *
  * @Date: 2023-08-22 16:26:43                                                  *
- * @LastModifiedDate: 2023-08-25 16:34:17                                      *
+ * @LastModifiedDate: 2023-08-28 11:09:17                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -201,28 +201,91 @@ function minDistanceFromStartV(graph, startVertex, callback = null) {
   distance[startVertex] = 0;
   queue.enqueue(startVertex);
   colors[startVertex] = COLORS.GREY;
-  const prodecessors = {};
+  const predecessors = {};
   while (!queue.isEmpty()) {
     const cur = queue.dequeue();
     const neighbors = graph.getAdjList().get(cur);
     for (const neighbor of neighbors) {
       if (colors[neighbor] === COLORS.WHITE) {
         queue.enqueue(neighbor);
-        prodecessors[neighbor] = cur;
+        predecessors[neighbor] = cur;
         colors[neighbor] = COLORS.GREY;
         distance[neighbor] = distance[cur] + 1;
       }
     }
     colors[cur] = COLORS.BLACK;
-    if (callback) callback(cur, distance, prodecessors);
+    if (callback) callback(cur, distance, predecessors);
   }
-  return { distance, prodecessors };
+  return { distance, predecessors };
 }
 
+function depthFirstSearch(graph, startVertex, callback = null) {
+  const vertices = graph.getVertices();
+  const colors = initializeColor(vertices);
+  const adjacencyList = graph.getAdjList();
+  const dfs = (vertex) => {
+    colors[vertex] = COLORS.GREY;
+    if (callback) callback(vertex);
+    const neighbors = adjacencyList.get(vertex);
+    for (const neighbor of neighbors) {
+      if (colors[neighbor] === COLORS.WHITE) dfs(neighbor);
+    }
+    colors[vertex] = COLORS.BLACK;
+  };
+  dfs(startVertex);
+}
+function depthFirstSearchWithStack(graph, startVertex, callback = null) {
+  const vertices = graph.getVertices();
+  const colors = initializeColor(vertices);
+  const adjacencyList = graph.getAdjList();
+  const stack = [startVertex];
+  colors[startVertex] = COLORS.GREY;
+  while (stack.length) {
+    const curVertex = stack.pop();
+    if (callback) callback(curVertex);
+    const neighbors = adjacencyList.get(curVertex);
+    for (const neighbor of neighbors) {
+      if (colors[neighbor] === COLORS.WHITE) {
+        stack.push(neighbor);
+        colors[neighbor] = COLORS.GREY;
+      }
+    }
+    colors[curVertex] = COLORS.BLACK;
+  }
+}
+function DFS(graph) {
+  const vertices = graph.getVertices();
+  const colors = initializeColor(vertices);
+  const adjacencyList = graph.getAdjList();
+  const discovery = {}; // 发现时间
+  const finished = {}; // 完成探索时间
+  const predecessors = {}; // 前溯顶点
+  let time = 0;
+  const dfsVisit = (vertex) => {
+    colors[vertex] = COLORS.GREY;
+    discovery[vertex] = ++time;
+    const neighbors = adjacencyList.get(vertex);
+    for (const neighbor of neighbors) {
+      if (colors[neighbor] === COLORS.WHITE) {
+        predecessors[neighbor] = vertex;
+        dfsVisit(neighbor);
+      }
+    }
+    colors[vertex] = COLORS.BLACK;
+    finished[vertex] = ++time;
+  };
+  for (const vertex of vertices) {
+    if (colors[vertex] == COLORS.WHITE) dfsVisit(vertex);
+  }
+  return { discovery, finished, predecessors };
+}
 module.exports = {
   Graph,
   breadthFirstSearch,
   simpleBreadthFirstSearch,
   superSimpleBreadthFirstSearch,
   minDistanceFromStartV,
+  depthFirstSearch,
+  depthFirstSearchWithStack,
+  DFS,
 };

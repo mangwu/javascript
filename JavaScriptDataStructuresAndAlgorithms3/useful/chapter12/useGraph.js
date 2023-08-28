@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useGraph.js                                                          *
  * @Date: 2023-08-23 14:41:05                                                  *
- * @LastModifiedDate: 2023-08-28 11:03:58                                      *
+ * @LastModifiedDate: 2023-08-28 15:00:51                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -70,3 +70,26 @@ depthFirstSearchWithStack(graph, "A", (cur) =>
 );
 console.log("------DFS-------");
 console.log(DFS(graph));
+console.log("--------DFS applies in DAG--------");
+const graph2 = new Graph(true);
+graph2.addVertex("A");
+graph2.addVertex("B");
+graph2.addVertex("C");
+graph2.addVertex("D");
+graph2.addVertex("E");
+graph2.addVertex("F");
+
+graph2.addEdge("A", "C");
+graph2.addEdge("A", "D");
+graph2.addEdge("B", "D");
+graph2.addEdge("B", "E");
+graph2.addEdge("C", "F");
+graph2.addEdge("F", "E");
+
+const res = DFS(graph2);
+console.log(graph2);
+console.log(res.finished);
+const fTimes = [...Object.entries(res.finished)]
+  .sort((a, b) => b[1] - a[1])
+  .map((v) => v[0]);
+console.log(fTimes.join(" - "));

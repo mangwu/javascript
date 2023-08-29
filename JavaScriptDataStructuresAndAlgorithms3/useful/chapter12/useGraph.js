@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: useGraph.js                                                          *
  * @Date: 2023-08-23 14:41:05                                                  *
- * @LastModifiedDate: 2023-08-28 15:00:51                                      *
+ * @LastModifiedDate: 2023-08-29 10:29:33                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -88,7 +88,7 @@ graph2.addEdge("F", "E");
 
 const res = DFS(graph2);
 console.log(graph2);
-console.log(res.finished);
+console.log(res);
 const fTimes = [...Object.entries(res.finished)]
   .sort((a, b) => b[1] - a[1])
   .map((v) => v[0]);

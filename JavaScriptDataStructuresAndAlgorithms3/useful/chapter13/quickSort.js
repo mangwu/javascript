@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: quickSort.js                                                         *
  * @Date: 2023-09-06 09:36:56                                                  *
- * @LastModifiedDate: 2023-09-06 11:20:53                                      *
+ * @LastModifiedDate: 2023-09-07 11:26:04                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -37,10 +37,10 @@ function partition(arr, left, right, compareFn) {
   let i = left;
   let j = right;
   while (i <= j) {
-    while (i <= right && compareFn(arr[i], privot) <= 0) {
+    while (compareFn(arr[i], privot) < 0) {
       i++;
     }
-    while (j >= left && compareFn(arr[j], privot) >= 0) {
+    while (compareFn(arr[j], privot) > 0) {
       j--;
     }
     if (i <= j) {
@@ -49,9 +49,10 @@ function partition(arr, left, right, compareFn) {
       j--;
     }
   }
+  console.log(arr, i, privot);  
   return i;
 }
 
 console.log(
-  quickSort([8, 9, 1, 12, 15, -5, 8, -85, 6, -7, -65, 2, 25, 85, 41, 23, 54])
+  quickSort([8, 9, 1, 12, 15, -5, 8, -85, 99, -7, -65, 2, 25, 85, 41, 23, 54])
 );

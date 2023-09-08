@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: quickSort.js                                                         *
  * @Date: 2023-09-06 09:36:56                                                  *
- * @LastModifiedDate: 2023-09-07 11:26:04                                      *
+ * @LastModifiedDate: 2023-09-08 10:13:57                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -33,7 +33,8 @@ function swap(arr, i, j) {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 }
 function partition(arr, left, right, compareFn) {
-  const privot = arr[Math.floor((right + left) / 2)]; // 主元的选择方式有多种
+  // 主元的选择方式有多种,可以取中间的，也可以取第一个，也可以每次取随机的
+  const privot = arr[Math.floor((right + left) / 2)];
   let i = left;
   let j = right;
   while (i <= j) {
@@ -49,8 +50,7 @@ function partition(arr, left, right, compareFn) {
       j--;
     }
   }
-  console.log(arr, i, privot);  
-  return i;
+  return i; // 返回第一个大于主元的索引
 }
 
 console.log(

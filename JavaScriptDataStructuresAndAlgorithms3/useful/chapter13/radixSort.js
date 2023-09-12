@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: raidxSort.js                                                         *
  * @Date: 2023-09-11 15:11:55                                                  *
- * @LastModifiedDate: 2023-09-11 15:45:35                                      *
+ * @LastModifiedDate: 2023-09-12 10:11:58                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -12,7 +12,7 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-function raidxSort(arr, radixBase = 10, compareFn = (a, b) => a - b) {
+function radixSort(arr, radixBase = 10, compareFn = (a, b) => a - b) {
   if (arr.length < 2) return arr;
   const minVal = Math.min.apply(null, arr);
   const maxVal = Math.max.apply(null, arr);
@@ -37,7 +37,7 @@ function countingSortForRadix(arr, radixBase, curDigit) {
   });
 }
 console.log(
-  raidxSort(
+  radixSort(
     [
       8, 4, 5, 0, 3, 6, 9, 11, 12, 3, 99, 85, 45, 62, 999, 87, 542, 3645, 412,
       365, 412, 368, 745, 66, 524, 4205, 5634, 2412, 3586, 100, 120, 33, 34, 92,

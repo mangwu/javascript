@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: backtracking-.js                                                     *
  * @Date: 2023-09-15 11:16:20                                                  *
- * @LastModifiedDate: 2023-09-15 16:16:26                                      *
+ * @LastModifiedDate: 2023-09-18 13:47:27                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -63,4 +63,4 @@ function isSafe(grid, x, y) {
   return false;
 }
 
-console.log(knightTour(6));
+console.log(knightTour(9));

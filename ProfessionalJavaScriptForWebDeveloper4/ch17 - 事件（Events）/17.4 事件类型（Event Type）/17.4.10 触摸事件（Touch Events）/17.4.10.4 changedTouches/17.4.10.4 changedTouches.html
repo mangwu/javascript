@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>changedTouches</title>
+  <style>
+    body {
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div id='touchable'>This element is touchable.</div>
+  <script>
+    document.getElementById('touchable').addEventListener('touchend', function (ev) {
+      /**
+       * 当三个触摸点在触摸平面上时的示例输出如下，
+       * 其中两个在 "可触摸" 元素上，
+       * 另一个点从 "可触摸的" 元素中的触摸表面抬起(移除):
+       *
+       * Touch points removed: 1
+       * Touch points left on element: 1
+       * Touch points left on document: 2
+       */
+
+      document.write('Touch points removed: ' + ev.changedTouches.length + "\n");
+      document.write('Touch points left on element: ' + ev.targetTouches.length + "\n");
+      document.write('Touch points left on document: ' + ev.touches.length + "\n");
+
+    }, false);
+  </script>
+</body>
+
+</html>

@@ -25,6 +25,7 @@ block.addEventListener("mouseout", () => {
 });
 
 block.addEventListener("click", (e) => {
+  if (e.isTrusted) return; // 只执行不可信的模拟事件
   clearInterval(timer);
   setTimeSpan("");
   e.target.setAttribute("style", `background-color: ${randomColor(155, 256)}`);

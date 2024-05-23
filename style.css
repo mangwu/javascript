@@ -1,5 +1,12 @@
 body {
   margin: 0;
+  box-sizing: border-box;
+}
+h2 {
+  height: 32px;
+  margin: 0;
+  padding: 20px 0;
+  padding-left: 16px;
 }
 .dir,
 .file {
@@ -9,14 +16,25 @@ body {
 
 .dir {
   border-left: 1px solid gray;
+  transition: all 2s ease-in-out;
 }
 
 .dir-name::before {
   content: url("./images/文件夹.svg");
   display: inline-block;
-  font-size: 16px;
-  vertical-align: middle;
+  font-size: 24px;
+  line-height: 24px;
+  /* vertical-align: middle; */
+  height: 24px;
   margin-right: 2px;
+}
+.dir-name,
+.file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  line-height: 24px;
 }
 .file::before {
   content: url("./images/文件.svg");

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: main.js                                                              *
  * @Date: 2023-06-06 16:38:03                                                  *
- * @LastModifiedDate: 2024-05-23 15:52:52                                      *
+ * @LastModifiedDate: 2024-05-24 17:24:13                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -125,6 +125,30 @@ function main() {
   <h2>JavaScript学习笔记源码文档结构</h2>\n`;
   HTML += initialAll();
   HTML += `
+  <button class="float-btn click-to-top" type="button">
+    <div class="float-btn-body">
+      <div class="float-btn-content">
+        <div class="float-btn-icon">
+          <span role="img" aria-label="vertical-align-top" class="anticon anticon-vertical-align-top">
+            <svg viewBox="64 64 896 896" focusable="false" data-icon="vertical-align-top" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M859.9 168H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zM518.3 355a8 8 0 00-12.6 0l-112 141.7a7.98 7.98 0 006.3 12.9h73.9V848c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V509.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 355z"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </button>
+  <button class="float-btn click-to-bottom" type="button">
+    <div class="float-btn-body">
+      <div class="float-btn-content">
+        <div class="float-btn-icon">
+          <span role="img" aria-label="vertical-align-top" class="anticon anticon-vertical-align-top">
+            <svg viewBox="64 64 896 896" focusable="false" data-icon="vertical-align-top" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M859.9 168H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zM518.3 355a8 8 0 00-12.6 0l-112 141.7a7.98 7.98 0 006.3 12.9h73.9V848c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V509.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 355z"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </button>
   </body>
 </html>`;
   tryCatch(writeIndexHtml, HTML);

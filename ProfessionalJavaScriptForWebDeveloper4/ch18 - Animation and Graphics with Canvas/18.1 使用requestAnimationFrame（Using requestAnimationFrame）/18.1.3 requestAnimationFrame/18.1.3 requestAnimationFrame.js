@@ -135,3 +135,4 @@ function animateTime() {
     date.getMilliseconds();
   requestAnimationFrame(animateTime);
 }
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cancelAnimationFrame</title>
+  <style>
+    body,
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    .wrapper-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 80px;
+    }
+
+    .timer {
+      background-color: rgb(70, 70, 70);
+      color: white;
+      width: 360px;
+      text-align: center;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      font-size: 32px;
+    }
+
+    button {
+      border-radius: 4px;
+      width: 90px;
+      background-color: rgb(80, 224, 58);
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(70, 195, 51);
+    }
+
+    .op {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 360px;
+    }
+
+    .record-list {
+      width: 360px;
+      margin-top: 20px;
+      background-color: antiquewhite;
+      border-radius: 8px;
+      max-height: 400px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper-block">
+    <div class="timer">00:00:00.000</div>
+    <div class="op">
+      <button class="start-pause-continue">start</button>
+      <button class="record">record</button>
+      <button class="terminate">terminate</button>
+    </div>
+    <ol class="record-list">
+
+    </ol>
+  </div>
+  <script src="./18.1.4 cancelAnimationFrame.js"></script>
+</body>
+
+</html>

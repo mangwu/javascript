@@ -121,3 +121,17 @@ function animateRotate(timeStamp) {
   rotate.style.transform = `rotate(${value}deg)`;
   requestAnimationFrame(animateRotate);
 }
+const timeShow = document.querySelector(".time-show");
+const zeroTimeStamp = Date.now() - performance.now();
+requestAnimationFrame(animateTime);
+function animateTime() {
+  const curTimeStamp = zeroTimeStamp + performance.now();
+  const date = new Date(curTimeStamp);
+  timeShow.textContent =
+    date.toLocaleDateString() +
+    " " +
+    date.toLocaleTimeString() +
+    " " +
+    date.getMilliseconds();
+  requestAnimationFrame(animateTime);
+}

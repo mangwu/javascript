@@ -154,3 +154,22 @@ h2 {
 .click-to-bottom .anticon-vertical-align-top svg {
   transform: rotate(180deg);
 }
+
+/* * {
+  box-sizing: border-box;
+} */
+
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(199, 209, 245);
+}
+
+::-webkit-scrollbar-thumb {
+  height: 60px;
+  background-color: rgb(45, 150, 248);
+  border-radius: 4px;
+}

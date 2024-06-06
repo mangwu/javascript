@@ -6,10 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>通过requestAnimationFrame节流</title>
   <style>
+    body {
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-around;
+    }
+
     .scroll-wrapper {
       height: 300px;
       width: 200px;
-      background-color: rgb(240, 240, 240);
+      border: 1px solid rgb(224, 224, 224);
+
       overflow-y: auto;
     }
 
@@ -36,14 +46,118 @@
       height: 500px;
       width: 100%;
     }
+
+    .scroll-throttling {
+      display: flex;
+    }
+
+    .scroll-throttling-wrapper {
+      height: 600px;
+      border: 1px solid rgb(224, 224, 224);
+      border-radius: 4px;
+      width: 800px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .section1-content {
+      height: 300px;
+    }
+
+    .section2-content {
+      height: 600px;
+    }
+
+    .section3-content {
+      height: 200px;
+    }
+
+    .section4-content {
+      height: 800px;
+    }
+
+    .section5-content {
+      height: 400px;
+    }
+
+    .sroll-footer {
+      background-color: rgb(224, 224, 224);
+      height: 240px;
+      text-align: center;
+      line-height: 240px;
+      font-size: 24px;
+    }
+
+    .float-toc {
+      position: sticky;
+      width: 100px;
+      transform: translateY(180px);
+    }
+
+    .toc-part {
+      background-color: rgb(227, 226, 226);
+      border-left: 2px solid rgb(203, 203, 203);
+      padding: 12px;
+      height: 48px;
+      line-height: 24px;
+    }
+
+    .toc-part.selected {
+      background-color: rgb(161, 206, 247);
+      border-left: 2px solid rgb(13, 126, 232);
+      font-weight: 600;
+    }
+
+    h2 {
+      text-indent: 1em;
+      margin: 0;
+      height: 40px;
+      padding-top: 10px;
+    }
+    p {
+      margin: 0;
+    }
   </style>
 </head>
 
 <body>
-  <div>
+  <div class="wrapper">
     <div class="scroll-wrapper">
       <div class="scroll-block">
-
+      </div>
+    </div>
+    <div class="scroll-throttling">
+      <div class="scroll-throttling-wrapper">
+        <section class="section-wrapper">
+          <h2>section1</h2>
+          <p class="section1-content"></p>
+        </section>
+        <section class="section-wrapper">
+          <h2>section2</h2>
+          <p class="section2-content"></p>
+        </section>
+        <section class="section-wrapper">
+          <h2>section3</h2>
+          <p class="section3-content"></p>
+        </section>
+        <section class="section-wrapper">
+          <h2>section4</h2>
+          <p class="section4-content"></p>
+        </section>
+        <section class="section-wrapper">
+          <h2>section5</h2>
+          <p class="section5-content"></p>
+        </section>
+        <footer class="sroll-footer">
+          footer
+        </footer>
+      </div>
+      <div class="float-toc">
+        <div class="section1-toc toc-part selected">section1</div>
+        <div class="section2-toc toc-part">section2</div>
+        <div class="section3-toc toc-part">section3</div>
+        <div class="section4-toc toc-part">section4</div>
+        <div class="section5-toc toc-part">section5</div>
       </div>
     </div>
   </div>

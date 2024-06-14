@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基本画布功能</title>
+  <style>
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      
+    }
+
+    .canvas-contaner-wrapper {}
+
+    .canvas-content {}
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="canvas-contaner-wrapper">
+      <div class="tools">
+        <div class="tool">
+          <label for="canvas-pen-color">画笔颜色:</label>
+          <input type="color" name="canvas-pen-color" id="canvas-pen-color" value="#000000" />
+        </div>
+        <div class="tool">
+          <label for="canvas-pen-pixel">画笔粗细:</label>
+          <input type="number" min="1" name="canvas-pen-pixel" id="canvas-pen-color" value="#000000" />
+        </div>
+      </div>
+      <div class="canvas-contaner">
+        <canvas class="canvas-content" width="500" height="500"></canvas>
+      </div>
+    </div>
+    <div class="img-wrapper">
+      <img src="" alt="" />
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -6,23 +6,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>基本画布功能</title>
   <style>
-    .content-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      
+    * {
+      box-sizing: border-box;
     }
 
-    .canvas-contaner-wrapper {}
+    .content-wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
 
-    .canvas-content {}
+    .canvas-container-wrapper {
+      width: 516px;
+      border: 1px solid rgb(219, 219, 219);
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .canvas-content {
+      border: 1px solid rgb(99, 99, 99);
+      cursor: crosshair;
+    }
+
+    .tools {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      width: 400px;
+    }
+
+    .op-btn {
+      background-color: rgb(115, 148, 232);
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .op-btn:hover {
+      background-color: rgb(120, 144, 203);
+      cursor: pointer;
+    }
+
+    .img-wrapper {
+      width: 516px;
+      border: 1px solid rgb(219, 219, 219);
+      padding: 8px;
+      border-radius: 8px;
+      height: 616px;
+    }
+
+    img {
+      border: 1px solid rgb(99, 99, 99);
+    }
+
+    h2 {
+      margin: 0;
+      height: 92px;
+      padding-top: 26px;
+      padding-bottom: 34px;
+    }
   </style>
 </head>
 
 <body>
   <div class="content-wrapper">
-    <div class="canvas-contaner-wrapper">
+    <div class="canvas-container-wrapper">
       <div class="tools">
         <div class="tool">
           <label for="canvas-pen-color">画笔颜色:</label>
@@ -30,18 +83,25 @@
         </div>
         <div class="tool">
           <label for="canvas-pen-pixel">画笔粗细:</label>
-          <input type="number" min="1" name="canvas-pen-pixel" id="canvas-pen-color" value="#000000" />
+          <input type="number" min="1" name="canvas-pen-pixel" id="canvas-pen-pixel" value="1" />
+        </div>
+        <div class="tool">
+          <button class="op-btn record-graph">记录图像</button>
+        </div>
+        <div class="tool">
+          <button class="op-btn export-graph">导出图像</button>
         </div>
       </div>
-      <div class="canvas-contaner">
+      <div class="canvas-container">
         <canvas class="canvas-content" width="500" height="500"></canvas>
       </div>
     </div>
     <div class="img-wrapper">
+      <h2>记录的图像</h2>
       <img src="" alt="" />
     </div>
   </div>
-
+  <script src="./18.2 基本画布功能（Basic Canvas Usage）.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-07-01 17:23:05                                      *
+ * @LastModifiedDate: 2024-07-08 17:13:37                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -61,8 +61,31 @@ function stringToBinaryString(str) {
     .join("");
 }
 
-// test
-const originData1 = "ab";
-const originData2 = "这是一条测试数据";
-console.log(stringToBinaryString(originData1));
-console.log(stringToBinaryString(originData2));
+const base64 =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+function stringToBase64(str) {
+  const binaryStr = stringToBinaryString(str);
+  const n = binaryStr.length;
+  // 每24位(3个字节)转换为4个64位的进制
+  const res = [];
+  for (let i = 0; i < n / 24; i++) {
+    let start = i * 24;
+    let end = Math.min(start + 23, n - 1);
+    let curRes = "";
+    for (let j = 0; j < (end - start + 1) / 6; j++) {
+      let curStart = start + j * 6;
+      let curEnd = Math.min(curStart + 5, n - 1);
+      const idx = binaryStr.substring(curStart, curEnd + 1).padEnd(6, "0");
+      curRes += base64[parseInt(idx, 2)];
+    }
+    curRes = curRes.padEnd(4, "=");
+    res.push(curRes);
+  }
+  return res.join("");
+}
+console.log(stringToBase64(base64));
+console.log(btoa(base64));
+
+function base64ToBinaryString(base64Str) {
+}

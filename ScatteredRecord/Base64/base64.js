@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-07-08 17:13:37                                      *
+ * @LastModifiedDate: 2024-07-18 17:25:57                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -61,6 +61,24 @@ function stringToBinaryString(str) {
     .join("");
 }
 
+/**
+ *
+ * @param {string} binaryStr 只包含01的二进制字符串
+ * @returns {string}
+ */
+function binaryStringtoString(binaryStr) {
+  const decoder = new TextDecoder();
+  const bytesArr = [];
+  const n = binaryStr.length;
+  for (let i = 0; i < n; i += 8) {
+    bytesArr.push(parseInt(binaryStr.substring(i, i + 8).padEnd(8, "0"), 2));
+  }
+  return decoder.decode(new Uint8Array(bytesArr));
+}
+const testStr = "abc123+-*/";
+// console.log(stringToBinaryString(testStr));
+// console.log(binaryStringtoString(stringToBinaryString(testStr)));
+
 const base64 =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
@@ -84,8 +102,38 @@ function stringToBase64(str) {
   }
   return res.join("");
 }
-console.log(stringToBase64(base64));
-console.log(btoa(base64));
-
+// 𝌆你
 function base64ToBinaryString(base64Str) {
+  // 检查传入的base64字符是否合法
+  const len = base64Str.length;
+  const throwError = () => {
+    throw new Error("传入的base64字符不合法");
+  };
+  if (len % 4 !== 0) throwError();
+  const binaryArr = [];
+  for (let i = 0; i < len; i++) {
+    const idx = base64.indexOf(base64Str[i]);
+    if (base64Str[i] === "=") {
+      if (i >= len - 2) {
+        if (base64Str[len - 1] !== "=") throwError();
+      } else throwError();
+    } else if (idx === -1) throwError();
+    else {
+      binaryArr.push(idx.toString(2).padStart(6, 0));
+    }
+  }
+  return binaryStringtoString(binaryArr.join(""));
 }
+console.log(stringToBase64(testStr));
+console.log(btoa(testStr));
+const base64Str = stringToBase64(testStr);
+console.log("𝌆:", stringToBase64("𝌆"));
+console.log("8J2Mhg==:", base64ToBinaryString("8J2Mhg=="));
+console.log(atob("5L2g5aW9"));
+// 非ASCII字符编码的base64字符串想要转换成utf字符串需要经过TextDecoder的解码
+console.log(
+  new TextDecoder().decode(
+    Uint8Array.from(atob("5L2g5aW9"), (m) => m.codePointAt(0))
+  )
+);
+console.log(base64ToBinaryString("5L2g5aW9"));

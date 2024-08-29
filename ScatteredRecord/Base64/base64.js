@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-07-18 17:25:57                                      *
+ * @LastModifiedDate: 2024-08-29 17:17:47                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -12,7 +12,8 @@
  * ---------------------	--------	----------------------------------------------- *
  */
 
-// function
+const base64 =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 /**
  * @description 将base64编码的字符串数据转换为blob
@@ -49,11 +50,11 @@ function dataURLToBlob(dataURL) {
 }
 
 /**
- * @description 将字符串数据转换为字符串二进制数据，例如
+ * @description 将字符串数据转换为字符串二进制数据
  * @param {string} str
  * @returns {string}
  */
-function stringToBinaryString(str) {
+function rawStringToBinaryString(str) {
   const encoder = new TextEncoder();
   const bytes = encoder.encode(str);
   return Array.from(bytes)
@@ -62,11 +63,11 @@ function stringToBinaryString(str) {
 }
 
 /**
- *
+ * @description 将只包含01的二进制字符串通过TextDecoder解码成原始字符串
  * @param {string} binaryStr 只包含01的二进制字符串
  * @returns {string}
  */
-function binaryStringtoString(binaryStr) {
+function binaryStringToRawString(binaryStr) {
   const decoder = new TextDecoder();
   const bytesArr = [];
   const n = binaryStr.length;
@@ -75,15 +76,14 @@ function binaryStringtoString(binaryStr) {
   }
   return decoder.decode(new Uint8Array(bytesArr));
 }
-const testStr = "abc123+-*/";
-// console.log(stringToBinaryString(testStr));
-// console.log(binaryStringtoString(stringToBinaryString(testStr)));
 
-const base64 =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
+/**
+ * @description 将任意字符串数据编码为Base64字符串，包括atob方法不能处理的非ASCII字符串
+ * @param {string} str
+ * @returns {string}
+ */
 function stringToBase64(str) {
-  const binaryStr = stringToBinaryString(str);
+  const binaryStr = rawStringToBinaryString(str);
   const n = binaryStr.length;
   // 每24位(3个字节)转换为4个64位的进制
   const res = [];
@@ -102,8 +102,13 @@ function stringToBase64(str) {
   }
   return res.join("");
 }
-// 𝌆你
-function base64ToBinaryString(base64Str) {
+
+/**
+ * @description 将base64编码的字符串解码为原始字符串数据，包含不能处理的非ASCII数据
+ * @param {string} base64Str
+ * @returns {string}
+ */
+function base64ToString(base64Str) {
   // 检查传入的base64字符是否合法
   const len = base64Str.length;
   const throwError = () => {
@@ -122,18 +127,50 @@ function base64ToBinaryString(base64Str) {
       binaryArr.push(idx.toString(2).padStart(6, 0));
     }
   }
-  return binaryStringtoString(binaryArr.join(""));
+  return binaryStringToRawString(binaryArr.join(""));
 }
-console.log(stringToBase64(testStr));
-console.log(btoa(testStr));
-const base64Str = stringToBase64(testStr);
-console.log("𝌆:", stringToBase64("𝌆"));
-console.log("8J2Mhg==:", base64ToBinaryString("8J2Mhg=="));
-console.log(atob("5L2g5aW9"));
-// 非ASCII字符编码的base64字符串想要转换成utf字符串需要经过TextDecoder的解码
-console.log(
-  new TextDecoder().decode(
-    Uint8Array.from(atob("5L2g5aW9"), (m) => m.codePointAt(0))
-  )
-);
-console.log(base64ToBinaryString("5L2g5aW9"));
+
+function test() {
+  const testStr = "abc123+-*/";
+  console.log("------raw string interconvert binary string------");
+  console.log(
+    "Raw string: ",
+    binaryStringToRawString(rawStringToBinaryString(testStr))
+  );
+  console.log("Binary string: ", rawStringToBinaryString(testStr));
+  console.log("-------------------------------------------------");
+
+  console.log("------btoa and custom stringToBase64 func compare------");
+  console.log("testStr:", testStr);
+  console.log("stringToBase64:", stringToBase64(testStr));
+  console.log("btoa:", btoa(testStr));
+  console.log("-------------------------------------------------");
+  console.log(
+    "------btoa and custom stringToBase64 func compare with none-ascii string-----"
+  );
+  const noneAsciiTestStr = "你好";
+  console.log("testStr:", noneAsciiTestStr);
+  console.log("stringToBase64:", stringToBase64(noneAsciiTestStr));
+  console.log(
+    "btoa use TextEncoder:",
+    btoa(
+      Array.from(new TextEncoder().encode(noneAsciiTestStr), (v) =>
+        String.fromCodePoint(v)
+      ).join("")
+    )
+  );
+  console.log("-------------------------------------------------");
+  console.log("------atob and custom base64ToString func compare------");
+  // 非ASCII字符编码的base64字符串想要转换成utf字符串需要经过TextDecoder的解码
+  const base64IncNoneAscii = stringToBase64(noneAsciiTestStr);
+  console.log("testStr:", base64IncNoneAscii);
+  console.log("base64ToString:", base64ToString(base64IncNoneAscii));
+  console.log("atob:", atob(base64IncNoneAscii));
+  console.log(
+    "atob use TextDecoder:",
+    new TextDecoder().decode(
+      Uint8Array.from(atob(base64IncNoneAscii), (m) => m.codePointAt(0))
+    )
+  );
+}
+test();

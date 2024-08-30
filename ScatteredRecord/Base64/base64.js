@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-08-29 17:17:47                                      *
+ * @LastModifiedDate: 2024-08-30 16:54:11                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -130,6 +130,26 @@ function base64ToString(base64Str) {
   return binaryStringToRawString(binaryArr.join(""));
 }
 
+/**
+ * @description 字节流数组转换成base64编码的字符串
+ * @param {Uint8Array} bytes 字节流数组
+ * @returns {string}
+ */
+function bytesToBase64(bytes) {
+  const str = Array.from(bytes, (v) => String.fromCodePoint(v)).join("");
+  return btoa(str);
+}
+
+/**
+ * @description 将base64编码的字符串转换成字节流数组
+ * @param {string} base64 base64编码的字符串
+ * @returns {Uint8Array}
+ */
+function base64ToBytes(base64) {
+  const str = atob(base64);
+  return Uint8Array.from(str, (m) => m.codePointAt(0));
+}
+
 function test() {
   const testStr = "abc123+-*/";
   console.log("------raw string interconvert binary string------");
@@ -148,7 +168,7 @@ function test() {
   console.log(
     "------btoa and custom stringToBase64 func compare with none-ascii string-----"
   );
-  const noneAsciiTestStr = "你好";
+  const noneAsciiTestStr = "我爱你";
   console.log("testStr:", noneAsciiTestStr);
   console.log("stringToBase64:", stringToBase64(noneAsciiTestStr));
   console.log(
@@ -172,5 +192,27 @@ function test() {
       Uint8Array.from(atob(base64IncNoneAscii), (m) => m.codePointAt(0))
     )
   );
+  console.log("-------------------------------------------------");
+  console.log("------bytes interconvert base64 string------");
+  const uint8Arr = new TextEncoder().encode("你好");
+  console.log("test bytes:", uint8Arr);
+  console.log("bytesToBase64:", bytesToBase64(uint8Arr));
+  console.log("base64ToBytes:", base64ToBytes("5L2g5aW9"));
 }
 test();
+
+async function bytesToBase64DataUrl(bytes, type = "application/octet-stream") {
+  return await new Promise((resolve, reject) => {
+    const reader = Object.assign(new FileReader(), {
+      onload: () => resolve(reader.result),
+      onerror: () => reject(reader.error),
+    });
+    reader.readAsDataURL(new File([bytes]), "", { type });
+  });
+}
+
+async function dataUrlToBytes(dataUrl) {
+  const res = await fetch(dataUrl);
+  return new Uint8Array(await res.arrayBuffer());
+}
+

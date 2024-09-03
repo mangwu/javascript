@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-08-30 16:54:11                                      *
+ * @LastModifiedDate: 2024-09-03 17:07:10                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -21,7 +21,7 @@ const base64 =
  * @param {string} mimeType
  * @returns {Blob}
  */
-function base64ToBlob(base64, mimeType) {
+export function base64ToBlob(base64, mimeType) {
   // 将base64编码的字符串转换为二进制数据字符串
   const binaryString = atob(base64);
   const len = binaryString.length;
@@ -38,7 +38,7 @@ function base64ToBlob(base64, mimeType) {
  * @param {string} dataURL
  * @returns {Blob}
  */
-function dataURLToBlob(dataURL) {
+export function dataURLToBlob(dataURL) {
   const [preffix, base64] = dataURL.split(",");
   if (preffix.indexOf("base64") === -1)
     throw new Error("dataURL中的数据未经过base64编码");
@@ -199,7 +199,7 @@ function test() {
   console.log("bytesToBase64:", bytesToBase64(uint8Arr));
   console.log("base64ToBytes:", base64ToBytes("5L2g5aW9"));
 }
-test();
+// test();
 
 async function bytesToBase64DataUrl(bytes, type = "application/octet-stream") {
   return await new Promise((resolve, reject) => {
@@ -215,4 +215,3 @@ async function dataUrlToBytes(dataUrl) {
   const res = await fetch(dataUrl);
   return new Uint8Array(await res.arrayBuffer());
 }
-

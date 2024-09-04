@@ -6,17 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTMLCanavsElement.toDataURL()</title>
   <style>
-    #canvas1 {
-      border: 1px solid rgb(71, 18, 123);
+    button {
+      border: 1px solid #4096ff;
+      background-color: #4096ff;
+      color: white;
+      border-radius: 4px;
+      padding: 4px 8px;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      width: 140px;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btns {
+      display: inline-flex;
+      gap: 16px;
+      align-items: center;
+      margin-left: 28px;
+    }
+
+    .canvas-container {
+      display: inline-block;
+      position: relative;
+    }
+
+    .des {
+      width: 100px;
+      text-align: center;
+      position: absolute;
+      left: 0;
+      top: 108px;
     }
   </style>
 </head>
 
 <body>
-  <canvas width="100" height="100" id="canvas1"></canvas>
-  <button class="download-low-btn">下载低质量图片(0.1)</button>
-  <button class="download-mid-btn">下载中质量图片(0.5)</button>
-  <button class="download-high-btn">下载高质量图片(1.0)</button>
+  <div class="canvas-container">
+    <canvas width="100" height="100" id="canvas1"></canvas>
+    <div class="des">canvas</div>
+  </div>
+  <div class="btns">
+    <div class="box">
+      <img src="" alt="canvas-img-low" class="low-img">
+      <button class="download-low-btn">下载低质量图片(0.1)</button>
+    </div>
+    <div class="box">
+      <img src="" alt="canvas-img-mid" class="mid-img">
+      <button class="download-mid-btn">下载中质量图片(0.5)</button>
+    </div>
+    <div class="box">
+      <img src="" alt="canvas-img-high" class="high-img">
+      <button class="download-high-btn">下载高质量图片(1.0)</button>
+    </div>
+  </div>
   <script type="module" src="./18.2.4.2 HTMLCanvasElement.toDataURL().js">
   </script>
 </body>

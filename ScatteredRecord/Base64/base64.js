@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: base64.js                                                            *
  * @Date: 2024-07-01 14:55:33                                                  *
- * @LastModifiedDate: 2024-09-03 17:07:10                                      *
+ * @LastModifiedDate: 2024-09-05 14:47:56                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2024 mangwu                                                   *
@@ -47,6 +47,24 @@ export function dataURLToBlob(dataURL) {
   let mimeType = "text/plain"; // 默认文本类型
   if (configs.length >= 2) mimeType = configs[0]; // 指定类型
   return base64ToBlob(base64, mimeType);
+}
+
+/**
+ * @description 将blob中的数据流转换为Data URL
+ * @param {Blob} blob
+ * @returns {string}
+ */
+export function blobToDataURL(blob) {
+  return new Promise((resolve, reject) => {
+    blob
+      .arrayBuffer()
+      .then((res) => {
+        const base64Data = bytesToBase64(new Uint8Array(res));
+        const mime = blob.type;
+        resolve(`data:${mime};base64,${base64Data}`);
+      })
+      .catch((err) => reject(err));
+  });
 }
 
 /**

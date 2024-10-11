@@ -21,14 +21,23 @@
 <script>
   const canvas = document.querySelector("canvas");
   const context = canvas.getContext("2d");
+  // 默认矩形
   context.strokeStyle = "black";
-  context.strokeRect(50, 50, 100, 100);
-  context.strokeStyle = "red";
-  context.setTransform(1, Math.sqrt(3) / 3, 0, 1, 0, 0)
-  context.strokeRect(50, 50, 100, 100);
-  context.strokeStyle = "red";
-  context.setTransform(1, 0, Math.sqrt(3) / 3, 1, 0, 0)
-  context.strokeRect(50, 50, 100, 100);
+  context.strokeRect(100, 10, 100, 100);
+  // // +y倾斜
+  // context.strokeStyle = "red";
+  // context.setTransform(1, Math.sqrt(3) / 3, 0, 1, 0, 0)
+  // context.strokeRect(50, 50, 100, 100);
+  // // +x倾斜
+  // context.setTransform(1, 0, Math.sqrt(3) / 3, 1, 0, 0)
+  // context.strokeRect(50, 50, 100, 100);
+  // 旋转
+  context.setTransform(1, 0, 0, 1, 0, 0)
+  context.rotate(Math.PI / 6);
+  context.strokeStyle = "blue";
+  context.strokeRect(100, 10, 100, 100);
+  console.log(context.getTransform());
+
 </script>
 
 </html>
